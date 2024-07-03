@@ -15,7 +15,7 @@ namespace Hospital_Management_System.Entity.Entities
         public string PhoneNumber { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }    
-        public string Password { get; set; }  
+        //public string Password { get; set; }  
         public int HospitalId { get; set; }
     
 
