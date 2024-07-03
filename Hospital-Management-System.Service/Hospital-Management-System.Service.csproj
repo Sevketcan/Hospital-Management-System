@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Hospital-Management-System.DataAccess\Hospital-Management-System.DataAccess.csproj" />
-    <ProjectReference Include="..\Hospital-Management-System.Entity\Hospital-Management-System.Entity.csproj" />
   </ItemGroup>
 
 </Project>

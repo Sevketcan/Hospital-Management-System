@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Hospital_Management_System.DataAccess.Contexts
 {
-    public class HospitalDbContext : IdentityDbContext<AppUser, AppRole, int>
-    {
-    }
+    //public class HospitalDbContext : IdentityDbContext<AppUser, AppRole, int>
+    //{
+    //}
 }
