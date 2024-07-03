@@ -13,9 +13,8 @@ namespace Hospital_Management_System.Entity.Entities
         public string Password {  get; set; }
 
         //NAV
-
         public virtual List<Hospital> Hospitals { get; set; }
 
-
+        // deneme deneme
     }
 }
