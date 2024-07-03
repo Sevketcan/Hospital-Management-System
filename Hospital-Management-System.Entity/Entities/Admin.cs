@@ -15,6 +15,11 @@ namespace Hospital_Management_System.Entity.Entities
         //NAV
         public virtual List<Hospital> Hospitals { get; set; }
 
-        // deneme deneme
+
+        // deneme deneme asdasdasd
+
+        //Deneme3 Vedat
+
+
     }
 }
