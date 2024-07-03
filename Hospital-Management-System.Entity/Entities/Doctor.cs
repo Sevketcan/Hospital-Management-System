@@ -24,6 +24,7 @@ namespace Hospital_Management_System.Entity.Entities
         public virtual List<Appointment> Appointments { get; set; }
         public virtual List<Prescription> Prescriptions { get; set; }
 
+        //ASDJASJDASJDJASDJSAJDSAJSADJ
 
     }
 }
