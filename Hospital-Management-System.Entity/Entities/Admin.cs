@@ -16,6 +16,7 @@ namespace Hospital_Management_System.Entity.Entities
 
         public virtual List<Hospital> Hospitals { get; set; }
 
+        //Deneme3 Vedat
 
     }
 }
