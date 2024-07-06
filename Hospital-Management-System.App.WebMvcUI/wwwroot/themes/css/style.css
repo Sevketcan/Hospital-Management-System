@@ -1528,7 +1528,7 @@ select.form-control:not([size]):not([multiple]) {
 /*--//gallery--*/
 /* appointment */
 .appoint-img {
-    background: url(/images/bg6.jpg) no-repeat left bottom fixed;
+    background: url(~/images/bg6.jpg) no-repeat left bottom fixed;
     float: left;
     width: 44%;
 }
