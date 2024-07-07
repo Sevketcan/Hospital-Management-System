@@ -16,7 +16,6 @@
                 <div class="card-header text-center">
                     <h5 class="card-title">@p.Name</h5>
                 </div>
-                @* <img src="..." class="card-img-top" alt="..."> *@
                 <div class="card-body text-center">
                     <p class="card-text">Fiyat : @string.Format("{0:C2}", p.PhoneNumber)</p>
                     <a asp-controller="Admin" asp-action="Details" asp-route-id="@p.Id" class="btn btn-primary">Details</a>

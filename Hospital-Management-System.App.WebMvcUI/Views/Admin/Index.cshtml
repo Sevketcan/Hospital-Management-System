@@ -2,48 +2,56 @@
 @model IEnumerable<Hospital>
 
 @{
-    ViewData["Title"] = "Index";
+	ViewData["Title"] = "Index";
 
 }
 
 <h3>Ürünler</h3>
 
 <p>
-    <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Create">Yeni Ürün</a>
+	<a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Create">Yeni Ürün</a>
 </p>
 <table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Adress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Adress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.Id)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Name)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Adress)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.PhoneNumber)
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.Id)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Name)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Adress)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.PhoneNumber)
+				</td>
 
-            <td>
-                    <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Silmek İstiyor musunuz?')">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
+				<td>
+					<a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+					<a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+					<a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Silmek İstiyor musunuz?')">Delete</a>
+				</td>
+			</tr>
+		}
+	</tbody>
 </table>
