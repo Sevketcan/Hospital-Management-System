@@ -1,0 +1,28 @@
+﻿@using Hospital_Management_System.Entity.Entities
+@model List<Doctor>
+@{
+    ViewData["Title"] = "List";
+
+
+}
+
+<h3>Ürünler</h3>
+
+<div class="row">
+    @foreach (var p in Model)
+    {
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-header text-center">
+                    <h5 class="card-title">@p.Name</h5>
+                </div>
+                <div class="card-body text-center">
+                    <p class="card-text">Fiyat : @string.Format("{0:C2}", p.PhoneNumber)</p>
+                    <a asp-controller="Admin" asp-action="Details" asp-route-id="@p.Id" class="btn btn-primary">Details</a>
+@*                     <a href="/Product/Details/@p.Id"class="btn btn-primary">Details</a> *@
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
