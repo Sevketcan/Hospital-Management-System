@@ -10,6 +10,13 @@ namespace Hospital_Management_System.DataAccess.Contexts
         public HospitalDbContext()
         {
         }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("Data Source=93.89.230.2;Initial Catalog=hosp_db;Persist Security Info=True;User ID=admin_wissen1;Password=Th%7k107o;Trust Server Certificate=True");
+            }
+        }
 
         public HospitalDbContext(DbContextOptions<HospitalDbContext> options) : base(options) { }
 
