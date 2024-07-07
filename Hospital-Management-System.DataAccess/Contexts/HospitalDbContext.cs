@@ -7,7 +7,11 @@ namespace Hospital_Management_System.DataAccess.Contexts
 {
 	public class HospitalDbContext : IdentityDbContext<AppUser, AppRole, int>
 	{
-		public HospitalDbContext(DbContextOptions<HospitalDbContext> options) : base(options) { }
+        public HospitalDbContext()
+        {
+        }
+
+        public HospitalDbContext(DbContextOptions<HospitalDbContext> options) : base(options) { }
 
 		public DbSet<Admin> Admins { get; set; }
 		public DbSet<Appointment> Appointments { get; set; }
