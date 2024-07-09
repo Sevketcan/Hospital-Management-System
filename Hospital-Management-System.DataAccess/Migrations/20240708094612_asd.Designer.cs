@@ -4,6 +4,7 @@ using Hospital_Management_System.DataAccess.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hospital_Management_System.DataAccess.Migrations
 {
     [DbContext(typeof(HospitalDbContext))]
-    partial class HospitalDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240708094612_asd")]
+    partial class asd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -347,10 +350,10 @@ namespace Hospital_Management_System.DataAccess.Migrations
                             Id = 1,
                             BranchName = "Urolog",
                             HospitalId = 1,
-                            Name = "Sevket Can",
-                            Password = "kalyancisevket",
+                            Name = "ŞevketCan",
+                            Password = "kalyancısevket",
                             PhoneNumber = "123456789",
-                            Surname = "Kalyancioglu",
+                            Surname = "Kalyancıoğlu",
                             Username = "onlysevk"
                         },
                         new
@@ -367,7 +370,7 @@ namespace Hospital_Management_System.DataAccess.Migrations
                         new
                         {
                             Id = 3,
-                            BranchName = "Kadin Hastaliklari ve Dogum",
+                            BranchName = "Kadın Hastalıkları ve Doğum",
                             HospitalId = 1,
                             Name = "Esmer",
                             Password = "hasanesmr",
@@ -394,16 +397,16 @@ namespace Hospital_Management_System.DataAccess.Migrations
                             Name = "Faruk",
                             Password = "faruk3131",
                             PhoneNumber = "561278349",
-                            Surname = "TUFEKCI",
+                            Surname = "TÜFEKÇİ",
                             Username = "hellokityfaruk"
                         },
                         new
                         {
                             Id = 6,
-                            BranchName = "Iç Hastaliklari Uzmani",
+                            BranchName = "İç Hastalıkları Uzmanı",
                             HospitalId = 2,
-                            Name = "Museyip",
-                            Password = "muss03169",
+                            Name = "Müseyip",
+                            Password = "müsso3169",
                             PhoneNumber = "527613849",
                             Surname = "HAKKO",
                             Username = "museyipp"
@@ -411,18 +414,18 @@ namespace Hospital_Management_System.DataAccess.Migrations
                         new
                         {
                             Id = 7,
-                            BranchName = "KBB Hastaliklari Uzmani",
+                            BranchName = "KBB Hastalıkları Uzmanı",
                             HospitalId = 2,
                             Name = "Osman",
                             Password = "613127",
                             PhoneNumber = "561382749",
-                            Surname = "Ozkeles",
+                            Surname = "Özkeleş",
                             Username = "usmankeles"
                         },
                         new
                         {
                             Id = 8,
-                            BranchName = "Cocuk Sagligi Ve Hastaliklari Uzmani",
+                            BranchName = "Çocuk Sağlığı Ve Hastalıkları Uzmanı",
                             HospitalId = 2,
                             Name = "Cezmi",
                             Password = "8521613",
@@ -433,12 +436,12 @@ namespace Hospital_Management_System.DataAccess.Migrations
                         new
                         {
                             Id = 9,
-                            BranchName = "Goz Sagligi ve Hastaliklari Uzmani",
+                            BranchName = "Göz Sağlığı ve Hastalıkları Uzmanı",
                             HospitalId = 2,
                             Name = "Zerrin",
                             Password = "631271",
                             PhoneNumber = "561749382",
-                            Surname = "Goksin",
+                            Surname = "Gökşin",
                             Username = "gokzerrin"
                         },
                         new
@@ -449,13 +452,13 @@ namespace Hospital_Management_System.DataAccess.Migrations
                             Name = "Leyla",
                             Password = "131267",
                             PhoneNumber = "527461389",
-                            Surname = "Sonmez",
-                            Username = "sonmezreis"
+                            Surname = "Sönmez",
+                            Username = "sönmezreis"
                         },
                         new
                         {
                             Id = 11,
-                            BranchName = "Cocuk Sagligi ve Hastaliklari Uzmani",
+                            BranchName = "Çocuk Sağlığı ve Hastalıkları Uzmanı",
                             HospitalId = 3,
                             Name = "Denizmen",
                             Password = "131267",
@@ -471,13 +474,13 @@ namespace Hospital_Management_System.DataAccess.Migrations
                             Name = "Altay",
                             Password = "112367",
                             PhoneNumber = "574612389",
-                            Surname = "Iskender",
+                            Surname = "İskender",
                             Username = "sikender"
                         },
                         new
                         {
                             Id = 13,
-                            BranchName = "Cocuk Sagligi ve Hastaliklari",
+                            BranchName = "Çocuk Sağlığı ve Hastalıkları",
                             HospitalId = 3,
                             Name = "Alaattin",
                             Password = "167312",
@@ -493,7 +496,7 @@ namespace Hospital_Management_System.DataAccess.Migrations
                             Name = "Aleyna",
                             Password = "213167",
                             PhoneNumber = "538274619",
-                            Surname = "Ergul",
+                            Surname = "Ergül",
                             Username = "ergulaleyna"
                         },
                         new
@@ -521,12 +524,12 @@ namespace Hospital_Management_System.DataAccess.Migrations
                         new
                         {
                             Id = 17,
-                            BranchName = "Goz Hastaliklari",
+                            BranchName = "Göz Hastalıkları",
                             HospitalId = 4,
                             Name = "Abdullah",
                             Password = "231617",
                             PhoneNumber = "582137469",
-                            Surname = "OZKAYA",
+                            Surname = "ÖZKAYA",
                             Username = "abdullahockaya"
                         },
                         new
@@ -537,7 +540,7 @@ namespace Hospital_Management_System.DataAccess.Migrations
                             Name = "Abdulmuttalip",
                             Password = "276131",
                             PhoneNumber = "382751469",
-                            Surname = "SIMSEK",
+                            Surname = "ŞİMŞEK",
                             Username = "abulsimsek"
                         },
                         new
@@ -548,7 +551,7 @@ namespace Hospital_Management_System.DataAccess.Migrations
                             Name = "Abdurrahman",
                             Password = "261371",
                             PhoneNumber = "274695138",
-                            Surname = "ONEN",
+                            Surname = "ÖNEN",
                             Username = "onenabd"
                         },
                         new
@@ -559,7 +562,7 @@ namespace Hospital_Management_System.DataAccess.Migrations
                             Name = "Furkan",
                             Password = "616161",
                             PhoneNumber = "5316678637",
-                            Surname = "Keles",
+                            Surname = "Keleş",
                             Username = "kelesfurkan"
                         },
                         new
@@ -567,7 +570,7 @@ namespace Hospital_Management_System.DataAccess.Migrations
                             Id = 21,
                             BranchName = "Urolog",
                             HospitalId = 5,
-                            Name = "Mete Oguz",
+                            Name = "Mete Oğuz",
                             Password = "271361",
                             PhoneNumber = "138274659",
                             Surname = "Ekinci",
@@ -576,12 +579,12 @@ namespace Hospital_Management_System.DataAccess.Migrations
                         new
                         {
                             Id = 22,
-                            BranchName = "Kulak Burun Bogaz Hastaliklar",
+                            BranchName = "Kulak Burun Boğaz Hastalıklar",
                             HospitalId = 5,
                             Name = "Ekrem",
                             Password = "26117",
                             PhoneNumber = "513898927469",
-                            Surname = "Aytac",
+                            Surname = "Aytaç",
                             Username = "ekerrmm"
                         },
                         new
@@ -589,21 +592,21 @@ namespace Hospital_Management_System.DataAccess.Migrations
                             Id = 23,
                             BranchName = "Genel Cerrahi",
                             HospitalId = 5,
-                            Name = "Ozer",
+                            Name = "Özer",
                             Password = "456875",
                             PhoneNumber = "51386527469",
-                            Surname = "Celik",
+                            Surname = "Çelik",
                             Username = "ozercelik"
                         },
                         new
                         {
                             Id = 24,
-                            BranchName = "Goz Sagligi ve Hastaliklari",
+                            BranchName = "Göz Sağlığı ve Hastalıkları",
                             HospitalId = 5,
                             Name = "Bahri",
                             Password = "26178317",
                             PhoneNumber = "51382437469",
-                            Surname = "Muftuoglu",
+                            Surname = "Müftüoğlu",
                             Username = "bahri"
                         },
                         new
@@ -662,7 +665,7 @@ namespace Hospital_Management_System.DataAccess.Migrations
                         {
                             Id = 1,
                             AdminId = 1,
-                            Adress = "Kozyatağı, Kocayol Cd. No:19, 34742 Kadıköy/Istanbul",
+                            Adress = "Kozyatağı, Kocayol Cd. No:19, 34742 Kadıköy/İstanbul",
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
                             Name = "Central Hospital",
@@ -672,7 +675,7 @@ namespace Hospital_Management_System.DataAccess.Migrations
                         {
                             Id = 2,
                             AdminId = 1,
-                            Adress = "İdealtepe, Akgüvercin Sk. No:4, 34841 Maltepe/Istanbul",
+                            Adress = "İdealtepe, Akgüvercin Sk. No:4, 34841 Maltepe/İstanbul",
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
                             Name = "Delta Hospital",
@@ -682,31 +685,41 @@ namespace Hospital_Management_System.DataAccess.Migrations
                         {
                             Id = 3,
                             AdminId = 1,
-                            Adress = "Küçükyalı, Merkez Mh, Talat Bey Sok. No:28/B, 34840 Maltepe/Istanbul",
+                            Adress = "Küçükyalı, Merkez Mh, Talat Bey Sok. No:28/B, 34840 Maltepe/İstanbul",
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
-                            Name = "Ibni Sina Hospital",
+                            Name = "İbni Sina  Hospital",
                             PhoneNumber = "02165180900"
                         },
                         new
                         {
                             Id = 4,
                             AdminId = 1,
-                            Adress = "Cevizli, Talatpaşa Cd No:75, 34846 Maltepe/Istanbul",
+                            Adress = "Cevizli, Talatpaşa Cd No:75, 34846 Maltepe/İstanbull",
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
-                            Name = "Istanbul Onkoloji Hospital",
+                            Name = "İstanbul Onkoloji Hospital",
                             PhoneNumber = "02164573737"
                         },
                         new
                         {
                             Id = 5,
                             AdminId = 1,
-                            Adress = "Altayçeşme, Varna Sk. No:16, 34843 Maltepe/Istanbul",
+                            Adress = "Altayçeşme, Varna Sk. No:16, 34843 Maltepe/İstanbul",
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
                             Name = "Maltepe Ersoy Hospital",
                             PhoneNumber = "085081186007"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            AdminId = 1,
+                            Adress = "Küçükbakkalköy, Vedat Günyol Cd. No:28-30, 34750 Ataşehir/İstanbull",
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false,
+                            Name = "Memorial Ataşehir Hospital",
+                            PhoneNumber = "02165706666"
                         });
                 });
 
