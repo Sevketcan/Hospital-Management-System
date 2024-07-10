@@ -14,7 +14,7 @@ namespace Hospital_Management_System.DataAccess.Contexts
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-V0R3HV5;Initial Catalog=hostff;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
+                optionsBuilder.UseSqlServer("Data Source=93.89.230.2;Initial Catalog=hosp_db;Persist Security Info=True;User ID=admin_wissen1;Password=Th%7k107o;Trust Server Certificate=True");
             }
         }
 
