@@ -1,67 +1,106 @@
-﻿@using Hospital_Management_System.Entity.Entities
-@model Doctor
+﻿@model Hospital_Management_System.Entity.ViewModels.HospitalDetailsViewModel
 
 @{
-    ViewData["Title"] = "Details";
-
+	ViewData["Title"] = "Hospital Details";
 }
 
 <div>
-    <h4>Ürün Detayları</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Surname)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Surname)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BranchName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BranchName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Username)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Username)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.HospitalId)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.HospitalId)
-        </dd>
-
-    </dl>
+	<h4>Hospital Details</h4>
+	<hr />
+	<dl class="row">
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Hospital.Id)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.Hospital.Id)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Hospital.Name)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.Hospital.Name)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Hospital.Adress)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.Hospital.Adress)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Hospital.PhoneNumber)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.Hospital.PhoneNumber)
+		</dd>
+	</dl>
 </div>
+
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Listeye Dön</a>
+	<h4>Doctors List</h4>
+	<hr />
+	<table class="table">
+		<thead>
+			<tr>
+				<th>
+					@Html.DisplayNameFor(model => model.Doctors.First().Name)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Doctors.First().Surname)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Doctors.First().BranchName)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Doctors.First().PhoneNumber)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Doctors.First().Username)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Doctors.First().Password)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Doctors.First().Id)
+				</th>
+
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var doctor in Model.Doctors)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => doctor.Name)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => doctor.Surname)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => doctor.BranchName)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => doctor.PhoneNumber)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => doctor.Username)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => doctor.Password)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => doctor.Id)
+					</td>
+					<td>
+						<a asp-action="Details" asp-controller="Hospital" asp-route-id="@doctor.Id">Details</a>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
+
+<div>
+	<a asp-action="Edit" asp-route-id="@Model?.Hospital.Id">Edit</a> |
+	<a asp-action="Index">Back to List</a>
 </div>
