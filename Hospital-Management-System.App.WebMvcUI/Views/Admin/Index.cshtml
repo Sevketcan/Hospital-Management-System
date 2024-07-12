@@ -1,6 +1,4 @@
-﻿@using Hospital_Management_System.Entity.Entities
-@model IEnumerable<Hospital>
-
+﻿
 @{
 	ViewData["Title"] = "Index";
 	Layout = "~/Views/Shared/_Layout.cshtml";
@@ -18,3 +16,15 @@
 <h2>Admin Panel</h2>
 
 
+<div>
+	<a asp-controller="Hospital" asp-action="Index" class="btn btn-primary">Hospital Index</a>
+</div>
+<div>
+	<a asp-controller="Doctor" asp-action="Index" class="btn btn-primary">Doctor Index</a>
+</div>
+<div>
+	<a asp-controller="Patient" asp-action="Index" class="btn btn-primary">Patient Index</a>
+</div>
+<div>
+	<a asp-controller="Prescription" asp-action="Index" class="btn btn-primary">Prescription Index</a>
+</div>

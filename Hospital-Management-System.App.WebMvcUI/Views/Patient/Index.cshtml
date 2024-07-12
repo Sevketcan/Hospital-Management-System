@@ -48,7 +48,7 @@
 			<th></th>
 		</tr>
 	</thead>
-@* 	<tbody>
+	<tbody>
 		@foreach (var item in Model)
 		{
 			<tr>
@@ -62,7 +62,13 @@
 					@Html.DisplayFor(modelItem => item.Surname)
 				</td>
 				<td>
-					@Html.DisplayFor(modelItem => item.BranchName)
+					@Html.DisplayFor(modelItem => item.Mail)
+				</td>
+								<td>
+					@Html.DisplayFor(modelItem => item.TcNumber)
+				</td>
+								<td>
+					@Html.DisplayFor(modelItem => item.Adress)
 				</td>
 								<td>
 					@Html.DisplayFor(modelItem => item.PhoneNumber)
@@ -70,11 +76,8 @@
 								<td>
 					@Html.DisplayFor(modelItem => item.Username)
 				</td>
-								<td>
+				<td>
 					@Html.DisplayFor(modelItem => item.Password)
-				</td>
-								<td>
-					@Html.DisplayFor(modelItem => item.HospitalId)
 				</td>
 
 
@@ -88,5 +91,5 @@
 		<p>
 			<a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Create">Yeni Ürün</a>
 		</p>
-	</tbody> *@
+	</tbody>
 </table>

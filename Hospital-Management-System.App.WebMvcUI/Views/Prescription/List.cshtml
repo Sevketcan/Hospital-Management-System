@@ -17,7 +17,7 @@
                     <h5 class="card-title">@p.MedicationName</h5>
                 </div>
                 <div class="card-body text-center">
-                    <p class="card-text">Fiyat : @string.Format("{0:C2}", p.PhoneNumber)</p>
+                    <p class="card-text">Fiyat : @string.Format("{0:C2}", p.MedicationName)</p>
                     <a asp-controller="Admin" asp-action="Details" asp-route-id="@p.Id" class="btn btn-primary">Details</a>
 @*                     <a href="/Product/Details/@p.Id"class="btn btn-primary">Details</a> *@
                 </div>

@@ -8,7 +8,7 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
 {
     public class PatientController : Controller
     {
-		PatientController _patientRepo = new PatientController();
+		PatientRepository _patientRepo = new PatientRepository();
 
         public IActionResult List(string? search)
         {
@@ -22,16 +22,16 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
         public IActionResult Index(int? id)     //id -> categoryId
         {
             var patients = _patientRepo.GetAll();
-            return View(patient);
+            return View(patients);
         }
 		public IActionResult Details(int id)
 		{
-			var doctor = _patientRepo.GetById(id);
-			if (doctor == null)
+			var patient = _patientRepo.GetById(id);
+			if (patient == null)
 			{
 				return NotFound();
 			}
-			return View(doctor);
+			return View(patient);
 		}
 
 		[HttpGet]
@@ -41,7 +41,7 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(Doctor model)
+        public IActionResult Create(Patient model)
         {
 			_patientRepo.Add(model);  //Formdan gelen Product modelini veritabanına ekler.
             return RedirectToAction("Index");
@@ -50,11 +50,11 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
         public IActionResult Edit(int id)
         {
             ViewBag.Categories = new SelectList(_patientRepo.GetAll(), "Id", "Name");
-            var doctor = _patientRepo.GetById(id);
-            return View(doctor);
+            var patient = _patientRepo.GetById(id);
+            return View(patient);
 		}
 		[HttpPost]
-        public IActionResult Edit(Doctor model)
+        public IActionResult Edit(Patient model)
         {
 			_patientRepo.Update(model);
             return RedirectToAction("Index");
@@ -62,8 +62,8 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var doctor = _patientRepo.GetById(id);
-			_patientRepo.Delete(doctor);
+            var patient = _patientRepo.GetById(id);
+			_patientRepo.Delete(patient);
             return RedirectToAction("Index");
         }
     }
