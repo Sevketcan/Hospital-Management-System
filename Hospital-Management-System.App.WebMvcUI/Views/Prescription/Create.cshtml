@@ -1,0 +1,58 @@
+﻿@using Hospital_Management_System.Entity.Entities
+@model Prescription
+
+@{
+    ViewData["Title"] = "Create";
+
+}
+<h4>Yeni Hastahane</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post">
+            <div class="form-group">
+                <p>MedicationName</p>
+                <label asp-for="MedicationName" class="control-label"></label>
+                <input asp-for="MedicationName" class="form-control" />
+                <span asp-validation-for="MedicationName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <p>PrescriptionDate</p>
+                <label asp-for="PrescriptionDate" class="control-label"></label>
+                <input asp-for="PrescriptionDate" class="form-control" />
+                <span asp-validation-for="PrescriptionDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <p>Usage</p>
+                <label asp-for="Usage" class="control-label"></label>
+                <input asp-for="Usage" class="form-control" />
+                <span asp-validation-for="Usage" class="text-danger"></span>
+            </div>            
+            <div class="form-group">
+                <p>PatientId</p>
+                <label asp-for="PatientId" class="control-label"></label>
+                <input asp-for="PatientId" class="form-control" />
+                <span asp-validation-for="PatientId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <p>DoctorId</p>
+                <label asp-for="DoctorId" class="control-label"></label>
+                <input asp-for="DoctorId" class="form-control" />
+                <span asp-validation-for="DoctorId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary my-2" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div>
+    <a asp-action="Index">Listeye Dön</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

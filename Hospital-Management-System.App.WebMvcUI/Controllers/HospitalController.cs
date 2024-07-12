@@ -1,69 +1,86 @@
 ﻿using Hospital_Management_System.DataAccess.Repositories;
 using Hospital_Management_System.Entity.Entities;
+using Hospital_Management_System.Entity.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Numerics;
+using System.Linq;
 
 namespace Hospital_Management_System.App.WebMvcUI.Controllers
 {
     public class HospitalController : Controller
     {
+        HospitalRepository _hospitalRepo = new HospitalRepository();
         DoctorRepository _doctorRepo = new DoctorRepository();
 
         public IActionResult List(string? search)
         {
-            var doctors = _doctorRepo.GetAll();
+            var hospitals = _hospitalRepo.GetAll();
             if (search != null)
             {
-				doctors = doctors.Where(p => p.Name.ToLower().Contains(search.ToLower().Trim())).ToList();
+                hospitals = hospitals.Where(p => p.Name.ToLower().Contains(search.ToLower().Trim())).ToList();
             }
-            return View(doctors);
+            return View(hospitals);
         }
+
         public IActionResult Index(int? id)     //id -> categoryId
         {
-            var doctors = _doctorRepo.GetAll();
-            return View(doctors);
+            var hospitals = _hospitalRepo.GetAll();
+            return View(hospitals);
         }
-		public IActionResult Details(int id)
-		{
-			var doctor = _doctorRepo.GetById(id);
-			if (doctor == null)
-			{
-				return NotFound();
-			}
-			return View(doctor);
-		}
 
-		[HttpGet]
+        public IActionResult Details(int id)
+        {
+            var hospital = _hospitalRepo.GetById(id);
+            if (hospital == null)
+            {
+                return NotFound();
+            }
+
+            var doctors = _doctorRepo.GetAll().Where(d => d.HospitalId == id).ToList();
+
+            var viewModel = new HospitalDetailsViewModel
+            {
+                Hospital = hospital,
+                Doctors = doctors
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpGet]
         public IActionResult Create()
         {
-            ViewBag.Categories = new SelectList(_doctorRepo.GetAll(), "Id", "Name");
+            ViewBag.Categories = new SelectList(_hospitalRepo.GetAll(), "Id", "Name");
             return View();
         }
+
         [HttpPost]
-        public IActionResult Create(Doctor model)
+        public IActionResult Create(Hospital model)
         {
-            _doctorRepo.Add(model);  //Formdan gelen Product modelini veritabanına ekler.
+            _hospitalRepo.Add(model);  // Formdan gelen Hospital modelini veritabanına ekler.
             return RedirectToAction("Index");
         }
+
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            ViewBag.Categories = new SelectList(_doctorRepo.GetAll(), "Id", "Name");
-            var doctor = _doctorRepo.GetById(id);
-            return View(doctor);
-		}
-		[HttpPost]
-        public IActionResult Edit(Doctor model)
+            ViewBag.Categories = new SelectList(_hospitalRepo.GetAll(), "Id", "Name");
+            var hospital = _hospitalRepo.GetById(id);
+            return View(hospital);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Hospital model)
         {
-            _doctorRepo.Update(model);
+            _hospitalRepo.Update(model);
             return RedirectToAction("Index");
         }
+
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var doctor = _doctorRepo.GetById(id);
-            _doctorRepo.Delete(doctor);
+            var hospital = _hospitalRepo.GetById(id);
+            _hospitalRepo.Delete(hospital);
             return RedirectToAction("Index");
         }
     }
