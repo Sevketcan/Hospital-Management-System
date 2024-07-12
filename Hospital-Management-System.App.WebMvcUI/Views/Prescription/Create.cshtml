@@ -1,5 +1,5 @@
 ﻿@using Hospital_Management_System.Entity.Entities
-@model Hospital
+@model Patient
 
 @{
     ViewData["Title"] = "Create";
@@ -17,23 +17,30 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <p>Surname</p>
+                <label asp-for="Surname" class="control-label"></label>
+                <input asp-for="Surname" class="form-control" />
+                <span asp-validation-for="Surname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <p>Mail</p>
+                <label asp-for="Mail" class="control-label"></label>
+                <input asp-for="Mail" class="form-control" />
+                <span asp-validation-for="Mail" class="text-danger"></span>
+            </div>            
+            <div class="form-group">
+                <p>TcNumber</p>
+                <label asp-for="TcNumber" class="control-label"></label>
+                <input asp-for="TcNumber" class="form-control" />
+                <span asp-validation-for="TcNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <p>Adress</p>
                 <label asp-for="Adress" class="control-label"></label>
                 <input asp-for="Adress" class="form-control" />
                 <span asp-validation-for="Adress" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <p>PhoneNumber</p>
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group" style="display:none;">
-                <p>AdminId</p>
-                <label asp-for="AdminId" class="control-label"></label>
-                <input asp-for="AdminId" class="form-control" value="1" />
-                <span asp-validation-for="AdminId" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary my-2" />
             </div>
