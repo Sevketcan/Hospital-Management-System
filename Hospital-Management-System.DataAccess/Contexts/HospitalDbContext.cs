@@ -129,7 +129,7 @@ namespace Hospital_Management_System.DataAccess.Contexts
 				new Doctor { Id = 16, Name = "Emre", Surname = "YILDIRIM", BranchName = "Gastroenterology", PhoneNumber = "518274369", Username = "emreyildirim", Password = "261731", HospitalId = 4 }
 			);
 			builder.Entity<Doctor>().HasData(
-				new Doctor { Id = 17, Name = "Abdullah", Surname = "OZKAYA", BranchName = "Eye diseases", PhoneNumber = "582137469", Username = "abdullahockaya", Password = "231617", HospitalId = 4 }
+				new Doctor { Id = 17, Name = "Abdullah", Surname = "OZKAYA", BranchName = "Eye Diseases", PhoneNumber = "582137469", Username = "abdullahockaya", Password = "231617", HospitalId = 4 }
 			);
 			builder.Entity<Doctor>().HasData(
 				new Doctor { Id = 18, Name = "Abdulmuttalip", Surname = "SIMSEK", BranchName = "Urologist", PhoneNumber = "382751469", Username = "abulsimsek", Password = "276131", HospitalId = 4 }
