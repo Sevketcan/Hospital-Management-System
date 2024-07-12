@@ -1,30 +1,59 @@
-﻿
-@{
-	ViewData["Title"] = "Index";
-	Layout = "~/Views/Shared/_Layout.cshtml";
-
+﻿@{
+    ViewData["Title"] = "Admin Panel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h3>Ürünler</h3>
-<br />
-<br />
-<br />
-@{
-	ViewData["Title"] = "Admin Panel";
-}
+<style>
+    .admin-panel-container {
+        margin: 50px auto; /* Sayfayı ortalamak için margin: 50px auto; kullanılır */
+        width: 300px; /* İsteğe bağlı, container genişliği */
+        text-align: center; /* Butonları merkezde hizalamak için */
+    }
 
-<h2>Admin Panel</h2>
+        .admin-panel-container h2 {
+            margin-bottom: 30px;
+        }
 
+        .admin-panel-container .btn {
+            display: block; /* Her bir butonun alt alta gelmesi için display: block; kullanılır */
+            width: 100%; /* Butonların container genişliğinde olması için */
+            margin-bottom: 10px; /* Butonlar arasında boşluk bırakmak için */
+            border-radius: 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
 
-<div>
-	<a asp-controller="Hospital" asp-action="Index" class="btn btn-primary">Hospital Index</a>
-</div>
-<div>
-	<a asp-controller="Doctor" asp-action="Index" class="btn btn-primary">Doctor Index</a>
-</div>
-<div>
-	<a asp-controller="Patient" asp-action="Index" class="btn btn-primary">Patient Index</a>
-</div>
-<div>
-	<a asp-controller="Prescription" asp-action="Index" class="btn btn-primary">Prescription Index</a>
+        .admin-panel-container .btn-primary:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        .admin-panel-container .btn-success:hover {
+            background-color: #218838;
+            color: white;
+        }
+
+        .admin-panel-container .btn-info:hover {
+            background-color: #138496;
+            color: white;
+        }
+
+        .admin-panel-container .btn-secondary:hover {
+            background-color: #5a6268;
+            color: white;
+        }
+
+        .admin-panel-container .btn-dark:hover {
+            background-color: #1d2124;
+            color: white;
+        }
+</style>
+
+<div class="admin-panel-container">
+    <h2>Admin Panel</h2>
+
+    <a asp-controller="Hospital" asp-action="Index" class="btn btn-primary">Hospital Index</a>
+    <a asp-controller="Doctor" asp-action="Index" class="btn btn-success">Doctor Index</a>
+    <a asp-controller="Patient" asp-action="Index" class="btn btn-info">Patient Index</a>
+    <a asp-controller="Prescription" asp-action="Index" class="btn btn-secondary">Prescription Index</a>
+    <a asp-controller="Appointment" asp-action="Index" class="btn btn-dark">Appointment Index</a>
 </div>
