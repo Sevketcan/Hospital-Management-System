@@ -1,5 +1,5 @@
 ﻿@using Hospital_Management_System.Entity.Entities
-@model Patient
+@model Prescription
 
 @{
     ViewData["Title"] = "Create";
@@ -11,34 +11,34 @@
     <div class="col-md-4">
         <form asp-action="Create" method="post">
             <div class="form-group">
-                <p>Name</p>
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <p>MedicationName</p>
+                <label asp-for="MedicationName" class="control-label"></label>
+                <input asp-for="MedicationName" class="form-control" />
+                <span asp-validation-for="MedicationName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <p>Surname</p>
-                <label asp-for="Surname" class="control-label"></label>
-                <input asp-for="Surname" class="form-control" />
-                <span asp-validation-for="Surname" class="text-danger"></span>
+                <p>PrescriptionDate</p>
+                <label asp-for="PrescriptionDate" class="control-label"></label>
+                <input asp-for="PrescriptionDate" class="form-control" />
+                <span asp-validation-for="PrescriptionDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <p>Mail</p>
-                <label asp-for="Mail" class="control-label"></label>
-                <input asp-for="Mail" class="form-control" />
-                <span asp-validation-for="Mail" class="text-danger"></span>
+                <p>Usage</p>
+                <label asp-for="Usage" class="control-label"></label>
+                <input asp-for="Usage" class="form-control" />
+                <span asp-validation-for="Usage" class="text-danger"></span>
             </div>            
             <div class="form-group">
-                <p>TcNumber</p>
-                <label asp-for="TcNumber" class="control-label"></label>
-                <input asp-for="TcNumber" class="form-control" />
-                <span asp-validation-for="TcNumber" class="text-danger"></span>
+                <p>PatientId</p>
+                <label asp-for="PatientId" class="control-label"></label>
+                <input asp-for="PatientId" class="form-control" />
+                <span asp-validation-for="PatientId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <p>Adress</p>
-                <label asp-for="Adress" class="control-label"></label>
-                <input asp-for="Adress" class="form-control" />
-                <span asp-validation-for="Adress" class="text-danger"></span>
+                <p>DoctorId</p>
+                <label asp-for="DoctorId" class="control-label"></label>
+                <input asp-for="DoctorId" class="form-control" />
+                <span asp-validation-for="DoctorId" class="text-danger"></span>
             </div>
 
             <div class="form-group">

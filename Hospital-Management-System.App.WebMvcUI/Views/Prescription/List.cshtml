@@ -1,5 +1,5 @@
 ﻿@using Hospital_Management_System.Entity.Entities
-@model List<Doctor>
+@model List<Prescription>
 @{
     ViewData["Title"] = "List";
 
@@ -14,7 +14,7 @@
         <div class="col-md-4">
             <div class="card mb-3">
                 <div class="card-header text-center">
-                    <h5 class="card-title">@p.Name</h5>
+                    <h5 class="card-title">@p.MedicationName</h5>
                 </div>
                 <div class="card-body text-center">
                     <p class="card-text">Fiyat : @string.Format("{0:C2}", p.PhoneNumber)</p>

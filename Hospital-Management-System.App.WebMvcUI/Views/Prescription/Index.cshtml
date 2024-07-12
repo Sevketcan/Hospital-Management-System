@@ -1,5 +1,5 @@
 ﻿@using Hospital_Management_System.Entity.Entities
-@model IEnumerable<Doctor>
+@model IEnumerable<Prescription>
 
 @{
 	ViewData["Title"] = "Index";
@@ -19,28 +19,20 @@
 				@Html.DisplayNameFor(model => model.Id)
 			</th>
 			<th>
-				@Html.DisplayNameFor(model => model.Name)
+				@Html.DisplayNameFor(model => model.MedicationName)
 			</th>
 			<th>
-				@Html.DisplayNameFor(model => model.Surname)
+				@Html.DisplayNameFor(model => model.PrescriptionDate)
 			</th>
 			<th>
-				@Html.DisplayNameFor(model => model.BranchName)
+				@Html.DisplayNameFor(model => model.Usage)
 			</th>
 						<th>
-				@Html.DisplayNameFor(model => model.PhoneNumber)
+				@Html.DisplayNameFor(model => model.PatientId)
 			</th>
 						<th>
-				@Html.DisplayNameFor(model => model.Username)
+				@Html.DisplayNameFor(model => model.DoctorId)
 			</th>
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.Password)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.HospitalId)
-			</th>
-
 			<th></th>
 		</tr>
 	</thead>
@@ -52,28 +44,20 @@
 					@Html.DisplayFor(modelItem => item.Id)
 				</td>
 				<td>
-					@Html.DisplayFor(modelItem => item.Name)
+					@Html.DisplayFor(modelItem => item.MedicationName)
 				</td>
 				<td>
-					@Html.DisplayFor(modelItem => item.Surname)
+					@Html.DisplayFor(modelItem => item.PrescriptionDate)
 				</td>
 				<td>
-					@Html.DisplayFor(modelItem => item.BranchName)
+					@Html.DisplayFor(modelItem => item.Usage)
 				</td>
 								<td>
-					@Html.DisplayFor(modelItem => item.PhoneNumber)
+					@Html.DisplayFor(modelItem => item.PatientId)
 				</td>
 								<td>
-					@Html.DisplayFor(modelItem => item.Username)
+					@Html.DisplayFor(modelItem => item.DoctorId)
 				</td>
-								<td>
-					@Html.DisplayFor(modelItem => item.Password)
-				</td>
-								<td>
-					@Html.DisplayFor(modelItem => item.HospitalId)
-				</td>
-
-
 				<td>
 					<a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Details" asp-route-id="@item.Id">Details</a> |
 					<a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
