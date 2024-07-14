@@ -1,5 +1,6 @@
 ﻿using Hospital_Management_System.DataAccess.Repositories;
 using Hospital_Management_System.Entity.Entities;
+using Hospital_Management_System.Entity.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Numerics;
@@ -9,6 +10,8 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
     public class PatientController : Controller
     {
 		PatientRepository _patientRepo = new PatientRepository();
+        AppointmentRepository _appointmentRepo = new AppointmentRepository();
+        PrescriptionRepository _prescriptionRepo = new PrescriptionRepository();
 
         public IActionResult List(string? search)
         {
@@ -31,8 +34,18 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
 			{
 				return NotFound();
 			}
-			return View(patient);
-		}
+            var appointments = _appointmentRepo.GetAll().Where(d => d.DoctorId == id).ToList();
+            var prescriptions = _prescriptionRepo.GetAll().Where(d => d.DoctorId == id).ToList();
+
+            var viewModel = new PatientDetailsViewModel
+            {
+                Patients = patient,
+                Appointments = appointments,
+                Prescriptions = prescriptions
+            };
+
+            return View(viewModel);
+        }
 
 		[HttpGet]
         public IActionResult Create()
