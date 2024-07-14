@@ -1,5 +1,4 @@
-﻿@using Hospital_Management_System.Entity.Entities
-@model Patient
+﻿@model Hospital_Management_System.Entity.ViewModels.PatientDetailsViewModel
 
 @{
     ViewData["Title"] = "Details";
@@ -11,58 +10,160 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
+            @Html.DisplayNameFor(model => model.Patients.Id)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Id)
+            @Html.DisplayFor(model => model.Patients.Id)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Patients.Name)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.Patients.Name)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Mail)
+            @Html.DisplayNameFor(model => model.Patients.Mail)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Mail)
+            @Html.DisplayFor(model => model.Patients.Mail)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TcNumber)
+            @Html.DisplayNameFor(model => model.Patients.TcNumber)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TcNumber)
+            @Html.DisplayFor(model => model.Patients.TcNumber)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Adress)
+            @Html.DisplayNameFor(model => model.Patients.Adress)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Adress)
+            @Html.DisplayFor(model => model.Patients.Adress)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.PhoneNumber)
+            @Html.DisplayNameFor(model => model.Patients.PhoneNumber)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.PhoneNumber)
+            @Html.DisplayFor(model => model.Patients.PhoneNumber)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Username)
+            @Html.DisplayNameFor(model => model.Patients.Username)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Username)
+            @Html.DisplayFor(model => model.Patients.Username)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Password)
+            @Html.DisplayNameFor(model => model.Patients.Password)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Password)
+            @Html.DisplayFor(model => model.Patients.Password)
         </dd>
 
 
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <h4>Appointment List</h4>
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Appointments.First().Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Appointments.First().DateTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Appointments.First().DoctorId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Appointments.First().PatientId)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var appointment in Model.Appointments)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => appointment.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => appointment.DateTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => appointment.DoctorId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => appointment.PatientId)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-controller="Appointment" asp-route-id="@appointment.Id">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <h4>Prescription List</h4>
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Prescriptions.First().Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Prescriptions.First().MedicationName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Prescriptions.First().PrescriptionDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Prescriptions.First().Usage)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Prescriptions.First().PatientId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Prescriptions.First().DoctorId)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var prescription in Model.Prescriptions)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => prescription.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => prescription.MedicationName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => prescription.PrescriptionDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => prescription.Usage)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => prescription.PatientId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => prescription.DoctorId)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-controller="Prescription" asp-route-id="@prescription.Id">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Patients.Id">Edit</a> |
     <a asp-action="Index">Listeye Dön</a>
 </div>
