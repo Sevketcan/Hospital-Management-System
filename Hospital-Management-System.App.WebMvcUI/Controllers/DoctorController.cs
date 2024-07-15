@@ -1,12 +1,14 @@
 ﻿using Hospital_Management_System.DataAccess.Repositories;
 using Hospital_Management_System.Entity.Entities;
 using Hospital_Management_System.Entity.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Numerics;
 
 namespace Hospital_Management_System.App.WebMvcUI.Controllers
 {
+    [Authorize(Roles = ",admin,hospital,doctor")]
     public class DoctorController : Controller
     {
         DoctorRepository _doctorRepo = new DoctorRepository();

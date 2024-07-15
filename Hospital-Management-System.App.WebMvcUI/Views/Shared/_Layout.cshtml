@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Hospital_Management_System.App.WebMvcUI</title>
-    <title>Medic Medical Category Bootstrap Responsive Web Template | Home :: W3layouts</title>
     <!-- Meta tag Keywords -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8" />
@@ -33,6 +32,7 @@
     <link href="//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
           rel="stylesheet">
     <!-- //Web-Fonts -->
+    @RenderSection("Styles", required: false)
 </head>
 <body>
     <header>
@@ -45,7 +45,7 @@
                             <!-- social icons -->
                             <ul class="col-lg-4 col-6 top-right-info text-center">
                                 <li>
-                                    <a href="http://https://bau.edu.tr/">
+                                    <a href="#">
                                         <i class="fab fa-facebook-f"></i>
                                     </a>
                                 </li>
@@ -99,7 +99,7 @@
                 <div class="container">
                     <!-- logo -->
                     <h1>
-                        <a class="navbar-brand font-weight-bold font-italic" asp-controller="Home" asp-action="Index">
+                        <a class="navbar-brand font-weight-bold font-italic" href="~/Home/Index">
                             <span>M</span>edic
                             <i class="fas fa-syringe"></i>
                         </a>
@@ -112,62 +112,88 @@
                     <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-lg-auto">
                             <li class="nav-item active mt-lg-0 mt-3">
-                                <a class="nav-link" asp-controller="Home" asp-action="Index">
+                                <a class="nav-link" href="~/Home/Index">
                                     Home
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>
                             <li class="nav-item mx-lg-4 my-lg-0 my-3">
-                                <a class="nav-link" asp-controller="Home" asp-action="About">About Us</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                                   aria-haspopup="true" aria-expanded="false">
-                                    Pages
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item scroll" asp-controller="Home" asp-action="Services">Services</a>
-                                    <a class="dropdown-item" asp-controller="Home" asp-action="Gallery">Gallery</a>
-                                    <a class="dropdown-item scroll" asp-controller="Home" asp-action="Blog">Blog</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" asp-controller="Home" asp-action="Single">Single Page</a>
-                                </div>
+                                <a class="nav-link" href="~/Home/About">About Us</a>
                             </li>
                             <li class="nav-item mx-lg-4 my-lg-0 my-3">
-                                <a class="nav-link" asp-controller="Home" asp-action="Appointment">Appointment</a>
+                                <a class="nav-link" href="~/Home/Gallery">Gallery</a>
+                            </li>
+                            <li class="nav-item mx-lg-4 my-lg-0 my-3">
+                                <a class="nav-link" href="~/Home/Appointment">Appointment</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Home" asp-action="Contact">Contact Us</a>
+                                <a class="nav-link" href="~/Home/Contact">Contact Us</a>
                             </li>
                         </ul>
-                        <!-- login/register -->
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <a href="~/Patient/Details/@User.FindFirst("UserId").Value" class="account-button ml-lg-5 mt-lg-0 mt-4 mb-lg-0 mb-3">
-                                <i class="fas fa-user mr-2"></i>Account
-                            </a>
-                        }
-                        else
-                        {
-                            <a href="~/Account/Login" class="login-button ml-lg-5 mt-lg-0 mt-4 mb-lg-0 mb-3">
-                                <i class="fas fa-sign-in-alt mr-2"></i>Login
-                            </a>
-                            <a href="~/Account/Register" class="register-button ml-lg-5 mt-lg-0 mt-4 mb-lg-0 mb-3">
-                                <i class="fas fa-user-plus mr-2"></i>Register
-                            </a>
-                        }
-                        <!-- //login/register -->
+                        <ul class="navbar-nav">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                string userId = User.FindFirst("UserId")?.Value;
+
+                                <li class="nav-item ml-lg-5 mt-lg-0 mt-4 mb-lg-0 mb-3">
+                                    @if (User.IsInRole("admin"))
+                                    {
+                                        <a href="@Url.Action("Index", "Admin", new { id = userId })" class="nav-link">
+                                            <i class="fas fa-user-circle"></i> Account
+                                        </a>
+                                    }
+                                    else if (User.IsInRole("hospital"))
+                                    {
+                                        <a href="@Url.Action("Details", "Hospital", new { id = userId })" class="nav-link">
+                                            <i class="fas fa-user-circle"></i> Account
+                                        </a>
+                                    }
+                                    else if (User.IsInRole("doctor"))
+                                    {
+                                        <a href="@Url.Action("Details", "Doctor", new { id = userId })" class="nav-link">
+                                            <i class="fas fa-user-circle"></i> Account
+                                        </a>
+                                    }
+                                    else if (User.IsInRole("patient"))
+                                    {
+                                        <a href="@Url.Action("Details", "Patient", new { id = userId })" class="nav-link">
+                                            <i class="fas fa-user-circle"></i> Account
+                                        </a>
+                                    }
+                                </li>
+                                <li class="nav-item ml-lg-2 mt-lg-0 mt-4 mb-lg-0 mb-3">
+                                    <form action="@Url.Action("Logout", "Account")" method="post" class="nav-link p-0">
+                                        <button type="submit" class="btn btn-link p-0">
+                                            <i class="fas fa-sign-out-alt"></i> Logout
+                                        </button>
+                                        @Html.AntiForgeryToken()
+                                    </form>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item ml-lg-5 mt-lg-0 mt-4 mb-lg-0 mb-3">
+                                    <a href="@Url.Action("Login", "Account")" class="nav-link">
+                                        <i class="fas fa-sign-in-alt mr-2"></i> Login
+                                    </a>
+                                </li>
+                                <li class="nav-item ml-lg-5 mt-lg-0 mt-4 mb-lg-0 mb-3">
+                                    <a href="@Url.Action("Register", "Account")" class="nav-link">
+                                        <i class="fas fa-user-plus mr-2"></i> Register
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+
+
                     </div>
                 </div>
             </nav>
         </div>
-        <!-- //navigation -->
     </div>
-
     <div>
         @RenderBody()
     </div>
-
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2024 - Hospital_Management_System.App.WebMvcUI - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
@@ -176,6 +202,6 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/themes/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

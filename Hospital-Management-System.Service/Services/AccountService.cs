@@ -3,16 +3,21 @@ using Hospital_Management_System.Entity.Entities;
 using Hospital_Management_System.Entity.ViewModels;
 using Hospital_Management_System.DataAccess.Contexts;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Hospital_Management_System.Entity.Services
 {
     public class AccountService : IAccountService
     {
         private readonly HospitalDbContext _context;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public AccountService(HospitalDbContext context)
+        public AccountService(HospitalDbContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<string> CreateUserAsync(RegisterViewModel model)
@@ -35,17 +40,41 @@ namespace Hospital_Management_System.Entity.Services
             return "OK";
         }
 
-        public async Task<(string, int?)> FindByNameAsync(LoginViewModel model)
+        public async Task<(string, int?, string)> FindByNameAsync(LoginViewModel model)
         {
             var user = await _context.Patients
-                .FirstOrDefaultAsync(p => p.Username == model.Username && p.Password == model.Password); // Not: Şifre doğrulama işlemi burada yapılmalıdır.
+                .FirstOrDefaultAsync(p => p.Username == model.Username && p.Password == model.Password);
 
-            if (user == null)
+            if (user != null)
             {
-                return ("kullanıcı bulunamadı!", null);
+                return ("OK", user.Id, "patient");
             }
 
-            return ("OK", user.Id);
+            var admin = await _context.Admins
+                .FirstOrDefaultAsync(a => a.UserName == model.Username && a.Password == model.Password);
+
+            if (admin != null)
+            {
+                return ("OK", admin.Id, "admin");
+            }
+
+            var hospital = await _context.Hospitals
+                .FirstOrDefaultAsync(h => h.Username == model.Username && h.Password == model.Password);
+
+            if (hospital != null)
+            {
+                return ("OK", hospital.Id, "hospital");
+            }
+
+            var doctor = await _context.Doctors
+                .FirstOrDefaultAsync(d => d.Username == model.Username && d.Password == model.Password);
+
+            if (doctor != null)
+            {
+                return ("OK", doctor.Id, "doctor");
+            }
+
+            return ("kullanıcı bulunamadı!", null, null);
         }
 
         public async Task<UserViewModel> Find(string username)
@@ -77,7 +106,7 @@ namespace Hospital_Management_System.Entity.Services
 
         public async Task SignOutAsync()
         {
-            // Implement sign out logic here
+            await _httpContextAccessor.HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         }
     }
 }

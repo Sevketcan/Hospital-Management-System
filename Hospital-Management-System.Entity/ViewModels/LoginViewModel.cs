@@ -10,6 +10,7 @@ namespace Hospital_Management_System.Entity.ViewModels
         [Required(ErrorMessage = "Şifre boş geçilemez!")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+        public bool RememberMe { get; set; } // Add this line
 
         public string ReturnUrl { get; set; }
     }
