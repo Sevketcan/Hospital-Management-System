@@ -13,6 +13,8 @@ namespace Hospital_Management_System.Entity.Entities
         public string Name {  get; set; }
         public string Adress { get; set; }
         public string PhoneNumber { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
 
         [Required]
         public int AdminId { get; set; } = 1; // Set default value to 1

@@ -29,9 +29,5 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
             return View();
         }
 
-        public IActionResult Single()
-        {
-            return View();
-        }
     }
 }

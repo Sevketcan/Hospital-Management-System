@@ -1,9 +1,11 @@
 using Hospital_Management_System.App.WebMvcUI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace Hospital_Management_System.App.WebMvcUI.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class AdminController : Controller
     {
         private readonly ILogger<HomeController> _logger;

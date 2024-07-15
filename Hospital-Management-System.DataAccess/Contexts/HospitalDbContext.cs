@@ -41,11 +41,14 @@ namespace Hospital_Management_System.DataAccess.Contexts
 			builder.Entity<Doctor>().Property(d => d.Username).IsRequired().HasMaxLength(100);
 			builder.Entity<Doctor>().Property(d => d.Password).IsRequired().HasMaxLength(100);
 
+
 			builder.Entity<Hospital>().Property(h => h.Name).IsRequired().HasMaxLength(200);
 			builder.Entity<Hospital>().Property(h => h.Adress).IsRequired().HasMaxLength(200);
 			builder.Entity<Hospital>().Property(h => h.PhoneNumber).IsRequired().HasMaxLength(20);
+            builder.Entity<Hospital>().Property(h => h.Username).IsRequired().HasMaxLength(20);
+            builder.Entity<Hospital>().Property(h => h.Password).IsRequired().HasMaxLength(20);
 
-			builder.Entity<Patient>().Property(p => p.Name).IsRequired().HasMaxLength(100);
+            builder.Entity<Patient>().Property(p => p.Name).IsRequired().HasMaxLength(100);
 			builder.Entity<Patient>().Property(p => p.Surname).IsRequired().HasMaxLength(100);
 			builder.Entity<Patient>().Property(p => p.Mail).IsRequired().HasMaxLength(100);
 			builder.Entity<Patient>().Property(p => p.TcNumber).IsRequired().HasMaxLength(11);
@@ -63,24 +66,72 @@ namespace Hospital_Management_System.DataAccess.Contexts
 			builder.Entity<Admin>().HasData(
 				new Admin { Id = 1, UserName = "admin1", Password = "admin123" }
 			);
+            builder.Entity<Hospital>().HasData(
+                new Hospital
+                {
+                    Id = 1,
+                    Name = "Central Hospital",
+                    Adress = "Kozyatağı, Kocayol Cd. No:19, 34742 Kadıköy/Istanbul",
+                    PhoneNumber = "0216 4447799",
+                    Username = "centralAdmin",
+                    Password = "centralPass",
+                    AdminId = 1
+                }
+            );
 
-			builder.Entity<Hospital>().HasData(
-				new Hospital { Id = 1, Name = "Central Hospital", Adress = "Kozyatağı, Kocayol Cd. No:19, 34742 Kadıköy/Istanbul", PhoneNumber = "0216 4447799", AdminId = 1 }
-			);
-			builder.Entity<Hospital>().HasData(
-				new Hospital { Id = 2, Name = "Delta Hospital", Adress = "İdealtepe, Akgüvercin Sk. No:4, 34841 Maltepe/Istanbul", PhoneNumber = "02163889999", AdminId = 1 }
-			);
-			builder.Entity<Hospital>().HasData(
-				new Hospital { Id = 3, Name = "Ibni Sina Hospital", Adress = "Küçükyalı, Merkez Mh, Talat Bey Sok. No:28/B, 34840 Maltepe/Istanbul", PhoneNumber = "02165180900", AdminId = 1 }
-			);
-			builder.Entity<Hospital>().HasData(
-				new Hospital { Id = 4, Name = "Istanbul Onkoloji Hospital", Adress = "Cevizli, Talatpaşa Cd No:75, 34846 Maltepe/Istanbul", PhoneNumber = "02164573737", AdminId = 1 }
-			);
-			builder.Entity<Hospital>().HasData(
-				new Hospital { Id = 5, Name = "Maltepe Ersoy Hospital", Adress = "Altayçeşme, Varna Sk. No:16, 34843 Maltepe/Istanbul", PhoneNumber = "085081186007", AdminId = 1 }
-			);
+            builder.Entity<Hospital>().HasData(
+                new Hospital
+                {
+                    Id = 2,
+                    Name = "Delta Hospital",
+                    Adress = "İdealtepe, Akgüvercin Sk. No:4, 34841 Maltepe/Istanbul",
+                    PhoneNumber = "02163889999",
+                    Username = "deltaAdmin",
+                    Password = "deltaPass",
+                    AdminId = 1
+                }
+            );
 
-			builder.Entity<Doctor>().HasData(
+            builder.Entity<Hospital>().HasData(
+                new Hospital
+                {
+                    Id = 3,
+                    Name = "Ibni Sina Hospital",
+                    Adress = "Küçükyalı, Merkez Mh, Talat Bey Sok. No:28/B, 34840 Maltepe/Istanbul",
+                    PhoneNumber = "02165180900",
+                    Username = "ibniAdmin",
+                    Password = "ibniPass",
+                    AdminId = 1
+                }
+            );
+
+            builder.Entity<Hospital>().HasData(
+                new Hospital
+                {
+                    Id = 4,
+                    Name = "Istanbul Onkoloji Hospital",
+                    Adress = "Cevizli, Talatpaşa Cd No:75, 34846 Maltepe/Istanbul",
+                    PhoneNumber = "02164573737",
+                    Username = "onkolojiAdmin",
+                    Password = "onkolojiPass",
+                    AdminId = 1
+                }
+            );
+
+            builder.Entity<Hospital>().HasData(
+                new Hospital
+                {
+                    Id = 5,
+                    Name = "Maltepe Ersoy Hospital",
+                    Adress = "Altayçeşme, Varna Sk. No:16, 34843 Maltepe/Istanbul",
+                    PhoneNumber = "085081186007",
+                    Username = "ersoyAdmin",
+                    Password = "ersoyPass",
+                    AdminId = 1
+                }
+            );
+
+            builder.Entity<Doctor>().HasData(
 				new Doctor { Id = 1, Name = "Sevket Can", Surname = "Kalyancioglu", BranchName = "Urology", PhoneNumber = "123456789", Username = "onlysevk", Password = "kalyancisevket", HospitalId = 1 }
 			);
 			builder.Entity<Doctor>().HasData(
