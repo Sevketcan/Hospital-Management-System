@@ -2,87 +2,171 @@
 @model IEnumerable<Doctor>
 
 @{
-	ViewData["Title"] = "Index";
-	Layout = "~/Views/Shared/_Layout.cshtml";
-
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h3>Ürünler</h3>
-<br />
-<br />
-<br />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f7f7f7;
+            font-family: 'Arial', sans-serif;
+        }
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>
-				@Html.DisplayNameFor(model => model.Id)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.Name)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.Surname)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.BranchName)
-			</th>
-						<th>
-				@Html.DisplayNameFor(model => model.PhoneNumber)
-			</th>
-						<th>
-				@Html.DisplayNameFor(model => model.Username)
-			</th>
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.Password)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.HospitalId)
-			</th>
+        .container {
+            margin-top: 50px;
+        }
 
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		@foreach (var item in Model)
-		{
-			<tr>
-				<td>
-					@Html.DisplayFor(modelItem => item.Id)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Name)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Surname)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.BranchName)
-				</td>
-								<td>
-					@Html.DisplayFor(modelItem => item.PhoneNumber)
-				</td>
-								<td>
-					@Html.DisplayFor(modelItem => item.Username)
-				</td>
-								<td>
-					@Html.DisplayFor(modelItem => item.Password)
-				</td>
-								<td>
-					@Html.DisplayFor(modelItem => item.HospitalId)
-				</td>
+        .table {
+            width: 100%;
+            margin-bottom: 1rem;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
 
+            .table th, .table td {
+                padding: 0.75rem;
+                vertical-align: top;
+                border-top: 1px solid #dee2e6;
+            }
 
-				<td>
-					<a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Details" asp-route-id="@item.Id">Details</a> |
-					<a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-					<a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Silmek İstiyor musunuz?')">Delete</a>
-				</td>
-			</tr>
-		}
-		<p>
-			<a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Create">Yeni Ürün</a>
-		</p>
-	</tbody>
-</table>
+            .table thead th {
+                vertical-align: bottom;
+                border-bottom: 2px solid #dee2e6;
+                background-color: #007bff;
+                color: white;
+            }
+
+            .table tbody tr:nth-of-type(even) {
+                background-color: #f9f9f9;
+            }
+
+        .table-hover tbody tr:hover {
+            background-color: #e9ecef;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.25rem 0.75rem;
+            border-radius: 5px;
+        }
+
+            .nav-link:hover {
+                text-decoration: none;
+            }
+
+        .bg-primary {
+            background-color: #007bff !important;
+        }
+
+            .bg-primary:hover {
+                background-color: #0056b3 !important;
+            }
+
+        .text-white {
+            color: #fff !important;
+        }
+
+        .rounded {
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <h3>Doctors</h3>
+        <br />
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Surname)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BranchName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PhoneNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Username)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Password)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.HospitalId)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Surname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BranchName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PhoneNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Username)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Password)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.HospitalId)
+                        </td>
+                        <td>
+                            <a class="nav-link bg-primary rounded" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a class="nav-link bg-primary rounded" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a class="nav-link bg-primary rounded" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to delete?')">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <p>
+            <a class="nav-link bg-primary rounded" asp-action="Create">New Doctor</a>
+        </p>
+    </div>
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+</body>
+</html>

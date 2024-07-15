@@ -1,106 +1,185 @@
 ﻿@model Hospital_Management_System.Entity.ViewModels.HospitalDetailsViewModel
 
 @{
-	ViewData["Title"] = "Hospital Details";
+    ViewData["Title"] = "Hospital Details";
 }
 
-<div>
-	<h4>Hospital Details</h4>
-	<hr />
-	<dl class="row">
-		<dt class="col-sm-2">
-			@Html.DisplayNameFor(model => model.Hospital.Id)
-		</dt>
-		<dd class="col-sm-10">
-			@Html.DisplayFor(model => model.Hospital.Id)
-		</dd>
-		<dt class="col-sm-2">
-			@Html.DisplayNameFor(model => model.Hospital.Name)
-		</dt>
-		<dd class="col-sm-10">
-			@Html.DisplayFor(model => model.Hospital.Name)
-		</dd>
-		<dt class="col-sm-2">
-			@Html.DisplayNameFor(model => model.Hospital.Adress)
-		</dt>
-		<dd class="col-sm-10">
-			@Html.DisplayFor(model => model.Hospital.Adress)
-		</dd>
-		<dt class="col-sm-2">
-			@Html.DisplayNameFor(model => model.Hospital.PhoneNumber)
-		</dt>
-		<dd class="col-sm-10">
-			@Html.DisplayFor(model => model.Hospital.PhoneNumber)
-		</dd>
-	</dl>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f7f7f7;
+            font-family: 'Arial', sans-serif;
+        }
 
-<div>
-	<h4>Doctors List</h4>
-	<hr />
-	<table class="table">
-		<thead>
-			<tr>
-				<th>
-					@Html.DisplayNameFor(model => model.Doctors.First().Name)
-				</th>
-				<th>
-					@Html.DisplayNameFor(model => model.Doctors.First().Surname)
-				</th>
-				<th>
-					@Html.DisplayNameFor(model => model.Doctors.First().BranchName)
-				</th>
-				<th>
-					@Html.DisplayNameFor(model => model.Doctors.First().PhoneNumber)
-				</th>
-				<th>
-					@Html.DisplayNameFor(model => model.Doctors.First().Username)
-				</th>
-				<th>
-					@Html.DisplayNameFor(model => model.Doctors.First().Password)
-				</th>
-				<th>
-					@Html.DisplayNameFor(model => model.Doctors.First().Id)
-				</th>
+        .container {
+            margin-top: 50px;
+        }
 
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach (var doctor in Model.Doctors)
-			{
-				<tr>
-					<td>
-						@Html.DisplayFor(modelItem => doctor.Name)
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => doctor.Surname)
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => doctor.BranchName)
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => doctor.PhoneNumber)
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => doctor.Username)
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => doctor.Password)
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => doctor.Id)
-					</td>
-					<td>
-						<a asp-action="Details" asp-controller="Doctor" asp-route-id="@doctor.Id">Details</a>
-					</td>
-				</tr>
-			}
-		</tbody>
-	</table>
-</div>
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
 
-<div>
-	<a asp-action="Edit" asp-route-id="@Model?.Hospital.Id">Edit</a> |
-	<a asp-action="Index">Back to List</a>
-</div>
+            .header h4 {
+                font-size: 1.75rem;
+                font-weight: bold;
+                color: #333;
+            }
+
+        .details-section h4, .doctors-list-section h4 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .details-section dl, .doctors-list-section table {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .table th, .table td {
+            vertical-align: middle;
+        }
+
+        .back-link, .edit-link {
+            margin-top: 20px;
+        }
+
+            .back-link a, .edit-link a {
+                color: #007bff;
+                text-decoration: none;
+            }
+
+                .back-link a:hover, .edit-link a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <h3>Hospital Details</h3>
+            <hr />
+        </div>
+        <div class="details-section">
+            <h4>Hospital Details</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Hospital.Id)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Hospital.Id)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Hospital.Name)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Hospital.Name)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Hospital.Adress)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Hospital.Adress)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Hospital.PhoneNumber)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Hospital.PhoneNumber)
+                </dd>
+            </dl>
+        </div>
+        <div class="doctors-list-section">
+            <h4>Doctors List</h4>
+            <hr />
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Doctors.First().Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Doctors.First().Surname)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Doctors.First().BranchName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Doctors.First().PhoneNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Doctors.First().Username)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Doctors.First().Password)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Doctors.First().Id)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var doctor in Model.Doctors)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => doctor.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => doctor.Surname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => doctor.BranchName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => doctor.PhoneNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => doctor.Username)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => doctor.Password)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => doctor.Id)
+                            </td>
+                            <td>
+                                <a asp-action="Details" asp-controller="Doctor" asp-route-id="@doctor.Id">Details</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="edit-link">
+            <a asp-action="Edit" asp-route-id="@Model?.Hospital.Id">Edit</a>
+        </div>
+        <div class="back-link">
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+</body>
+</html>

@@ -3,49 +3,128 @@
 
 @{
     ViewData["Title"] = "Create";
-
 }
-<h4>Yeni Hastahane</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" method="post">
-            <div class="form-group">
-                <p>Name</p>
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f7f7f7;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .form-group p {
+            font-weight: bold;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            border-radius: 5px;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+                border-color: #004085;
+            }
+
+        .text-danger {
+            font-size: 0.9rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+            .header h3 {
+                font-size: 1.75rem;
+                font-weight: bold;
+                color: #333;
+            }
+
+        .back-link {
+            margin-top: 20px;
+        }
+
+            .back-link a {
+                color: #007bff;
+                text-decoration: none;
+            }
+
+                .back-link a:hover {
+                    text-decoration: underline;
+                }
+
+        h3 {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <h3>Hospital</h3>
+            <hr />
+        </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form asp-action="Create" method="post">
+                    <div class="form-group">
+                        <p>Name</p>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <p>Adress</p>
+                        <input asp-for="Adress" class="form-control" />
+                        <span asp-validation-for="Adress" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <p>PhoneNumber</p>
+                        <input asp-for="PhoneNumber" class="form-control" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" style="display:none;">
+                        <p>AdminId</p>
+                        <input asp-for="AdminId" class="form-control" value="1" />
+                        <span asp-validation-for="AdminId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary my-2" />
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <p>Adress</p>
-                <label asp-for="Adress" class="control-label"></label>
-                <input asp-for="Adress" class="form-control" />
-                <span asp-validation-for="Adress" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <p>PhoneNumber</p>
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group" style="display:none;">
-                <p>AdminId</p>
-                <label asp-for="AdminId" class="control-label"></label>
-                <input asp-for="AdminId" class="form-control" value="1" />
-                <span asp-validation-for="AdminId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary my-2" />
-            </div>
-        </form>
+        </div>
+        <div class="back-link">
+            <a asp-action="Index">Return To List</a>
+        </div>
     </div>
-</div>
 
-
-<div>
-    <a asp-action="Index">Listeye Dön</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+</body>
+</html>
