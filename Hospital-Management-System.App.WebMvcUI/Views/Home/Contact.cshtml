@@ -1,4 +1,4 @@
-<!--
+﻿<!--
 Author: W3layouts
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
@@ -121,7 +121,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </button>
                     <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-lg-auto">
-                            <li class="nav-item active mt-lg-0 mt-3">
+                            <li class="nav-item mt-lg-0 mt-3">
                                 <a class="nav-link" href="index.html">
                                     Home
                                     <span class="sr-only">(current)</span>
@@ -137,38 +137,113 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                                    <a class="dropdown-item scroll" href="#services">Services</a>
-                                    <a class="dropdown-item" href="gallery.html">Gallery</a>
-                                    <a class="dropdown-item scroll" href="#blog">Blog</a>
+                                    <a class="dropdown-item" href="/themes/index.html">Services</a>
+                                    <a class="dropdown-item" href="/themes/gallery.html">Gallery</a>
+                                    <a class="dropdown-item" href="/themes/index.html">Blog</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="single.html">Single Page</a>
+                                    <a class="dropdown-item" href="/themes/single.html">Single Page</a>
                                 </div>
                             </li>
                             <li class="nav-item mx-lg-4 my-lg-0 my-3">
-                                <a class="nav-link" href="appointment.html">Appointment</a>
+                                <a class="nav-link" href="/themes/appointment.html">Appointment</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="contact.html">Contact Us</a>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/themes/contact.html">Contact Us</a>
                             </li>
                         </ul>
                         <!-- login -->
-                        <a href="login.html" class="login-button ml-lg-5 mt-lg-0 mt-4 mb-lg-0 mb-3">
+                        <a href="#" class="login-button ml-lg-5 mt-lg-0 mt-4 mb-lg-0 mb-3" data-toggle="modal" data-target="#exampleModalCenter1">
                             <i class="fas fa-sign-in-alt mr-2"></i>Login
-                        </a>
-                        <a href="register.html" class="register-button ml-lg-5 mt-lg-0 mt-4 mb-lg-0 mb-3">
-                            <i class="fas fa-sign-in-alt mr-2"></i>Register
                         </a>
                         <!-- //login -->
                     </div>
                 </div>
             </nav>
         </div>
+        <!-- //navigation -->
+        <!-- modal -->
+        <!-- login -->
+        <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="login px-4 mx-auto mw-100">
+                            <h5 class="text-center mb-4">Login Now</h5>
+                            <form action="#" method="post">
+                                <div class="form-group">
+                                    <label>Your Name</label>
+                                    <input type="text" class="form-control" name="name" placeholder="" required="">
+                                </div>
+                                <div class="form-group">
+                                    <label class="mb-2">Password</label>
+                                    <input type="password" class="form-control" name="password" placeholder="" required="">
+                                </div>
+                                <button type="submit" class="btn submit mb-4">Login</button>
+                                <p class="forgot-w3ls text-center pb-4">
+                                    <a href="#" class="text-white">Forgot your password?</a>
+                                </p>
+                                <p class="account-w3ls text-center pb-4">
+                                    Don't have an account?
+                                    <a href="#" data-toggle="modal" data-target="#exampleModalCenter2">Create one now</a>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //login -->
+        <!-- register -->
+        <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content modal-content-2">
+                    <div class="modal-header text-center">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="login px-4 mx-auto mw-100">
+                            <h5 class="text-center mb-4">Register Now</h5>
+                            <form action="" method="post">
+                                <div class="form-group">
+                                    <label>Your Name</label>
+                                    <input type="text" class="form-control" name="name" placeholder="" required="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" class="form-control" name="email" placeholder="" required="">
+                                </div>
+                                <div class="form-group">
+                                    <label class="mb-2">Password</label>
+                                    <input type="password" class="form-control" name="password" id="password1" placeholder="" required="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Confirm Password</label>
+                                    <input type="password" class="form-control" name="password" id="password2" placeholder="" required="">
+                                </div>
+                                <button type="submit" class="btn btn-primary submit mb-4">Register</button>
+                                <p class="text-center pb-2">
+                                    <a href="" class="text-white">By clicking Register, I agree to your terms</a>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //register -->
+        <!-- //modal -->
     </div>
     <!-- //header 2 -->
     <!-- banner 2 -->
     <div class="inner-banner-w3ls">
         <div class="container">
-
         </div>
         <!-- //banner 2 -->
     </div>
@@ -184,34 +259,54 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
     </div>
     <!-- //page details -->
-    <!--/main-->
-    <section class="main-content-w3layouts-agileits">
-        <div class="container">
-            <h3 class="tittle">Sign In Now</h3>
-            <div class="row inner-sec">
-                <div class="login p-5 bg-light mx-auto mw-100">
-                    <form action="/themes/contact.html" method="post">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1 mb-2">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" required="">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <!-- contact -->
+    <div class="agileits-contact py-5">
+        <div class="py-xl-5 py-lg-3">
+            <div class="w3ls-titles text-center mb-5">
+                <h3 class="title">Contact Us</h3>
+                <span>
+                    <i class="fas fa-user-md"></i>
+                </span>
+                <p class="mt-2">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="d-flex">
+                <div class="col-lg-5 w3_agileits-contact-left">
+                </div>
+                <div class="col-lg-7 contact-right-w3l">
+                    <h5 class="title-w3 text-center mb-5">Get In Touch</h5>
+                    <form action="" method="post">
+                        <div class="d-flex space-d-flex">
+                            <div class="form-group grid-inputs">
+                                <input type="text" class="name form-control" name="First Name" placeholder="First Name" required="">
+                            </div>
+                            <div class="form-group grid-inputs">
+                                <input type="text" class="name form-control" name="Last Name" placeholder="Last Name" required="">
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1 mb-2">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="" required="">
+                            <input type="email" class="name form-control" name="Email" placeholder="Email" required="">
                         </div>
-                        <div class="form-check mb-2">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        <div class="form-group">
+                            <input type="text" class="name form-control" name="Subject" placeholder="Subject" required="">
                         </div>
-                        <button type="submit" class="btn btn-primary submit mb-4">Sign In</button>
-                        <p><a href="register.html"> Don't have an account?</a></p>
+
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" required="" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Send Message">
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
-    </section>
-    <!--//main-->
+    </div>
+    <!-- //contact -->
+    <!-- Map -->
+    <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3048.5130900428026!2d44.506621715459396!3d40.17539347939393!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406abcf86e940951%3A0x87a1923d7df42367!2sBest+Western+Congress+Hotel!5e0!3m2!1sen!2sin!4v1509605601510"></iframe>
+    </div>
+    <!-- //Map -->
     <!-- footer -->
     <footer>
         <div class="w3ls-footer-grids pt-sm-4 pt-3">

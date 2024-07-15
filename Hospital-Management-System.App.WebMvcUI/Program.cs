@@ -1,17 +1,19 @@
 using Hospital_Management_System.DataAccess.Contexts;
 using Microsoft.EntityFrameworkCore;
-using Hospital_Management_System.Service.Extensions;
+using Hospital_Management_System.Entity.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<HospitalDbContext>(
-        options => options.UseSqlServer(builder.Configuration.GetConnectionString("ConnStr"))
-    );
+// Add database context
+builder.Services.AddDbContext<HospitalDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ConnStr"))
+);
 
-builder.Services.AddExtensions();
+// Add custom services
+builder.Services.AddScoped<IAccountService, AccountService>();
 
 var app = builder.Build();
 
@@ -28,6 +30,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication(); // Add this line for authentication
 app.UseAuthorization();
 
 app.MapControllerRoute(

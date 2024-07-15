@@ -6,36 +6,26 @@
 }
 <section class="main-content-w3layouts-agileits">
     <div class="container">
-        <h3 class="tittle">Kullanıcı Giriş</h3>
         <div class="col-md-6 mx-auto">
-            @* <div class="row inner-sec"> *@
+            <h3 class="tittle">Kullanıcı Girişi</h3>
             <div class="login p-5 bg-light mx-auto mw-100">
-                <form asp-controller="Account" asp-action="Login" method="post">
-                    <input type="hidden" name="ReturnUrl" value="@Model.ReturnUrl" />
+                <form asp-action="Login" asp-controller="Account" method="post">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-flouting mb-3">
-                        <label asp-for="UserName" class="form-label"></label>
-                        <input asp-for="UserName" class="form-control" />
-                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    <div class="form-group">
+                        <label asp-for="Username" class="control-label"></label>
+                        <input asp-for="Username" class="form-control" />
+                        <span asp-validation-for="Username" class="text-danger"></span>
                     </div>
-                    <div class="form-flouting mb-3">
-                        <label asp-for="Password" class="form-label"></label>
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
                         <input asp-for="Password" class="form-control" />
                         <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
-                    <div class="checkbox mb-3">
-                        <label asp-for="RememberMe" class="form-label">
-                            <input asp-for="RememberMe" class="form-check-input" />
-                            RememberMe
-                        </label>
-                    </div>
                     <div class="form-group">
-                        <input type="submit" value="Log In" class="w-100 btn btn-primary" />
+                        <input type="submit" value="Giriş Yap" class="btn btn-primary" />
                     </div>
                 </form>
-                <a asp-action="Register" asp-controller="Account" class="w-100 btn btn-lg btn-primary">Yeni Üye Kayıt</a>
             </div>
         </div>
     </div>
 </section>
-

@@ -26,18 +26,19 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
             };
             return View(model);
         }
+
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            string msg = await _service.FindByNameAsync(model);
+            var (msg, userId) = await _service.FindByNameAsync(model);
             if (msg == "kullanıcı bulunamadı!")
             {
                 ModelState.AddModelError("", msg);
                 return View(model);
             }
-            else if (msg == "OK")
+            else if (msg == "OK" && userId.HasValue)
             {
-                return Redirect(model.ReturnUrl ?? "~/");
+                return RedirectToAction("Details", "Patient", new { id = userId.Value });
             }
             else
             {
@@ -65,6 +66,7 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
             }
             return View(model);
         }
+
         public async Task<IActionResult> Logout()
         {
             await _service.SignOutAsync();
