@@ -6,11 +6,99 @@
 	Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f8ff; /* Light blue background */
+        color: #333;
+    }
 
-<h3>Ürünler</h3>
+    h3 {
+        color: #004080; /* Darker blue for headings */
+        text-align: center; /* Center the heading */
+    }
+
+    .table-container {
+        margin: 50px auto;
+        width: 80%; /* Container width, can be adjusted */
+        text-align: center;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+        .table th,
+        .table td {
+            border: 1px solid #ccc;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #ffc107; /* Lighter blue for table headers */
+            color: #f8f9fa;
+        }
+
+        .table tr:nth-child(even) {
+            background-color: #f2f9ff; /* Light blue for even rows */
+        }
+
+        .table tr:hover {
+            background-color: #d0e7ff; /* Slightly darker blue for hover effect */
+        }
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+        .button-container a.nav-link {
+            display: block;
+            width: 120px; /* Button width, can be adjusted */
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s, color 0.3s;
+            text-align: center; /* Center text inside buttons */
+        }
+
+    a.nav-link:hover {
+        background-color: #003366;
+    }
+
+    .bg-primary {
+        background-color: #004080;
+    }
+
+    .bg-primary-50 {
+        background-color: #0059b3;
+    }
+
+    .text-white {
+        color: #fff;
+    }
+
+    .rounded {
+        border-radius: 10px;
+    }
+
+    h3 {
+        text-align: center;
+    }
+</style>
 <br />
 <br />
 <br />
+<br />
+<br />
+<h3>Hospital</h3>
+<br />
+
 
 <table class="table">
 	<thead>
@@ -55,7 +143,7 @@
 			</tr>
 		}
 		<p>
-			<a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Create">Yeni Ürün</a>
+			<a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Create">Add New Hospital</a>
 		</p>
 	</tbody>
 </table>
