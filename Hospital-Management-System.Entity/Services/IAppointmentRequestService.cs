@@ -9,6 +9,6 @@ namespace Hospital_Management_System.Entity.Services
     {
         Task<IEnumerable<Hospital>> GetHospitalsAsync();
         Task<IEnumerable<Doctor>> GetDoctorsByHospitalAsync(int hospitalId);
-        Task CreateAppointmentRequestAsync(AppointmentRequestViewModel model); // Add this method
+        Task<bool> CreateAppointmentRequestAsync(AppointmentRequestViewModel model);
     }
 }

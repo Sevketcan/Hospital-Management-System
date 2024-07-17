@@ -29,17 +29,25 @@ namespace Hospital_Management_System.Entity.Services
             return await Task.FromResult(_doctorRepo.GetDoctorsByHospital(hospitalId));
         }
 
-        public async Task CreateAppointmentRequestAsync(AppointmentRequestViewModel model)
+        public async Task<bool> CreateAppointmentRequestAsync(AppointmentRequestViewModel model)
         {
-            var appointment = new Appointment
+            try
             {
-                DateTime = model.DateTime,
-                DoctorId = model.DoctorId,
-                PatientId = model.PatientId
-            };
+                var appointment = new Appointment
+                {
+                    DateTime = model.DateTime,
+                    DoctorId = model.DoctorId,
+                    PatientId = model.PatientId
+                };
 
-            _appointmentRepo.Add(appointment);
-            await Task.CompletedTask;
+                _appointmentRepo.Add(appointment);
+                await Task.CompletedTask;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

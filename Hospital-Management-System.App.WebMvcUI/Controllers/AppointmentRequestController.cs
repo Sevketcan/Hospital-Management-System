@@ -63,29 +63,25 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
             {
                 _logger.LogInformation("Model is valid. Creating appointment for patient ID: {PatientId}", model.PatientId);
 
-                await _service.CreateAppointmentRequestAsync(model);
+                var success = await _service.CreateAppointmentRequestAsync(model);
+                ViewBag.Success = success;
 
-                ViewBag.Success = true; // Set success flag
-
-                return RedirectToAction("Appointment"); // Redirect to the same view to show the success popup
+                if (success)
+                {
+                    return View(model);
+                }
             }
             else
             {
                 _logger.LogWarning("Model state is invalid. Errors: {Errors}", ModelState.Values.SelectMany(v => v.Errors));
+                ViewBag.Success = false; // Set failure flag
             }
 
-            // If model state is invalid, repopulate dropdowns
+            // If model state is invalid or in case of failure, repopulate dropdowns
             model.Hospitals = await _service.GetHospitalsAsync();
             model.Doctors = await _service.GetDoctorsByHospitalAsync(model.HospitalId);
 
-            ViewBag.Success = false; // Set success flag to false
-
             return View(model);
-        }
-
-        public IActionResult Success()
-        {
-            return View();
         }
 
         [HttpGet]

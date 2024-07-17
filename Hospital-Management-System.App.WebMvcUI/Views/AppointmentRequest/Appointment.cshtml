@@ -20,9 +20,8 @@
 
         function showSuccessPopup() {
             alert("Appointment successfully created!");
-            // You can use a modal instead of alert for a better UI
-            // $('#successModal').modal('show');
         }
+
         function showFailurePopup() {
             alert("Failed to create appointment. Please try again.");
         }
@@ -44,7 +43,7 @@
     <!-- //Web-Fonts -->
 </head>
 
-<body onload="@(ViewBag.Success == true ? "showSuccessPopup();" : "")">
+<body onload="@(ViewBag.Success == true ? "showSuccessPopup();" : (ViewBag.Success == false ? "showFailurePopup();" : ""))">
 
     <!-- banner 2 -->
     <div class="inner-banner-w3ls">
