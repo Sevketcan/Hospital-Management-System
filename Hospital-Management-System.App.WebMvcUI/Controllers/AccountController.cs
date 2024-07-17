@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Hospital_Management_System.App.WebMvcUI.Controllers
 {
@@ -16,16 +17,11 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
             _service = service;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Login(string? ReturnUrl)
+        public IActionResult Login(string? returnUrl)
         {
             LoginViewModel model = new LoginViewModel()
             {
-                ReturnUrl = ReturnUrl
+                ReturnUrl = returnUrl
             };
             return View(model);
         }
@@ -41,13 +37,13 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
             }
             else if (msg == "OK" && userId.HasValue)
             {
-                // Create the identity and sign in the user
                 var claims = new List<Claim>
-        {
-            new Claim(ClaimTypes.Name, model.Username),
-            new Claim("UserId", userId.Value.ToString()),
-            new Claim(ClaimTypes.Role, role)
-        };
+                {
+                    new Claim(ClaimTypes.NameIdentifier, userId.Value.ToString()),
+                    new Claim(ClaimTypes.Name, model.Username),
+                    new Claim(ClaimTypes.Role, role)
+                };
+
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var authProperties = new AuthenticationProperties
                 {
@@ -59,10 +55,9 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
                     new ClaimsPrincipal(claimsIdentity),
                     authProperties);
 
-                // Redirect based on role
                 if (role == "admin")
                 {
-                    return RedirectToAction("Index", "Admin", new { id = userId.Value });
+                    return RedirectToAction("Index", "Admin");
                 }
                 else if (role == "hospital")
                 {
@@ -84,29 +79,6 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
             return View(model);
         }
 
-
-        public IActionResult Register()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel model)
-        {
-            string msg = await _service.CreateUserAsync(model);
-            if (msg == "OK")
-            {
-                return RedirectToAction("Login");
-            }
-            else
-            {
-                ModelState.AddModelError("", msg);
-            }
-            return View(model);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);

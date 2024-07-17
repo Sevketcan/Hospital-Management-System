@@ -15,6 +15,8 @@ builder.Services.AddDbContext<HospitalDbContext>(options =>
 
 // Add custom services
 builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<IAppointmentRequestService, AppointmentRequestService>();
+builder.Services.AddScoped<IPatientService, PatientService>();
 
 // Add authentication and cookie-based authentication
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
