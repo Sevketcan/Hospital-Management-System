@@ -17,6 +17,15 @@
         function hideURLbar() {
             window.scrollTo(0, 1);
         }
+
+        function showSuccessPopup() {
+            alert("Appointment successfully created!");
+            // You can use a modal instead of alert for a better UI
+            // $('#successModal').modal('show');
+        }
+        function showFailurePopup() {
+            alert("Failed to create appointment. Please try again.");
+        }
     </script>
     <!--// Meta tag Keywords -->
     <!-- Custom-Files -->
@@ -35,7 +44,7 @@
     <!-- //Web-Fonts -->
 </head>
 
-<body>
+<body onload="@(ViewBag.Success == true ? "showSuccessPopup();" : "")">
 
     <!-- banner 2 -->
     <div class="inner-banner-w3ls">
@@ -70,64 +79,49 @@
                 </div>
                 <div class="contact-right-w3l appoint-form">
                     <h5 class="title-w3 text-center mb-5">Fill your appointment form</h5>
-                    <form asp-action="Appointment" asp-controller="AppointmentRequest" method="post">
-                        <div class="form-group">
-                            <label asp-for="Name" class="col-form-label"></label>
-                            <input asp-for="Name" class="form-control" placeholder="Your Name" required="">
-                            <span asp-validation-for="Name" class="text-danger"></span>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <form asp-action="Appointment" method="post">
+                                <div class="form-group">
+                                    <p>Hospital</p>
+                                    <label asp-for="HospitalId" class="control-label"></label>
+                                    <select asp-for="HospitalId" class="form-control" onchange="fetchDoctors()">
+                                        <option value="">Select Hospital</option>
+                                        @foreach (var hospital in Model.Hospitals)
+                                        {
+                                            <option value="@hospital.Id">@hospital.Name</option>
+                                        }
+                                    </select>
+                                    <span asp-validation-for="HospitalId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <p>DateTime</p>
+                                    <label asp-for="DateTime" class="control-label"></label>
+                                    <input asp-for="DateTime" class="form-control" />
+                                    <span asp-validation-for="DateTime" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <p>DoctorId</p>
+                                    <label asp-for="DoctorId" class="control-label"></label>
+                                    <select asp-for="DoctorId" class="form-control">
+                                        <option value="">Select Doctor</option>
+                                    </select>
+                                    <span asp-validation-for="DoctorId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <p>PatientId</p>
+                                    <label asp-for="PatientId" class="control-label"></label>
+                                    <input asp-for="PatientId" class="form-control" readonly />
+                                    <span asp-validation-for="PatientId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Create" class="btn btn-primary my-2" />
+                                </div>
+                            </form>
                         </div>
-                        <div class="form-group">
-                            <label asp-for="Email" class="col-form-label"></label>
-                            <input asp-for="Email" class="form-control" type="email" placeholder="Your Email" required="">
-                            <span asp-validation-for="Email" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Phone" class="col-form-label"></label>
-                            <input asp-for="Phone" class="form-control" placeholder="Your Phone" required="">
-                            <span asp-validation-for="Phone" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="HospitalId" class="col-form-label">Select Hospital</label>
-                            <select asp-for="HospitalId" class="form-control" required="" onchange="fetchDoctors()">
-                                <option value="">Select Hospital</option>
-                                @foreach (var hospital in Model.Hospitals)
-                                {
-                                    <option value="@hospital.Id">@hospital.Name</option>
-                                }
-                            </select>
-                            <span asp-validation-for="HospitalId" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="DoctorId" class="col-form-label">Select Doctor</label>
-                            <select asp-for="DoctorId" class="form-control" required="">
-                                <option value="">Select Doctor</option>
-                                @foreach (var doctor in Model.Doctors)
-                                {
-                                    <option value="@doctor.Id">@doctor.Name @doctor.Surname - @doctor.BranchName</option>
-                                }
-                            </select>
-                            <span asp-validation-for="DoctorId" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="AppointmentDate" class="col-form-label">Select appointment date</label>
-                            <input asp-for="AppointmentDate" class="date form-control" type="date" required="">
-                            <span asp-validation-for="AppointmentDate" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="AppointmentTime" class="col-form-label">Select appointment time</label>
-                            <select asp-for="AppointmentTime" class="form-control" required="">
-                                <option value="">Select Time</option>
-                                <option value="08:00-8:30">08:00-8:30</option>
-                                <option value="08:30-9:00">08:30-9:00</option>
-                                <option value="09:00-9:30">09:00-9:30</option>
-                                <option value="09:30-10:00">09:30-10:00</option>
-                            </select>
-                            <span asp-validation-for="AppointmentTime" class="text-danger"></span>
-                        </div>
-                        <input type="submit" value="Book Appointment" class="btn_apt">
-                    </form>
+                    </div>
                 </div>
-                <div class="clerafix"></div>
+                <div class="clearfix"></div>
             </div>
         </div>
     </div>

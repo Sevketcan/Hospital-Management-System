@@ -17,7 +17,10 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
         private readonly IPatientService _patientService;
         private readonly ILogger<AppointmentRequestController> _logger;
 
-        public AppointmentRequestController(IAppointmentRequestService service, IPatientService patientService, ILogger<AppointmentRequestController> logger)
+        public AppointmentRequestController(
+            IAppointmentRequestService service,
+            IPatientService patientService,
+            ILogger<AppointmentRequestController> logger)
         {
             _service = service;
             _patientService = patientService;
@@ -43,9 +46,6 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
 
             var model = new AppointmentRequestViewModel
             {
-                Name = patient.Name,
-                Email = patient.Mail,
-                Phone = patient.PhoneNumber,
                 PatientId = patient.Id,
                 Hospitals = await _service.GetHospitalsAsync(),
                 Doctors = new List<Doctor>() // Initialize as empty, to be populated via AJAX
@@ -62,8 +62,12 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
             if (ModelState.IsValid)
             {
                 _logger.LogInformation("Model is valid. Creating appointment for patient ID: {PatientId}", model.PatientId);
+
                 await _service.CreateAppointmentRequestAsync(model);
-                return RedirectToAction("Success");
+
+                ViewBag.Success = true; // Set success flag
+
+                return RedirectToAction("Appointment"); // Redirect to the same view to show the success popup
             }
             else
             {
@@ -73,6 +77,8 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
             // If model state is invalid, repopulate dropdowns
             model.Hospitals = await _service.GetHospitalsAsync();
             model.Doctors = await _service.GetDoctorsByHospitalAsync(model.HospitalId);
+
+            ViewBag.Success = false; // Set success flag to false
 
             return View(model);
         }
