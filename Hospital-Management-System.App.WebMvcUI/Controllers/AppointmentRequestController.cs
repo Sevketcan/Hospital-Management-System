@@ -1,9 +1,13 @@
-﻿using Hospital_Management_System.Entity.Entities;
+﻿using Hospital_Management_System.DataAccess.Repositories;
+using Hospital_Management_System.Entity.Entities;
 using Hospital_Management_System.Entity.Services;
 using Hospital_Management_System.Entity.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -13,6 +17,7 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
     [Authorize]
     public class AppointmentRequestController : Controller
     {
+        AppointmentRepository _appointmentRepo = new AppointmentRepository();
         private readonly IAppointmentRequestService _service;
         private readonly IPatientService _patientService;
         private readonly ILogger<AppointmentRequestController> _logger;
@@ -51,6 +56,8 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
                 Doctors = new List<Doctor>() // Initialize as empty, to be populated via AJAX
             };
 
+            ViewBag.Categories = new SelectList(_appointmentRepo.GetAll(), "Id", "Name");
+
             return View(model);
         }
 
@@ -64,20 +71,24 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
                 _logger.LogInformation("Model is valid. Creating appointment for patient ID: {PatientId}", model.PatientId);
 
                 var success = await _service.CreateAppointmentRequestAsync(model);
-                ViewBag.Success = success;
-
                 if (success)
                 {
+                    ViewBag.Success = true;
                     return View(model);
+                }
+                else
+                {
+                    ViewBag.Error = "Failed to create appointment due to an unknown error. Please try again.";
+                    _logger.LogError("Failed to create appointment for patient ID: {PatientId}. Unknown error.", model.PatientId);
                 }
             }
             else
             {
                 _logger.LogWarning("Model state is invalid. Errors: {Errors}", ModelState.Values.SelectMany(v => v.Errors));
-                ViewBag.Success = false; // Set failure flag
+                ViewBag.Error = "Failed to create appointment due to validation errors. Please check your input.";
             }
 
-            // If model state is invalid or in case of failure, repopulate dropdowns
+            // Repopulate dropdowns and return the view with error details
             model.Hospitals = await _service.GetHospitalsAsync();
             model.Doctors = await _service.GetDoctorsByHospitalAsync(model.HospitalId);
 

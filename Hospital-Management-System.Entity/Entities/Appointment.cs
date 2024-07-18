@@ -10,6 +10,7 @@ namespace Hospital_Management_System.Entity.Entities
     {
         public int Id { get; set; }
         public DateTime DateTime { get; set; }
+        public int HospitalId { get; set; }
         public int DoctorId { get; set; }
         public int PatientId {  get; set; }
 

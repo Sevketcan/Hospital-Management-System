@@ -390,38 +390,39 @@ namespace Hospital_Management_System.DataAccess.Contexts
 			);
 
 
-			builder.Entity<Appointment>().HasData(
-				new Appointment { Id = 1, DateTime = new DateTime(2023, 1, 1, 10, 0, 0), DoctorId = 1, PatientId = 1 }
-			);
-			builder.Entity<Appointment>().HasData(
-				new Appointment { Id = 2, DateTime = new DateTime(2023, 1, 2, 11, 0, 0), DoctorId = 2, PatientId = 2 }
-			);
-			builder.Entity<Appointment>().HasData(
-				new Appointment { Id = 3, DateTime = new DateTime(2023, 1, 3, 12, 0, 0), DoctorId = 3, PatientId = 3 }
-			);
-			builder.Entity<Appointment>().HasData(
-				new Appointment { Id = 4, DateTime = new DateTime(2023, 1, 4, 13, 0, 0), DoctorId = 4, PatientId = 4 }
-			);
-			builder.Entity<Appointment>().HasData(
-				new Appointment { Id = 5, DateTime = new DateTime(2023, 1, 5, 14, 0, 0), DoctorId = 5, PatientId = 5 }
-			);
-			builder.Entity<Appointment>().HasData(
-				new Appointment { Id = 6, DateTime = new DateTime(2023, 1, 6, 15, 0, 0), DoctorId = 6, PatientId = 6 }
-			);
-			builder.Entity<Appointment>().HasData(
-				new Appointment { Id = 7, DateTime = new DateTime(2023, 1, 7, 16, 0, 0), DoctorId = 7, PatientId = 7 }
-			);
-			builder.Entity<Appointment>().HasData(
-				new Appointment { Id = 8, DateTime = new DateTime(2023, 1, 8, 17, 0, 0), DoctorId = 8, PatientId = 8 }
-			);
-			builder.Entity<Appointment>().HasData(
-				new Appointment { Id = 9, DateTime = new DateTime(2023, 1, 9, 18, 0, 0), DoctorId = 9, PatientId = 9 }
-			);
-			builder.Entity<Appointment>().HasData(
-				new Appointment { Id = 10, DateTime = new DateTime(2023, 1, 10, 19, 0, 0), DoctorId = 10, PatientId = 10 }
-			);
-		}
-	}
+            builder.Entity<Appointment>().HasData(
+                new Appointment { Id = 1, DateTime = new DateTime(2023, 1, 1, 10, 0, 0), HospitalId = 1, DoctorId = 1, PatientId = 1 }
+            );
+            builder.Entity<Appointment>().HasData(
+                new Appointment { Id = 2, DateTime = new DateTime(2023, 1, 2, 11, 0, 0), HospitalId = 1, DoctorId = 2, PatientId = 2 }
+            );
+            builder.Entity<Appointment>().HasData(
+                new Appointment { Id = 3, DateTime = new DateTime(2023, 1, 3, 12, 0, 0), HospitalId = 1, DoctorId = 3, PatientId = 3 }
+            );
+            builder.Entity<Appointment>().HasData(
+                new Appointment { Id = 4, DateTime = new DateTime(2023, 1, 4, 13, 0, 0), HospitalId = 1, DoctorId = 4, PatientId = 4 }
+            );
+            builder.Entity<Appointment>().HasData(
+                new Appointment { Id = 5, DateTime = new DateTime(2023, 1, 5, 14, 0, 0), HospitalId = 1, DoctorId = 5, PatientId = 5 }
+            );
+
+            builder.Entity<Appointment>().HasData(
+                new Appointment { Id = 6, DateTime = new DateTime(2023, 1, 6, 15, 0, 0), HospitalId = 2, DoctorId = 6, PatientId = 6 }
+            );
+            builder.Entity<Appointment>().HasData(
+                new Appointment { Id = 7, DateTime = new DateTime(2023, 1, 7, 16, 0, 0), HospitalId = 2, DoctorId = 7, PatientId = 7 }
+            );
+            builder.Entity<Appointment>().HasData(
+                new Appointment { Id = 8, DateTime = new DateTime(2023, 1, 8, 17, 0, 0), HospitalId = 2, DoctorId = 8, PatientId = 8 }
+            );
+            builder.Entity<Appointment>().HasData(
+                new Appointment { Id = 9, DateTime = new DateTime(2023, 1, 9, 18, 0, 0), HospitalId = 2, DoctorId = 9, PatientId = 9 }
+            );
+            builder.Entity<Appointment>().HasData(
+                new Appointment { Id = 10, DateTime = new DateTime(2023, 1, 10, 19, 0, 0), HospitalId = 2, DoctorId = 10, PatientId = 10 }
+            );
+        }
+    }
 }
 
 

@@ -10,7 +10,7 @@ namespace Hospital_Management_System.Entity.Services
     {
         private readonly HospitalRepository _hospitalRepo;
         private readonly DoctorRepository _doctorRepo;
-        private readonly AppointmentRepository _appointmentRepo;
+        private AppointmentRepository _appointmentRepo;
 
         public AppointmentRequestService(HospitalRepository hospitalRepo, DoctorRepository doctorRepo, AppointmentRepository appointmentRepo)
         {
