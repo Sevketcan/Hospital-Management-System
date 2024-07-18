@@ -4,7 +4,6 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
 <html>
 <head>
@@ -112,7 +111,7 @@
     </style>
 </head>
 <body>
-    <div class="container">
+<div class="container">
         <br />
         <br />
         <br />
@@ -120,66 +119,89 @@
         <br />
         <h4 class="title">Prescriptions</h4>
         <br />
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Id)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.MedicationName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PrescriptionDate)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Usage)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PatientId)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DoctorId)
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Id)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.MedicationName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PrescriptionDate)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Usage)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PatientId)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DoctorId)
-                        </td>
-                        <td>
-                            <a class="nav-link bg-primary rounded" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                            <a class="nav-link bg-primary rounded" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to delete?')">Delete</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-            <div class="new-prescription-button">
-                <a class="nav-link bg-primary rounded" asp-action="Create">Add Prescription</a>
-            </div>
-        </table>
-    </div>
-
-    @section Scripts {
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MedicationName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrescriptionDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PatientId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Patient.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Patient.Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DoctorId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Doctor.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Doctor.Surname)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MedicationName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrescriptionDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PatientId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Patient.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Patient.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DoctorId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Doctor.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Doctor.Surname)
+                </td>
+                <td>
+                    @* <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Details" asp-route-id="@item.Id">Details</a>  *@
+                    <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Silmek İstiyor musunuz?')">Delete</a>
+                </td>
+            </tr>
+        }
+        <p>
+            <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Create">Yeni Ürün</a>
+        </p>
+    </tbody>
+</table>
+      @section Scripts {
         @{
             await Html.RenderPartialAsync("_ValidationScriptsPartial");
         }

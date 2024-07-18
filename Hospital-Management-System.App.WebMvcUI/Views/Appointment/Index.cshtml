@@ -120,53 +120,84 @@
         <br />
         <h4 class="title">Appointments</h4>
         <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Id)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DateTime)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DoctorId)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PatientId)
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Id)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DateTime)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DoctorId)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PatientId)
-                        </td>
-                        <td>
-                            <a class="nav-link bg-primary rounded" asp-action="Details" asp-route-id="@item.Id">Details</a>
-                            <a class="nav-link bg-primary rounded" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                            <a class="nav-link bg-primary rounded" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to delete?')">Delete</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-            <div class="new-appointment-button">
-                <a class="nav-link bg-primary rounded" asp-action="Create">New Appointment</a>
-            </div>
-        </table>
-        
-    </div>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hospital.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DoctorId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Doctor.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Doctor.Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PatientId)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Patient.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Patient.Surname)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hospital.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DoctorId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Doctor.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Doctor.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PatientId)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Patient.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Patient.Surname)
+                </td>
+
+                <td>
+                    @* <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Details" asp-route-id="@item.Id">Details</a> | *@
+                    <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Silmek İstiyor musunuz?')">Delete</a>
+                </td>
+            </tr>
+        }
+        <p>
+            <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Create">Yeni Ürün</a>
+        </p>
+    </tbody>
+</table>
 
     @section Scripts {
         @{
@@ -175,3 +206,4 @@
     }
 </body>
 </html>
+=======

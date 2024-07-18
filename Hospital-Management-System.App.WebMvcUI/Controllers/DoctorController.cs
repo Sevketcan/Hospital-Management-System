@@ -8,7 +8,7 @@ using System.Numerics;
 
 namespace Hospital_Management_System.App.WebMvcUI.Controllers
 {
-    [Authorize(Roles = ",admin,hospital,doctor")]
+    [Authorize(Roles = "admin,hospital,doctor")]
     public class DoctorController : Controller
     {
         DoctorRepository _doctorRepo = new DoctorRepository();

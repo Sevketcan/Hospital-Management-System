@@ -10,11 +10,12 @@ namespace Hospital_Management_System.Entity.Entities
     {
         public int Id { get; set; }
         public DateTime DateTime { get; set; }
+        public int HospitalId { get; set; }
         public int DoctorId { get; set; }
         public int PatientId {  get; set; }
 
         //Nav property olarak patient İd verilecek
-
+        public virtual Hospital Hospital { get; set; }
         public virtual Doctor Doctor { get; set; }
         public virtual Patient Patient { get; set; }
     }

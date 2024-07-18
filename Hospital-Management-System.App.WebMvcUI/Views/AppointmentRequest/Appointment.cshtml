@@ -1,15 +1,10 @@
-﻿<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+﻿@model Hospital_Management_System.Entity.ViewModels.AppointmentRequestViewModel
 
 <!DOCTYPE html>
 <html lang="zxx">
 
 <head>
-    <title>Medic Medical Category Bootstrap Responsive Web Template | Contact Us :: W3layouts</title>
+    <title>Medic Medical Category Bootstrap Responsive Web Template | Appointment :: W3layouts</title>
     <!-- Meta tag Keywords -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8" />
@@ -21,6 +16,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
         function hideURLbar() {
             window.scrollTo(0, 1);
+        }
+
+        function showSuccessPopup() {
+            alert("Appointment successfully created!");
+        }
+
+        function showFailurePopup() {
+            alert("Failed to create appointment. Please try again.");
         }
     </script>
     <!--// Meta tag Keywords -->
@@ -38,10 +41,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <link href="//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
           rel="stylesheet">
     <!-- //Web-Fonts -->
-
 </head>
 
-<body>
+<body onload="@(ViewBag.Success == true ? "showSuccessPopup();" : (ViewBag.Success == false ? "showFailurePopup();" : ""))">
 
     <!-- banner 2 -->
     <div class="inner-banner-w3ls">
@@ -54,61 +56,63 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="~/index.html">Home</a>
+                    <a href="index.html">Home</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+                <li class="breadcrumb-item active" aria-current="page">Appointment</li>
             </ol>
         </div>
     </div>
     <!-- //page details -->
     <!-- contact -->
-    <div class="agileits-contact py-5">
+    <div class="appointment py-5">
         <div class="py-xl-5 py-lg-3">
             <div class="w3ls-titles text-center mb-5">
-                <h3 class="title">Contact Us</h3>
+                <h3 class="title">Appointment</h3>
                 <span>
                     <i class="fas fa-user-md"></i>
                 </span>
                 <p class="mt-2">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
             <div class="d-flex">
-                <div class="col-lg-5 w3_agileits-contact-left">
+                <div class="appoint-img">
                 </div>
-                <div class="col-lg-7 contact-right-w3l">
-                    <h5 class="title-w3 text-center mb-5">Get In Touch</h5>
-                    <form action="" method="post">
-                        <div class="d-flex space-d-flex">
-                            <div class="form-group grid-inputs">
-                                <input type="text" class="name form-control" name="First Name" placeholder="First Name" required="">
-                            </div>
-                            <div class="form-group grid-inputs">
-                                <input type="text" class="name form-control" name="Last Name" placeholder="Last Name" required="">
-                            </div>
+                <div class="contact-right-w3l appoint-form">
+                    <h5 class="title-w3 text-center mb-5">Fill your appointment form</h5>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <form asp-action="Appointment" method="post">
+                                <div class="form-group">
+                                    <label asp-for="HospitalId" class="control-label">Hospital</label>
+                                    <input asp-for="HospitalId" class="form-control">
+                                    <span asp-validation-for="HospitalId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="DateTime" class="control-label">Date and Time</label>
+                                    <input asp-for="DateTime" class="form-control" />
+                                    <span asp-validation-for="DateTime" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="DoctorId" class="control-label">Doctor</label>
+                                    <input asp-for="DoctorId" class="form-control">
+                                    <span asp-validation-for="DoctorId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="PatientId" class="control-label">Patient ID</label>
+                                    <input asp-for="PatientId" class="form-control" />
+                                    <span asp-validation-for="PatientId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Create" class="btn btn-primary my-2" />
+                                </div>
+                            </form>
                         </div>
-                        <div class="form-group">
-                            <input type="email" class="name form-control" name="Email" placeholder="Email" required="">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="name form-control" name="Subject" placeholder="Subject" required="">
-                        </div>
-
-                        <div class="form-group">
-                            <textarea placeholder="Your Message" required="" class="form-control"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" value="Send Message">
-                        </div>
-                    </form>
+                    </div>
                 </div>
+                <div class="clearfix"></div>
             </div>
         </div>
     </div>
     <!-- //contact -->
-    <!-- Map -->
-    <div class="map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3048.5130900428026!2d44.506621715459396!3d40.17539347939393!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406abcf86e940951%3A0x87a1923d7df42367!2sBest+Western+Congress+Hotel!5e0!3m2!1sen!2sin!4v1509605601510"></iframe>
-    </div>
-    <!-- //Map -->
     <!-- footer -->
     <footer>
         <div class="w3ls-footer-grids pt-sm-4 pt-3">
@@ -185,44 +189,51 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!-- //footer -->
     <!-- Js files -->
     <!-- JavaScript -->
-    <script src="js/jquery-2.2.3.min.js"></script>
+    <script src="/js/jquery-2.2.3.min.js"></script>
     <!-- Default-JavaScript-File -->
-    <!-- banner slider -->
-    <script src="js/responsiveslides.min.js"></script>
+    <!--start-date-piker-->
+    <link rel="stylesheet" href="/css/jquery-ui.css" />
+    <script src="/js/jquery-ui.js"></script>
     <script>
         $(function () {
-            $("#slider4").responsiveSlides({
-                auto: true,
-                pager: true,
-                nav: true,
-                speed: 1000,
-                namespace: "callbacks",
-                before: function () {
-                    $('.events').append("<li>before event fired.</li>");
-                },
-                after: function () {
-                    $('.events').append("<li>after event fired.</li>");
-                }
-            });
+            $("#datepicker,#datepicker1").datepicker();
         });
     </script>
-    <!-- //banner slider -->
+    <!-- //End-date-piker -->
     <!-- fixed navigation -->
-    <script src="js/fixed-nav.js"></script>
+    <script src="/js/fixed-nav.js"></script>
     <!-- //fixed navigation -->
     <!-- smooth scrolling -->
-    <script src="js/SmoothScroll.min.js"></script>
+    <script src="/js/SmoothScroll.min.js"></script>
     <!-- move-top -->
-    <script src="js/move-top.js"></script>
+    <script src="/js/move-top.js"></script>
     <!-- easing -->
-    <script src="js/easing.js"></script>
+    <script src="/js/easing.js"></script>
     <!--  necessary snippets for few javascript files -->
-    <script src="js/medic.js"></script>
+    <script src="/js/medic.js"></script>
 
-    <script src="js/bootstrap.js"></script>
+    <script src="/js/bootstrap.js"></script>
     <!-- Necessary-JavaScript-File-For-Bootstrap -->
     <!-- //Js files -->
 
+    <script>
+        function fetchDoctors() {
+            var hospitalId = $('#HospitalId').val();
+            $.ajax({
+                url: '@Url.Action("GetDoctorsByHospital", "AppointmentRequest")',
+                type: 'GET',
+                data: { hospitalId: hospitalId },
+                success: function (data) {
+                    var doctorSelect = $('#DoctorId');
+                    doctorSelect.empty();
+                    doctorSelect.append('<option value="">Select Doctor</option>');
+                    $.each(data, function (i, doctor) {
+                        doctorSelect.append('<option value="' + doctor.id + '">' + doctor.name + ' ' + doctor.surname + ' - ' + doctor.branchName + '</option>');
+                    });
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>

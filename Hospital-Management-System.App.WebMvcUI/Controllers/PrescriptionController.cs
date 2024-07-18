@@ -1,14 +1,35 @@
-﻿using Hospital_Management_System.DataAccess.Repositories;
+﻿using Hospital_Management_System.DataAccess.Contexts;
+using Hospital_Management_System.DataAccess.Repositories;
 using Hospital_Management_System.Entity.Entities;
 using Hospital_Management_System.Entity.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace Hospital_Management_System.App.WebMvcUI.Controllers
 {
+    [Authorize(Roles = "admin,hospital,doctor,patient")]
     public class PrescriptionController : Controller
     {
+        private readonly HospitalDbContext _context;
+
+        public PrescriptionController(HospitalDbContext context)
+        {
+            _context = context;
+        }
+        public IActionResult Index()
+        {
+            // Database'den ilişkili entity'leri içeren randevuları getirin
+            var prescriptions = _context.Prescriptions
+                .Include(a => a.Patient)
+                .Include(a => a.Doctor)
+                .ToList();
+
+            return View(prescriptions);
+        }
+
         PrescriptionRepository _prescriptionRepo = new PrescriptionRepository();
 
         public IActionResult List(string? search)
@@ -21,11 +42,11 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
             return View(prescriptions);
         }
 
-        public IActionResult Index(int? id)     //id -> categoryId
-        {
-            var prescriptions = _prescriptionRepo.GetAll();
-            return View(prescriptions);
-        }
+        //public IActionResult Index(int? id)     //id -> categoryId
+        //{
+        //    var prescriptions = _prescriptionRepo.GetAll();
+        //    return View(prescriptions);
+        //}
 
         public IActionResult Details(int id)
         {

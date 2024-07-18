@@ -1,15 +1,37 @@
-﻿using Hospital_Management_System.DataAccess.Repositories;
+﻿using Hospital_Management_System.DataAccess.Contexts;
+using Hospital_Management_System.DataAccess.Repositories;
 using Hospital_Management_System.Entity.Entities;
 using Hospital_Management_System.Entity.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace Hospital_Management_System.App.WebMvcUI.Controllers
 {
+    [Authorize(Roles = "admin,hospital,doctor,patient")]
     public class AppointmentController : Controller
     {
-		AppointmentRepository _appointmentRepo = new AppointmentRepository();
+        private readonly HospitalDbContext _context;
+
+        public AppointmentController(HospitalDbContext context)
+        {
+            _context = context;
+        }
+        public IActionResult Index()
+        {
+            // Database'den ilişkili entity'leri içeren randevuları getirin
+            var appointments = _context.Appointments
+                .Include(a => a.Patient)
+                .Include(a => a.Hospital)
+                .Include(a => a.Doctor)
+                .ToList();
+
+            return View(appointments);
+        }
+
+        AppointmentRepository _appointmentRepo = new AppointmentRepository();
 
         public IActionResult List(string? search)
         {
@@ -22,11 +44,11 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
             return View(appointments);
         }
 
-        public IActionResult Index(int? id)     //id -> categoryId
-        {
-            var appointments = _appointmentRepo.GetAll();
-            return View(appointments);
-        }
+        //public IActionResult Index(int? id)     //id -> categoryId
+        //{
+        //    var appointments = _appointmentRepo.GetAll();
+        //    return View(appointments);
+        //}
 
         public IActionResult Details(int Id)
         {
