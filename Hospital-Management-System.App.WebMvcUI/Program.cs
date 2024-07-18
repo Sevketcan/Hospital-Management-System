@@ -1,4 +1,5 @@
 using Hospital_Management_System.DataAccess.Contexts;
+using Hospital_Management_System.DataAccess.Repositories;
 using Hospital_Management_System.Entity.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,11 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<HospitalDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ConnStr"))
 );
+
+// Add repositories
+builder.Services.AddScoped<AppointmentRepository>();
+builder.Services.AddScoped<HospitalRepository>();
+builder.Services.AddScoped<DoctorRepository>();
 
 // Add custom services
 builder.Services.AddScoped<IAccountService, AccountService>();

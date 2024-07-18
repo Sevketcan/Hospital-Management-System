@@ -78,6 +78,28 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
             }
             return View(model);
         }
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterViewModel model)
+        {
+            string msg = await _service.CreateUserAsync(model);
+            if (msg == "OK")
+            {
+                return RedirectToAction("Login");
+            }
+            else
+            {
+                ModelState.AddModelError("", msg);
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
 
         public async Task<IActionResult> Logout()
         {

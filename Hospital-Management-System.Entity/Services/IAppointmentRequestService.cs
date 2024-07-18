@@ -7,8 +7,8 @@ namespace Hospital_Management_System.Entity.Services
 {
     public interface IAppointmentRequestService
     {
-        Task CreateAppointmentRequestAsync(AppointmentRequestViewModel model);
         Task<IEnumerable<Hospital>> GetHospitalsAsync();
         Task<IEnumerable<Doctor>> GetDoctorsByHospitalAsync(int hospitalId);
+        Task<bool> CreateAppointmentRequestAsync(AppointmentRequestViewModel model);
     }
 }
