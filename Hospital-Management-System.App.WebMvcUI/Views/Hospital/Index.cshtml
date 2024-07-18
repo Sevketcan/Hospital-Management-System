@@ -115,6 +115,12 @@
 			<th>
 				@Html.DisplayNameFor(model => model.PhoneNumber)
 			</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
 			<th></th>
 		</tr>
 	</thead>
@@ -134,6 +140,12 @@
 				<td>
 					@Html.DisplayFor(modelItem => item.PhoneNumber)
 				</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
 
 				<td>
 					<a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Details" asp-route-id="@item.Id">Details</a> |
