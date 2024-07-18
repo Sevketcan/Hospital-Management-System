@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            background-color: #f7f7f7;
+            background-color: #e9ecef;
             font-family: 'Arial', sans-serif;
         }
 
@@ -21,46 +21,93 @@
             margin-top: 50px;
         }
 
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-bottom: 20px;
         }
 
-            .header h4 {
-                font-size: 1.75rem;
-                font-weight: bold;
-                color: #333;
+        .btn-primary {
+            color: #fff;
+            background-color: #4575bd;
+            border-color: #007bff;
+        }
+
+        .card-header {
+            background-color: #4575bd;
+            color: white;
+            font-weight: bold;
+            border-bottom: none;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .table {
+            width: 100%;
+            margin-bottom: 1rem;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+            .table th, .table td {
+                padding: 0.75rem;
+                vertical-align: top;
+                border-top: 1px solid #dee2e6;
             }
 
-        .details-section h4, .doctors-list-section h4 {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #333;
+            .table thead th {
+                vertical-align: bottom;
+                border-bottom: 2px solid #dee2e6;
+                background-color: #4575bd;
+                color: white;
+            }
+
+            .table tbody tr:nth-of-type(even) {
+                background-color: #f9f9f9;
+            }
+
+        .table-hover tbody tr:hover {
+            background-color: #e9ecef;
         }
 
-        .details-section dl, .doctors-list-section table {
-            background-color: #fff;
-            padding: 20px;
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.25rem 0.75rem;
             border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        .table th, .table td {
-            vertical-align: middle;
-        }
-
-        .back-link, .edit-link {
-            margin-top: 20px;
-        }
-
-            .back-link a, .edit-link a {
-                color: #007bff;
+            .nav-link:hover {
                 text-decoration: none;
             }
 
-                .back-link a:hover, .edit-link a:hover {
-                    text-decoration: underline;
-                }
+        .bg-primary {
+            background-color: #4575bd !important;
+        }
+
+            .bg-primary:hover {
+                background-color: #4575bd !important;
+            }
+
+        .text-white {
+            color: #fff !important;
+        }
+
+        .rounded {
+            border-radius: 5px;
+        }
+
+        .dl-horizontal dt {
+            width: 120px;
+            font-weight: bold;
+        }
+
+        .dl-horizontal dd {
+            margin-left: 140px;
+        }
     </style>
 </head>
 <body>
