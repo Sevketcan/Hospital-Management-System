@@ -12,6 +12,7 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
     {
         private readonly IAppointmentRequestService _appointmentService;
 
+
         public AppointmentRequestController(IAppointmentRequestService appointmentService)
         {
             _appointmentService = appointmentService;
@@ -20,45 +21,23 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
         [HttpGet]
         public async Task<IActionResult> Appointment()
         {
-            var hospitals = await _appointmentService.GetHospitalsAsync();
-            var viewModel = new AppointmentRequestViewModel
-            {
-                Hospitals = hospitals
-            };
-            return View(viewModel);
+            return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Appointment(AppointmentRequestViewModel model)
         {
-            if (ModelState.IsValid)
+            string msg = await _appointmentService.CreatAppointmentRequestAsync(model);
+            if (msg == "OK")
             {
-                bool result = await _appointmentService.CreateAppointmentRequestAsync(model);
-                if (result)
-                {
-                    ViewBag.Success = true;
-                }
-                else
-                {
-                    ViewBag.Success = false;
-                }
-                return View(model);
+                return RedirectToAction("Success");
             }
-            // If ModelState is not valid, return the view with validation errors
-            var hospitals = await _appointmentService.GetHospitalsAsync();
-            model.Hospitals = hospitals;
+            else
+            {
+                ModelState.AddModelError("", msg);
+            }
             return View(model);
         }
 
-        [HttpGet]
-        public async Task<JsonResult> GetDoctorsByHospital(int hospitalId)
-        {
-            var doctors = await _appointmentService.GetDoctorsByHospitalAsync(hospitalId);
-            var doctorList = doctors.Select(d => new {
-                id = d.Id,
-                name = $"{d.Name} {d.Surname} - {d.BranchName}"
-            });
-            return Json(doctorList);
-        }
     }
 }

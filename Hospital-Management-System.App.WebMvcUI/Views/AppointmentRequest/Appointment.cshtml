@@ -83,13 +83,7 @@
                             <form asp-action="Appointment" method="post">
                                 <div class="form-group">
                                     <label asp-for="HospitalId" class="control-label">Hospital</label>
-                                    <select asp-for="HospitalId" class="form-control" onchange="fetchDoctors()">
-                                        <option value="">Select Hospital</option>
-                                        @foreach (var hospital in Model.Hospitals)
-                                        {
-                                            <option value="@hospital.Id">@hospital.Name</option>
-                                        }
-                                    </select>
+                                    <input asp-for="HospitalId" class="form-control">
                                     <span asp-validation-for="HospitalId" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
@@ -99,9 +93,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="DoctorId" class="control-label">Doctor</label>
-                                    <select asp-for="DoctorId" class="form-control">
-                                        <option value="">Select Doctor</option>
-                                    </select>
+                                    <input asp-for="DoctorId" class="form-control">
                                     <span asp-validation-for="DoctorId" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
