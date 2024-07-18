@@ -35,5 +35,6 @@ namespace Hospital_Management_System.Entity.Services
             return "OK";
         }
 
+
     }
 }
