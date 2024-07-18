@@ -2,13 +2,31 @@
 
 @{
     ViewData["Title"] = "Edit";
-
 }
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <style>
+    body {
+        background-color: #047285ed;
+        font-family: 'Arial', sans-serif;
+    }
+
     h4 {
-        color: #333;
+        color: white;
         font-family: 'Arial', sans-serif;
         margin-bottom: 20px;
+        text-align: center;
+        background-color: #04851be0;
+        padding: 0.25rem 0.5rem;
+        border-radius: 5px;
+        margin: 0 auto;
+        font-size: 1.25rem;
     }
 
     .row {
@@ -22,6 +40,7 @@
         border-radius: 5px;
         padding: 20px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
     }
 
     .form-group {
@@ -38,18 +57,22 @@
     }
 
         .form-control:focus {
-            border-color: #007bff;
+            border-color: #04851be0;
         }
 
     .control-label {
         font-weight: bold;
         margin-bottom: 5px;
         display: block;
+        font-size: 15px;
+        letter-spacing: 1px;
+        color: #000;
+        text-align: center;
     }
 
     .btn-primary {
-        background-color: #007bff;
-        border-color: #007bff;
+        background-color: #04851be0;
+        border-color: #04851be0;
         padding: 10px 20px;
         font-size: 16px;
         border-radius: 4px;
@@ -59,7 +82,7 @@
 
         .btn-primary:hover {
             background-color: #0056b3;
-            border-color: #0056b3;
+            border-color: #04851be0;
         }
 
         .btn-primary:focus {
@@ -81,56 +104,92 @@
     }
 
         a:hover {
-            color: #0056b3;
+            color: #04851be0;
         }
+
+    .back-to-list {
+        display: inline-block;
+        background-color: #04851be0;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 16px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+        .back-to-list:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+
+    .form-group label {
+        font-size: 15px;
+        letter-spacing: 1px;
+        color: #fff;
+        margin-bottom: 8px;
+        text-align: left;
+        display: block;
+    }
 </style>
+</head>
+<body>
+    <div class="container">
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <h4 class="title">Doctor Edit</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Edit">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Surname" class="control-label"></label>
+                        <input asp-for="Surname" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="BranchName" class="control-label"></label>
+                        <input asp-for="BranchName" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PhoneNumber" class="control-label"></label>
+                        <input asp-for="PhoneNumber" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Username" class="control-label"></label>
+                        <input asp-for="Username" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="HospitalId" class="control-label"></label>
+                        <input asp-for="HospitalId" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary my-2" />
+                    </div>
+                </form>
+            </div>
+        </div>
 
-
-<h4>Ürün Düzeltme</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label asp-for="Surname" class="control-label"></label>
-                <input asp-for="Surname" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label asp-for="BranchName" class="control-label"></label>
-                <input asp-for="BranchName" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label asp-for="HospitalId" class="control-label"></label>
-                <input asp-for="HospitalId" class="form-control" />
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary my-2" />
-            </div>
-        </form>
+        <div>
+            <a asp-action="Index" class="back-to-list">Back to List</a>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+</body>
+</html>

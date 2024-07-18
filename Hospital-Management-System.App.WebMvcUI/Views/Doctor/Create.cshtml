@@ -3,164 +3,182 @@
 
 @{
     ViewData["Title"] = "Create";
-
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<style>
-    h4 {
-        color: #333;
-        font-family: 'Arial', sans-serif;
-        margin-bottom: 20px;
-    }
 
-    .row {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-    }
-
-    .col-md-4 {
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        padding: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .form-group {
-        margin-bottom: 15px;
-    }
-
-    .form-control {
-        width: 100%;
-        padding: 10px;
-        font-size: 16px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        transition: border-color 0.3s;
-    }
-
-        .form-control:focus {
-            border-color: #007bff;
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e9ecef;
+            color: #333;
         }
 
-    .control-label {
-        font-weight: bold;
-        margin-bottom: 5px;
-        display: block;
-    }
+        h4 {
+            color: white; /* Yazı rengi beyaz */
+            font-family: 'Arial', sans-serif;
+            margin-bottom: 20px;
+            text-align: center; /* Sağ tarafa hizalama */
+            background-color: #17a2b8; /* Arka plan rengi */
+            padding: 0.25rem 0.5rem; /* Padding azaltıldı */
+            border-radius: 5px; /* Köşe yumuşatıldı */
+        }
 
-    .btn-primary {
-        background-color: #007bff;
-        border-color: #007bff;
-        padding: 10px 20px;
-        font-size: 16px;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s, border-color 0.3s;
-    }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+            .form-group p {
+                margin-bottom: 0.5rem;
+                font-weight: bold;
+                color: #555;
+            }
+
+        .form-control {
+            width: 100%;
+            padding: 0.5rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+            .form-control:focus {
+                border-color: #80bdff;
+                outline: 0;
+                box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            }
+
+        .btn {
+            display: inline-block;
+            font-weight: 400;
+            color: #fff;
+            text-align: center;
+            vertical-align: middle;
+            user-select: none;
+            background-color: #007bff;
+            border: 1px solid #007bff;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: 0.25rem;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
 
         .btn-primary:hover {
+            color: #fff;
             background-color: #0056b3;
-            border-color: #0056b3;
+            border-color: #004085;
         }
 
-        .btn-primary:focus {
-            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        .text-danger {
+            color: #dc3545;
+            font-size: 0.875rem;
         }
 
-    .my-2 {
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
-
-    a {
-        display: inline-block;
-        margin-top: 20px;
-        color: #007bff;
-        text-decoration: none;
-        font-size: 16px;
-        transition: color 0.3s;
-    }
-
-        a:hover {
-            color: #0056b3;
+        .back-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: none;
         }
 
-    .text-danger {
-        color: #dc3545;
-    }
+            .back-link:hover {
+                color: #0056b3;
+                text-decoration: underline;
+            }
+    </style>
+</head>
 
-    p {
-        font-weight: bold;
-        margin-bottom: 5px;
-        font-family: 'Arial', sans-serif;
-    }
-</style>
+<body>
+    <div class="container">
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <h4 class="title">Add Doctor</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-4 form-container">
+                <form asp-action="Create" method="post">
+                    <div class="form-group">
+                        <p>Name</p>
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <p>Surname</p>
+                        <label asp-for="Surname" class="control-label"></label>
+                        <input asp-for="Surname" class="form-control" />
+                        <span asp-validation-for="Surname" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <p>BranchName</p>
+                        <label asp-for="BranchName" class="control-label"></label>
+                        <input asp-for="BranchName" class="form-control" />
+                        <span asp-validation-for="BranchName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <p>PhoneNumber</p>
+                        <label asp-for="PhoneNumber" class="control-label"></label>
+                        <input asp-for="PhoneNumber" class="form-control" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <p>Username</p>
+                        <label asp-for="Username" class="control-label"></label>
+                        <input asp-for="Username" class="form-control" />
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <p>Password</p>
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" style="display:none;">
+                        <p>HospitalId</p>
+                        <label asp-for="HospitalId" class="control-label"></label>
+                        <input asp-for="HospitalId" class="form-control" value="1" />
+                        <span asp-validation-for="HospitalId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary my-2" />
+                    </div>
+                </form>
+            </div>
+        </div>
 
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<h4>Add Doctor</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" method="post">
-            <div class="form-group">
-                <p>Name</p>
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <p>Surname</p>
-                <label asp-for="Surname" class="control-label"></label>
-                <input asp-for="Surname" class="form-control" />
-                <span asp-validation-for="Surname" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <p>BranchName</p>
-                <label asp-for="BranchName" class="control-label"></label>
-                <input asp-for="BranchName" class="form-control" />
-                <span asp-validation-for="BranchName" class="text-danger"></span>
-            </div>            
-            <div class="form-group">
-                <p>PhoneNumber</p>
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <p>Username</p>
-                <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control" />
-                <span asp-validation-for="Username" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <p>Password</p>
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group" style="display:none;">
-                <p>HospitalId</p>
-                <label asp-for="HospitalId" class="control-label"></label>
-                <input asp-for="HospitalId" class="form-control" value="1" />
-                <span asp-validation-for="HospitalId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary my-2" />
-            </div>
-        </form>
+        <div>
+            <a asp-action="Index" class="back-link">Back To List</a>
+        </div>
     </div>
-</div>
 
-
-<div>
-    <a asp-action="Index">Back To List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+</body>
+</html>
