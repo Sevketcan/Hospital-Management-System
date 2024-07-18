@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -124,7 +125,7 @@
                                 <a class="nav-link" href="~/Home/Gallery">Gallery</a>
                             </li>
                             <li class="nav-item mx-lg-4 my-lg-0 my-3">
-                                <a class="nav-link" href="~/Home/Appointment">Appointment</a>
+                                <a class="nav-link" href="~/AppointmentRequest/Appointment">Appointment</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="~/Home/Contact">Contact Us</a>
@@ -133,7 +134,7 @@
                         <ul class="navbar-nav">
                             @if (User.Identity.IsAuthenticated)
                             {
-                                string userId = User.FindFirst("UserId")?.Value;
+                                string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
                                 <li class="nav-item ml-lg-5 mt-lg-0 mt-4 mb-lg-0 mb-3">
                                     @if (User.IsInRole("admin"))
