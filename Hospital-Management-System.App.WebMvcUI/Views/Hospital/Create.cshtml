@@ -3,8 +3,9 @@
 
 @{
     ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,100 +14,134 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            background-color: #f7f7f7;
+            font-family: Arial, sans-serif;
+            background-color: #e9ecef;
+            color: #333;
+        }
+
+        h4 {
+            color: white; /* Yazı rengi beyaz */
             font-family: 'Arial', sans-serif;
+            margin-bottom: 20px;
+            text-align: center; /* Sağ tarafa hizalama */
+            background-color: #17a2b8; /* Arka plan rengi */
+            padding: 0.25rem 0.5rem; /* Padding azaltıldı */
+            border-radius: 5px; /* Köşe yumuşatıldı */
         }
 
-        .container {
-            margin-top: 50px;
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
         }
 
-        .form-group p {
-            font-weight: bold;
+        .form-group {
+            margin-bottom: 1rem;
         }
+
+            .form-group p {
+                margin-bottom: 0.5rem;
+                font-weight: bold;
+                color: #555;
+            }
 
         .form-control {
-            border-radius: 5px;
+            width: 100%;
+            padding: 0.5rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
             border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
         }
 
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-            border-radius: 5px;
-        }
-
-            .btn-primary:hover {
-                background-color: #0056b3;
-                border-color: #004085;
+            .form-control:focus {
+                border-color: #80bdff;
+                outline: 0;
+                box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
             }
+
+        .btn {
+            display: inline-block;
+            font-weight: 400;
+            color: #fff;
+            text-align: center;
+            vertical-align: middle;
+            user-select: none;
+            background-color: #007bff;
+            border: 1px solid #007bff;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: 0.25rem;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #0056b3;
+            border-color: #004085;
+        }
 
         .text-danger {
-            font-size: 0.9rem;
+            color: #dc3545;
+            font-size: 0.875rem;
         }
-
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-            .header h3 {
-                font-size: 1.75rem;
-                font-weight: bold;
-                color: #333;
-            }
 
         .back-link {
-            margin-top: 20px;
+            display: inline-block;
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: none;
         }
 
-            .back-link a {
-                color: #007bff;
-                text-decoration: none;
+            .back-link:hover {
+                color: #0056b3;
+                text-decoration: underline;
             }
-
-                .back-link a:hover {
-                    text-decoration: underline;
-                }
-
-        h3 {
-            text-align: center;
-        }
-
     </style>
 </head>
+
 <body>
     <div class="container">
-        <div class="header">
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <h3>Hospital</h3>
-            <hr />
-        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <h4 class="title">Add Hospital</h4>
+        <hr />
         <div class="row">
-            <div class="col-md-6 offset-md-3">
+            <div class="col-md-4 form-container">
                 <form asp-action="Create" method="post">
                     <div class="form-group">
                         <p>Name</p>
+                        <label asp-for="Name" class="control-label"></label>
                         <input asp-for="Name" class="form-control" />
                         <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <p>Adress</p>
+                        <label asp-for="Adress" class="control-label"></label>
                         <input asp-for="Adress" class="form-control" />
                         <span asp-validation-for="Adress" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <p>PhoneNumber</p>
+                        <label asp-for="PhoneNumber" class="control-label"></label>
                         <input asp-for="PhoneNumber" class="form-control" />
                         <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                     </div>
                     <div class="form-group" style="display:none;">
                         <p>AdminId</p>
+                        <label asp-for="AdminId" class="control-label"></label>
                         <input asp-for="AdminId" class="form-control" value="1" />
                         <span asp-validation-for="AdminId" class="text-danger"></span>
                     </div>
@@ -116,8 +151,9 @@
                 </form>
             </div>
         </div>
-        <div class="back-link">
-            <a asp-action="Index">Return To List</a>
+
+        <div>
+            <a asp-action="Index" class="back-link">Return To List</a>
         </div>
     </div>
 

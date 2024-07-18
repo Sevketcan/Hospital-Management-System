@@ -2,148 +2,176 @@
 @model IEnumerable<Hospital>
 
 @{
-	ViewData["Title"] = "Index";
-	Layout = "~/Views/Shared/_Layout.cshtml";
-
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f0f8ff; /* Light blue background */
-        color: #333;
-    }
 
-    h3 {
-        color: #004080; /* Darker blue for headings */
-        text-align: center; /* Center the heading */
-    }
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: white;
+            font-family: 'Arial', sans-serif;
+        }
 
-    .table-container {
-        margin: 50px auto;
-        width: 80%; /* Container width, can be adjusted */
-        text-align: center;
-    }
+        .container {
+            margin-top: 50px;
+        }
 
-    .table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
+        .table {
+            width: 100%;
+            margin-bottom: 1rem;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+        }
 
-        .table th,
-        .table td {
-            border: 1px solid #ccc;
-            padding: 15px;
+            .table th, .table td {
+                padding: 0.5rem;
+                vertical-align: middle;
+                border-top: 1px solid #dee2e6;
+            }
+
+            .table thead th {
+                vertical-align: middle;
+                border-bottom: 2px solid #dee2e6;
+                background-color: #17a2b8;
+                color: white;
+            }
+
+            .table tbody tr:nth-of-type(even) {
+                background-color: #f9f9f9;
+            }
+
+        .table-hover tbody tr:hover {
+            background-color: #e9ecef;
+            border-radius: 15px;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.25rem 0.75rem;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+
+            .nav-link:hover {
+                text-decoration: none;
+                background-color: #fff; /* Hover durumunda arka plan rengini beyaz yapar */
+                color: #000; /* Hover durumunda yazı rengini siyah yapar */
+                margin-top: 3px;
+            }
+
+        .bg-primary {
+            background-color: #007bff !important;
+            margin-top: 3px;
+        }
+
+            .bg-primary:hover {
+                background-color: #fff !important; /* Hover durumunda arka plan rengini beyaz yapar */
+                color: #000 !important; /* Hover durumunda yazı rengini siyah yapar */
+                margin-top: 3px;
+            }
+
+        .text-white {
+            color: #fff !important;
+        }
+
+        .rounded {
+            border-radius: 5px;
+        }
+
+        .new-hospital-button {
             text-align: left;
+            margin-top: 20px;
         }
 
-        .table th {
-            background-color: #ffc107; /* Lighter blue for table headers */
-            color: #f8f9fa;
+            .new-hospital-button a {
+                display: inline-block;
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+            }
+
+        .title {
+            color: white;
+            font-family: 'Arial', sans-serif;
+            margin-bottom: 20px;
+            text-align: center;
+            background-color: #17a2b8;
+            padding: 0.25rem 0.5rem;
+            border-radius: 5px;
+            margin: 0 auto;
+            font-size: 1.25rem;
+            text-align: right;
         }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <br />
+        <br />
+        <br />
+        <br />
+        <h4 class="title">Hospital</h4>
+        <br />
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Adress)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PhoneNumber)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Adress)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PhoneNumber)
+                        </td>
+                        <td>
+                            <a class="nav-link bg-primary rounded" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                            <a class="nav-link bg-primary rounded" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            <a class="nav-link bg-primary rounded" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to delete?')">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <div class="new-hospital-button">
+                <a class="nav-link bg-primary rounded" asp-action="Create">Add New Hospital</a>
+            </div>
+        </table>
+       
+    </div>
 
-        .table tr:nth-child(even) {
-            background-color: #f2f9ff; /* Light blue for even rows */
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
         }
-
-        .table tr:hover {
-            background-color: #d0e7ff; /* Slightly darker blue for hover effect */
-        }
-
-    .button-container {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 20px;
     }
-
-        .button-container a.nav-link {
-            display: block;
-            width: 120px; /* Button width, can be adjusted */
-            padding: 10px 20px;
-            margin-bottom: 10px;
-            border-radius: 10px;
-            transition: background-color 0.3s, color 0.3s;
-            text-align: center; /* Center text inside buttons */
-        }
-
-    a.nav-link:hover {
-        background-color: #003366;
-    }
-
-    .bg-primary {
-        background-color: #004080;
-    }
-
-    .bg-primary-50 {
-        background-color: #0059b3;
-    }
-
-    .text-white {
-        color: #fff;
-    }
-
-    .rounded {
-        border-radius: 10px;
-    }
-
-    h3 {
-        text-align: center;
-    }
-</style>
-<br />
-<br />
-<br />
-<br />
-<br />
-<h3>Hospital</h3>
-<br />
-
-
-<table class="table">
-	<thead>
-		<tr>
-			<th>
-				@Html.DisplayNameFor(model => model.Id)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.Name)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.Adress)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.PhoneNumber)
-			</th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		@foreach (var item in Model)
-		{
-			<tr>
-				<td>
-					@Html.DisplayFor(modelItem => item.Id)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Name)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Adress)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.PhoneNumber)
-				</td>
-
-				<td>
-					<a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Details" asp-route-id="@item.Id">Details</a> |
-					<a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-					<a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Silmek İstiyor musunuz?')">Delete</a>
-				</td>
-			</tr>
-		}
-		<p>
-			<a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Create">Add New Hospital</a>
-		</p>
-	</tbody>
-</table>
+</body>
+</html>
