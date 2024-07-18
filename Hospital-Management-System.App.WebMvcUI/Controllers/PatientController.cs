@@ -36,8 +36,8 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
 			{
 				return NotFound();
 			}
-            var appointments = _appointmentRepo.GetAll().Where(d => d.DoctorId == id).ToList();
-            var prescriptions = _prescriptionRepo.GetAll().Where(d => d.DoctorId == id).ToList();
+            var appointments = _appointmentRepo.GetAll().Where(a => a.PatientId == id).ToList();
+            var prescriptions = _prescriptionRepo.GetAll().Where(p => p.PatientId == id).ToList();
 
             var viewModel = new PatientDetailsViewModel
             {

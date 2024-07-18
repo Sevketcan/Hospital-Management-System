@@ -15,7 +15,7 @@ namespace Hospital_Management_System.Entity.Entities
         public int PatientId {  get; set; }
 
         //Nav property olarak patient İd verilecek
-
+        public virtual Hospital Hospital { get; set; }
         public virtual Doctor Doctor { get; set; }
         public virtual Patient Patient { get; set; }
     }
