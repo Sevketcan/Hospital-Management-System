@@ -6,8 +6,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-<html lang="en">
+
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            background-color: #f7f7f7;
+            background: white;
             font-family: 'Arial', sans-serif;
         }
 
@@ -28,20 +28,21 @@
             margin-bottom: 1rem;
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
+            border-radius: 15px;
         }
 
             .table th, .table td {
-                padding: 0.75rem;
-                vertical-align: top;
+                padding: 0.5rem;
+                vertical-align: middle;
                 border-top: 1px solid #dee2e6;
             }
 
             .table thead th {
-                vertical-align: bottom;
+                vertical-align: middle;
                 border-bottom: 2px solid #dee2e6;
-                background-color: #007bff;
+                background-color: #17a2b8;
                 color: white;
+                
             }
 
             .table tbody tr:nth-of-type(even) {
@@ -50,6 +51,7 @@
 
         .table-hover tbody tr:hover {
             background-color: #e9ecef;
+            border-radius: 15px;
         }
 
         .nav-link {
@@ -57,18 +59,25 @@
             text-decoration: none;
             padding: 0.25rem 0.75rem;
             border-radius: 5px;
+            margin-right: 5px;
         }
 
             .nav-link:hover {
                 text-decoration: none;
+                background-color: #fff; /* Hover durumunda arka plan rengini beyaz yapar */
+                color: #000; /* Hover durumunda yazı rengini siyah yapar */
+                margin-top: 3px;
             }
 
         .bg-primary {
             background-color: #007bff !important;
+            margin-top: 3px;
         }
 
             .bg-primary:hover {
-                background-color: #0056b3 !important;
+                background-color: #fff !important; /* Hover durumunda arka plan rengini beyaz yapar */
+                color: #000 !important; /* Hover durumunda yazı rengini siyah yapar */
+                margin-top: 3px;
             }
 
         .text-white {
@@ -79,7 +88,32 @@
             border-radius: 5px;
         }
 
+        .new-doctor-button {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+            .new-doctor-button a {
+                display: inline-block;
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+            }
+
+        .title {
+            color: white;
+            font-family: 'Arial', sans-serif;
+            margin-bottom: 20px;
+            text-align: center;
+            background-color: #17a2b8;
+            padding: 0.25rem 0.5rem;
+            border-radius: 5px;
+            margin: 0 auto;
+            font-size: 1.25rem;
+            text-align: right;
+        }
     </style>
+
+
 </head>
 <body>
     <div class="container">
@@ -88,7 +122,7 @@
         <br />
         <br />
         <br />
-        <h3>Doctors</h3>
+        <h4 class="title">Doctors</h4>
         <br />
         <table class="table table-hover">
             <thead>
@@ -149,18 +183,19 @@
                             @Html.DisplayFor(modelItem => item.HospitalId)
                         </td>
                         <td>
-                            <a class="nav-link bg-primary rounded" asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                            <a class="nav-link bg-primary rounded" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a class="nav-link bg-primary rounded" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                            <a class="nav-link bg-primary rounded" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
                             <a class="nav-link bg-primary rounded" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to delete?')">Delete</a>
                         </td>
                     </tr>
                 }
             </tbody>
+            <div class="new-doctor-button">
+                <a class="nav-link bg-primary rounded" asp-action="Create">New Doctor</a>
+            </div>
         </table>
 
-        <p>
-            <a class="nav-link bg-primary rounded" asp-action="Create">New Doctor</a>
-        </p>
+        
     </div>
 
     @section Scripts {

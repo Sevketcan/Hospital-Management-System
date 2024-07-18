@@ -3,12 +3,122 @@
 
 @{
     ViewData["Title"] = "Create";
-
 }
-<h4>Yeni Hastahane</h4>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #047285ed;
+            color: #333;
+        }
+
+        h4 {
+            color: white; /* Yazı rengi beyaz */
+            font-family: 'Arial', sans-serif;
+            margin-bottom: 20px;
+            text-align: center; /* Sağ tarafa hizalama */
+            background-color: #04851be0; /* Arka plan rengi */
+            padding: 0.25rem 0.5rem; /* Padding azaltıldı */
+            border-radius: 5px; /* Köşe yumuşatıldı */
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+            .form-group p {
+                margin-bottom: 0.5rem;
+                font-weight: bold;
+                color: #555;
+            }
+
+        .form-control {
+            width: 100%;
+            padding: 0.5rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+            .form-control:focus {
+                border-color: #80bdff;
+                outline: 0;
+                box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            }
+
+        .btn {
+            display: inline-block;
+            font-weight: 400;
+            color: #fff;
+            text-align: center;
+            vertical-align: middle;
+            user-select: none;
+            background-color: #04851be0;
+            border: 1px solid #007bff;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: 0.25rem;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+        .text-danger {
+            color: #dc3545;
+            font-size: 0.875rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #04851be0;
+            text-decoration: none;
+        }
+
+            .back-link:hover {
+                color: #0056b3;
+                text-decoration: underline;
+            }
+    </style>
+</head>
+<body>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<h4>Add Patient</h4>
+
+
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 form-container">
         <form asp-action="Create" method="post">
             <div class="form-group">
                 <p>Name</p>
@@ -27,7 +137,7 @@
                 <label asp-for="Mail" class="control-label"></label>
                 <input asp-for="Mail" class="form-control" />
                 <span asp-validation-for="Mail" class="text-danger"></span>
-            </div>            
+            </div>
             <div class="form-group">
                 <p>TcNumber</p>
                 <label asp-for="TcNumber" class="control-label"></label>
@@ -65,11 +175,14 @@
     </div>
 </div>
 
-
 <div>
-    <a asp-action="Index">Listeye Dön</a>
+    <a asp-action="Index" class="back-link">Back To List</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
+</body>
+</html>

@@ -2,168 +2,302 @@
 
 @{
     ViewData["Title"] = "Details";
-
 }
 
-<div>
-    <h4>Ürün Detayları</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Patients.Id)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Patients.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Patients.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Patients.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Patients.Mail)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Patients.Mail)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Patients.TcNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Patients.TcNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Patients.Adress)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Patients.Adress)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Patients.PhoneNumber)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Patients.PhoneNumber)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Patients.Username)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Patients.Username)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Patients.Password)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Patients.Password)
-        </dd>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #047285ed;
+            font-family: 'Arial', sans-serif;
+        }
 
+        .container {
+            margin-top: 50px;
+        }
 
-    </dl>
-</div>
-<div>
-    <h4>Appointment List</h4>
-    <hr />
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Appointments.First().Id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Appointments.First().DateTime)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Appointments.First().DoctorId)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Appointments.First().PatientId)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var appointment in Model.Appointments)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => appointment.Id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => appointment.DateTime)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => appointment.DoctorId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => appointment.PatientId)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-controller="Appointment" asp-route-id="@appointment.Id">Edit</a>
-                    </td>
-                </tr>
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #04851be0;
+            border-color: #007bff;
+        }
+
+        .card-header {
+            background-color: #04851be0;
+            color: white;
+            font-weight: bold;
+            border-bottom: none;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .table {
+            width: 100%;
+            margin-bottom: 1rem;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+            .table th, .table td {
+                padding: 0.75rem;
+                vertical-align: top;
+                border-top: 1px solid #dee2e6;
             }
-        </tbody>
-    </table>
-</div>
-<div>
-    <h4>Prescription List</h4>
-    <hr />
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Prescriptions.First().Id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Prescriptions.First().MedicationName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Prescriptions.First().PrescriptionDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Prescriptions.First().Usage)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Prescriptions.First().PatientId)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Prescriptions.First().DoctorId)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var prescription in Model.Prescriptions)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => prescription.Id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => prescription.MedicationName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => prescription.PrescriptionDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => prescription.Usage)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => prescription.PatientId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => prescription.DoctorId)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-controller="Prescription" asp-route-id="@prescription.Id">Edit</a>
-                    </td>
-                </tr>
+
+            .table thead th {
+                vertical-align: bottom;
+                border-bottom: 2px solid #dee2e6;
+                background-color: #04851be0;
+                color: white;
             }
-        </tbody>
-    </table>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Patients.Id">Edit</a> |
-    <a asp-action="Index">Listeye Dön</a>
-</div>
+
+            .table tbody tr:nth-of-type(even) {
+                background-color: #f9f9f9;
+            }
+
+        .table-hover tbody tr:hover {
+            background-color: #e9ecef;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.25rem 0.75rem;
+            border-radius: 5px;
+        }
+
+            .nav-link:hover {
+                text-decoration: none;
+            }
+
+        .bg-primary {
+            background-color: #04851be0 !important;
+        }
+
+            .bg-primary:hover {
+                background-color: #04851be0 !important;
+            }
+
+        .text-white {
+            color: #fff !important;
+        }
+
+        .rounded {
+            border-radius: 5px;
+        }
+
+        .dl-horizontal dt {
+            width: 120px;
+            font-weight: bold;
+        }
+
+        .dl-horizontal dd {
+            margin-left: 140px;
+        }
+    </style>
+</head>
+<body>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h4>Patient Details</h4>
+            </div>
+            <div class="card-body">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Patients.Id)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Patients.Id)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Patients.Name)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Patients.Name)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Patients.Mail)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Patients.Mail)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Patients.TcNumber)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Patients.TcNumber)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Patients.Adress)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Patients.Adress)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Patients.PhoneNumber)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Patients.PhoneNumber)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Patients.Username)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Patients.Username)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Patients.Password)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Patients.Password)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h4>Appointment List</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Appointments.First().Id)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Appointments.First().DateTime)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Appointments.First().DoctorId)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Appointments.First().PatientId)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var appointment in Model.Appointments)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => appointment.Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => appointment.DateTime)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => appointment.DoctorId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => appointment.PatientId)
+                                </td>
+                                <td>
+                                    <a class="nav-link bg-primary rounded" asp-action="Edit" asp-controller="Appointment" asp-route-id="@appointment.Id">Edit</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h4>Prescription List</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Prescriptions.First().Id)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Prescriptions.First().MedicationName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Prescriptions.First().PrescriptionDate)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Prescriptions.First().Usage)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Prescriptions.First().PatientId)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Prescriptions.First().DoctorId)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var prescription in Model.Prescriptions)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => prescription.Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => prescription.MedicationName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => prescription.PrescriptionDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => prescription.Usage)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => prescription.PatientId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => prescription.DoctorId)
+                                </td>
+                                <td>
+                                    <a class="nav-link bg-primary rounded" asp-action="Edit" asp-controller="Prescription" asp-route-id="@prescription.Id">Edit</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a asp-action="Edit" asp-route-id="@Model.Patients.Id" class="btn btn-primary">Edit</a> |
+            <a asp-action="Index" class="btn btn-primary">Back to List</a>
+        </div>
+    </div>
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+</body>
+</html>
