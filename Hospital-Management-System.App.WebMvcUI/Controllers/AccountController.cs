@@ -3,6 +3,7 @@ using Hospital_Management_System.Entity.ViewModels;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -78,6 +79,7 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
             }
             return View(model);
         }
+
         public IActionResult Register()
         {
             return View();
@@ -100,7 +102,6 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
