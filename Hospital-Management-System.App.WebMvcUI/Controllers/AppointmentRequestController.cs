@@ -5,6 +5,8 @@ using Hospital_Management_System.DataAccess.Repositories;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Hospital_Management_System.App.WebMvcUI.Controllers
 {
@@ -25,6 +27,7 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Appointment()
         {
             var hospitals = _hospitalRepository.GetAll();
@@ -41,12 +44,13 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Appointment(AppointmentRequestViewModel model)
         {
             string msg = await _appointmentService.CreatAppointmentRequestAsync(model);
             if (msg == "OK")
             {
-                return RedirectToAction("Success");
+                return RedirectToAction("Index", "Home"); // Redirect to the home page
             }
             else
             {
@@ -55,12 +59,23 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        [Authorize]
+        public JsonResult GetDoctorsByHospital(int hospitalId)
+        {
+            var doctors = _doctorRepository.GetByHospitalId(hospitalId);
+            return Json(doctors);
+        }
+
         private int GetCurrentPatientId()
         {
-            var claim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
-            if (claim != null && int.TryParse(claim.Value, out int patientId))
+            if (User.Identity.IsAuthenticated)
             {
-                return patientId;
+                var claim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+                if (claim != null && int.TryParse(claim.Value, out int patientId))
+                {
+                    return patientId;
+                }
             }
             throw new Exception("Unable to determine current patient ID");
         }

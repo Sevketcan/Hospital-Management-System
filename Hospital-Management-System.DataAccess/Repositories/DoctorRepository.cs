@@ -36,7 +36,7 @@ namespace Hospital_Management_System.DataAccess.Repositories
             _context.Doctors.Remove(doctor);
             _context.SaveChanges();
         }
-        public List<Doctor> GetDoctorsByHospital(int hospitalId)
+        public List<Doctor> GetByHospitalId(int hospitalId)
         {
             return _context.Doctors.Where(d => d.HospitalId == hospitalId).ToList();
         }
