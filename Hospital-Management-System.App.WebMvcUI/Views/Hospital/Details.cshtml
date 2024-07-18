@@ -1,4 +1,4 @@
-﻿@model Hospital_Management_System.Entity.ViewModels.HospitalDetailsViewModel
+@model Hospital_Management_System.Entity.ViewModels.HospitalDetailsViewModel
 
 @{
     ViewData["Title"] = "Hospital Details";
@@ -111,89 +111,127 @@
     </style>
 </head>
 <body>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
     <div class="container">
-        <div class="card">
-            <div class="card-header">
-                <h4>Hospital Details</h4>
-            </div>
-            <div class="card-body">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Hospital.Id)
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.Hospital.Id)
-                    </dd>
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Hospital.Name)
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.Hospital.Name)
-                    </dd>
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Hospital.Adress)
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.Hospital.Adress)
-                    </dd>
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Hospital.PhoneNumber)
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.Hospital.PhoneNumber)
-                    </dd>
-                </dl>
-            </div>
+        <div class="header">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <h3>Hospital Details</h3>
+            <hr />
         </div>
-
-        <div class="card">
-            <div class="card-header">
-                <h4>Doctors List</h4>
-            </div>
-            <div class="card-body">
-                <table class="table table-hover">
-                    <thead>
+        <div class="details-section">
+            <h4>Hospital Details</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Hospital.Id)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Hospital.Id)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Hospital.Name)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Hospital.Name)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Hospital.Adress)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Hospital.Adress)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Hospital.PhoneNumber)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Hospital.PhoneNumber)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Hospital.Username)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Hospital.Username)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Hospital.Password)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Hospital.Password)
+                </dd>
+            </dl>
+        </div>
+        <div class="doctors-list-section">
+            <h4>Doctors List</h4>
+            <hr />
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Doctors.First().Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Doctors.First().Surname)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Doctors.First().BranchName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Doctors.First().PhoneNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Doctors.First().Username)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Doctors.First().Password)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Doctors.First().Id)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var doctor in Model.Doctors)
+                    {
                         <tr>
-                            <th>@Html.DisplayNameFor(model => model.Doctors.First().Name)</th>
-                            <th>@Html.DisplayNameFor(model => model.Doctors.First().Surname)</th>
-                            <th>@Html.DisplayNameFor(model => model.Doctors.First().BranchName)</th>
-                            <th>@Html.DisplayNameFor(model => model.Doctors.First().PhoneNumber)</th>
-                            <th>@Html.DisplayNameFor(model => model.Doctors.First().Username)</th>
-                            <th>@Html.DisplayNameFor(model => model.Doctors.First().Password)</th>
-                            <th>@Html.DisplayNameFor(model => model.Doctors.First().Id)</th>
-                            <th></th>
+                            <td>
+                                @Html.DisplayFor(modelItem => doctor.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => doctor.Surname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => doctor.BranchName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => doctor.PhoneNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => doctor.Username)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => doctor.Password)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => doctor.Id)
+                            </td>
+                            <td>
+                                <a asp-action="Details" asp-controller="Doctor" asp-route-id="@doctor.Id">Details</a>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var doctor in Model.Doctors)
-                        {
-                            <tr>
-                                <td>@Html.DisplayFor(modelItem => doctor.Name)</td>
-                                <td>@Html.DisplayFor(modelItem => doctor.Surname)</td>
-                                <td>@Html.DisplayFor(modelItem => doctor.BranchName)</td>
-                                <td>@Html.DisplayFor(modelItem => doctor.PhoneNumber)</td>
-                                <td>@Html.DisplayFor(modelItem => doctor.Username)</td>
-                                <td>@Html.DisplayFor(modelItem => doctor.Password)</td>
-                                <td>@Html.DisplayFor(modelItem => doctor.Id)</td>
-                                <td><a class="nav-link bg-primary rounded" asp-action="Details" asp-controller="Doctor" asp-route-id="@doctor.Id">Details</a></td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
+                    }
+                </tbody>
+            </table>
         </div>
-
-        <div class="text-center">
-            <a asp-action="Edit" asp-route-id="@Model?.Hospital.Id" class="btn btn-primary">Edit</a> |
-            <a asp-action="Index" class="btn btn-primary">Back to List</a>
+        <div class="edit-link">
+            <a asp-action="Edit" asp-route-id="@Model?.Hospital.Id">Edit</a>
+        </div>
+        <div class="back-link">
+            <a asp-action="Index">Back to List</a>
         </div>
     </div>
 
