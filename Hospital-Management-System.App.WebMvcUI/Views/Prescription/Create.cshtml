@@ -151,7 +151,7 @@
             <div class="col-md-6 form-container">
                 <form asp-action="Create" method="post" class="needs-validation" novalidate>
                     <div class="form-group">
-                        <label asp-for="MedicationName" class="control-label">İlaç Adı</label>
+                        <label asp-for="MedicationName" class="control-label">Prescription Name</label>
                         <input asp-for="MedicationName" class="form-control" />
                         <span asp-validation-for="MedicationName" class="text-danger"></span>
                     </div>
@@ -162,7 +162,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label asp-for="Usage" class="control-label">Kullanım Talimatı</label>
+                        <label asp-for="Usage" class="control-label">Usage Instruction</label>
                         <input asp-for="Usage" class="form-control" />
                         <span asp-validation-for="Usage" class="text-danger"></span>
                     </div>
