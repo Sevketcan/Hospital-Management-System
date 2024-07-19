@@ -132,82 +132,83 @@ namespace Hospital_Management_System.DataAccess.Contexts
             );
 
             builder.Entity<Doctor>().HasData(
-				new Doctor { Id = 1, Name = "Sevket Can", Surname = "Kalyancioglu", BranchName = "Urology", PhoneNumber = "123456789", Username = "onlysevk", Password = "kalyancisevket", HospitalId = 1 }
-			);
-			builder.Entity<Doctor>().HasData(
-				new Doctor { Id = 2, Name = "John", Surname = "Doe", BranchName = "Cardiology", PhoneNumber = "123456789", Username = "johndoe", Password = "password", HospitalId = 1 }
-			);
-			builder.Entity<Doctor>().HasData(
-				new Doctor { Id = 3, Name = "Esmer", Surname = "HASANOVA", BranchName = "Gynecology and Obstetrics", PhoneNumber = "456123789", Username = "smerhasan", Password = "hasanesmr", HospitalId = 1 }
-			);
-			builder.Entity<Doctor>().HasData(
-				new Doctor { Id = 4, Name = "Sinem", Surname = "AKAY", BranchName = "Brain surgery", PhoneNumber = "127834569", Username = "aksikinem", Password = "rivakkayariv", HospitalId = 1 }
-			);
-			builder.Entity<Doctor>().HasData(
-				new Doctor { Id = 5, Name = "Faruk", Surname = "TUFEKCI", BranchName = "Psychiatry", PhoneNumber = "561278349", Username = "hellokityfaruk", Password = "faruk3131", HospitalId = 1 }
-			);
-			builder.Entity<Doctor>().HasData(
-				new Doctor { Id = 6, Name = "Museyip", Surname = "HAKKO", BranchName = "Internal Medicine Specialist", PhoneNumber = "527613849", Username = "museyipp", Password = "muss03169", HospitalId = 2 }
-			);
-			builder.Entity<Doctor>().HasData(
-				new Doctor { Id = 7, Name = "Osman", Surname = "Ozkeles", BranchName = "ENT Diseases Specialist", PhoneNumber = "561382749", Username = "usmankeles", Password = "613127", HospitalId = 2 }
-			);
-			builder.Entity<Doctor>().HasData(
-				new Doctor { Id = 8, Name = "Cezmi", Surname = "Tuncer", BranchName = "Child Health and Diseases Specialist", PhoneNumber = "527496138", Username = "tuncercezmi", Password = "8521613", HospitalId = 2 }
-			);
-			builder.Entity<Doctor>().HasData(
-				new Doctor { Id = 9, Name = "Zerrin", Surname = "Goksin", BranchName = "Eye Health and Diseases Specialist", PhoneNumber = "561749382", Username = "gokzerrin", Password = "631271", HospitalId = 2 }
-			);
-			builder.Entity<Doctor>().HasData(
-				new Doctor { Id = 10, Name = "Leyla", Surname = "Sonmez", BranchName = "Clinical Psychologist", PhoneNumber = "527461389", Username = "sonmezreis", Password = "131267", HospitalId = 2 }
-			);
-			builder.Entity<Doctor>().HasData(
-				new Doctor { Id = 11, Name = "Denizmen", Surname = "Aygün", BranchName = "Child Health and Diseases Specialist", PhoneNumber = "527461389", Username = "sonmezreis", Password = "131267", HospitalId = 3 }
-			);
-			builder.Entity<Doctor>().HasData(
-				new Doctor { Id = 12, Name = "Altay", Surname = "Iskender", BranchName = "Anesthesia and Reanimation", PhoneNumber = "574612389", Username = "sikender", Password = "112367", HospitalId = 3 }
-			);
-			builder.Entity<Doctor>().HasData(
-				new Doctor { Id = 13, Name = "Alaattin", Surname = "Ersoy", BranchName = "Child Health and Diseases", PhoneNumber = "523874619", Username = "ersoyyy", Password = "167312", HospitalId = 3 }
-			);
-			builder.Entity<Doctor>().HasData(
-				new Doctor { Id = 14, Name = "Aleyna", Surname = "Ergul", BranchName = "Nutrition and Diet", PhoneNumber = "538274619", Username = "ergulaleyna", Password = "213167", HospitalId = 3 }
-			);
-			builder.Entity<Doctor>().HasData(
-				new Doctor { Id = 15, Name = "Ali", Surname = "Kadayifci", BranchName = "Urologist", PhoneNumber = "513827469", Username = "alikadayifci", Password = "261317", HospitalId = 3 }
-			);
-			builder.Entity<Doctor>().HasData(
-				new Doctor { Id = 16, Name = "Emre", Surname = "YILDIRIM", BranchName = "Gastroenterology", PhoneNumber = "518274369", Username = "emreyildirim", Password = "261731", HospitalId = 4 }
-			);
-			builder.Entity<Doctor>().HasData(
-				new Doctor { Id = 17, Name = "Abdullah", Surname = "OZKAYA", BranchName = "Eye Diseases", PhoneNumber = "582137469", Username = "abdullahockaya", Password = "231617", HospitalId = 4 }
-			);
-			builder.Entity<Doctor>().HasData(
-				new Doctor { Id = 18, Name = "Abdulmuttalip", Surname = "SIMSEK", BranchName = "Urologist", PhoneNumber = "382751469", Username = "abulsimsek", Password = "276131", HospitalId = 4 }
-			);
-			builder.Entity<Doctor>().HasData(
-				new Doctor { Id = 19, Name = "Abdurrahman", Surname = "ONEN", BranchName = "Boys Urologist", PhoneNumber = "274695138", Username = "onenabd", Password = "261371", HospitalId = 4 }
-			);
-			builder.Entity<Doctor>().HasData(
-				new Doctor { Id = 20, Name = "Furkan", Surname = "Keles", BranchName = "Patology", PhoneNumber = "5316678637", Username = "kelesfurkan", Password = "616161", HospitalId = 4 }
-			);
-			builder.Entity<Doctor>().HasData(
-				new Doctor { Id = 21, Name = "Mete Oguz", Surname = "Ekinci", BranchName = "Urologist", PhoneNumber = "138274659", Username = "meteoguz", Password = "271361", HospitalId = 5 }
-			);
-			builder.Entity<Doctor>().HasData(
-				new Doctor { Id = 22, Name = "Ekrem", Surname = "Aytac", BranchName = "Ear Nose Throat Diseases", PhoneNumber = "513898927469", Username = "ekerrmm", Password = "26117", HospitalId = 5 }
-			);
-			builder.Entity<Doctor>().HasData(
-				new Doctor { Id = 23, Name = "Ozer", Surname = "Celik", BranchName = "General Surgery", PhoneNumber = "51386527469", Username = "ozercelik", Password = "456875", HospitalId = 5 }
-			);
-			builder.Entity<Doctor>().HasData(
-				new Doctor { Id = 24, Name = "Bahri", Surname = "Muftuoglu", BranchName = "Eye Health and Diseases", PhoneNumber = "51382437469", Username = "bahri", Password = "26178317", HospitalId = 5 }
-			);
-			builder.Entity<Doctor>().HasData(
-				new Doctor { Id = 25, Name = "Mehmet", Surname = "Beyli", BranchName = "Emergency room", PhoneNumber = "51382712469", Username = "memetbeyli", Password = "26212341317", HospitalId = 5 }
-			);
+     new Doctor { Id = 1, Name = "Sevketcan", Surname = "Kalyancioglu", BranchName = "NeUrology", PhoneNumber = "123456789", Username = "onlysevk", Password = "kalyancisevket", HospitalId = 1 }
+ );
+            builder.Entity<Doctor>().HasData(
+                new Doctor { Id = 2, Name = "John", Surname = "Doe", BranchName = "General Surgery", PhoneNumber = "123456789", Username = "johndoe", Password = "password", HospitalId = 1 }
+            );
+            builder.Entity<Doctor>().HasData(
+                new Doctor { Id = 3, Name = "Esmer", Surname = "HASANOVA", BranchName = "Cardiology", PhoneNumber = "456123789", Username = "smerhasan", Password = "hasanesmr", HospitalId = 1 }
+            );
+            builder.Entity<Doctor>().HasData(
+                new Doctor { Id = 4, Name = "Sinem", Surname = "AKAY", BranchName = "Dermatology", PhoneNumber = "127834569", Username = "aksikinem", Password = "rivakkayariv", HospitalId = 1 }
+            );
+            builder.Entity<Doctor>().HasData(
+                new Doctor { Id = 5, Name = "Faruk", Surname = "TUFEKCI", BranchName = "Urology", PhoneNumber = "561278349", Username = "hellokityfaruk", Password = "faruk3131", HospitalId = 1 }
+            );
+            builder.Entity<Doctor>().HasData(
+                new Doctor { Id = 6, Name = "Museyip", Surname = "HAKKO", BranchName = "Oncology", PhoneNumber = "527613849", Username = "museyipp", Password = "muss03169", HospitalId = 2 }
+            );
+            builder.Entity<Doctor>().HasData(
+                new Doctor { Id = 7, Name = "Osman", Surname = "Ozkeles", BranchName = "NeUrology", PhoneNumber = "561382749", Username = "usmankeles", Password = "613127", HospitalId = 2 }
+            );
+            builder.Entity<Doctor>().HasData(
+                new Doctor { Id = 8, Name = "Cezmi", Surname = "Tuncer", BranchName = "General Surgery", PhoneNumber = "527496138", Username = "tuncercezmi", Password = "8521613", HospitalId = 2 }
+            );
+            builder.Entity<Doctor>().HasData(
+                new Doctor { Id = 9, Name = "Zerrin", Surname = "Goksin", BranchName = "Cardiology", PhoneNumber = "561749382", Username = "gokzerrin", Password = "631271", HospitalId = 2 }
+            );
+            builder.Entity<Doctor>().HasData(
+                new Doctor { Id = 10, Name = "Leyla", Surname = "Sonmez", BranchName = "Dermatology", PhoneNumber = "527461389", Username = "sonmezreis", Password = "131267", HospitalId = 2 }
+            );
+            builder.Entity<Doctor>().HasData(
+                new Doctor { Id = 11, Name = "Denizmen", Surname = "Aygün", BranchName = "Urology", PhoneNumber = "527461389", Username = "sonmezreis", Password = "131267", HospitalId = 3 }
+            );
+            builder.Entity<Doctor>().HasData(
+                new Doctor { Id = 12, Name = "Altay", Surname = "Iskender", BranchName = "Oncology", PhoneNumber = "574612389", Username = "sikender", Password = "112367", HospitalId = 3 }
+            );
+            builder.Entity<Doctor>().HasData(
+                new Doctor { Id = 13, Name = "Alaattin", Surname = "Ersoy", BranchName = "NeUrology", PhoneNumber = "523874619", Username = "ersoyyy", Password = "167312", HospitalId = 3 }
+            );
+            builder.Entity<Doctor>().HasData(
+                new Doctor { Id = 14, Name = "Aleyna", Surname = "Ergul", BranchName = "General Surgery", PhoneNumber = "538274619", Username = "ergulaleyna", Password = "213167", HospitalId = 3 }
+            );
+            builder.Entity<Doctor>().HasData(
+                new Doctor { Id = 15, Name = "Ali", Surname = "Kadayifci", BranchName = "Cardiology", PhoneNumber = "513827469", Username = "alikadayifci", Password = "261317", HospitalId = 3 }
+            );
+            builder.Entity<Doctor>().HasData(
+                new Doctor { Id = 16, Name = "Emre", Surname = "YILDIRIM", BranchName = "Dermatology", PhoneNumber = "518274369", Username = "emreyildirim", Password = "261731", HospitalId = 4 }
+            );
+            builder.Entity<Doctor>().HasData(
+                new Doctor { Id = 17, Name = "Abdullah", Surname = "OZKAYA", BranchName = "Urology", PhoneNumber = "582137469", Username = "abdullahockaya", Password = "231617", HospitalId = 4 }
+            );
+            builder.Entity<Doctor>().HasData(
+                new Doctor { Id = 18, Name = "Abdulmuttalip", Surname = "SIMSEK", BranchName = "Oncology", PhoneNumber = "382751469", Username = "abulsimsek", Password = "276131", HospitalId = 4 }
+            );
+            builder.Entity<Doctor>().HasData(
+                new Doctor { Id = 19, Name = "Abdurrahman", Surname = "ONEN", BranchName = "NeUrology", PhoneNumber = "274695138", Username = "onenabd", Password = "261371", HospitalId = 4 }
+            );
+            builder.Entity<Doctor>().HasData(
+                new Doctor { Id = 20, Name = "Furkan", Surname = "Keles", BranchName = "General Surgery", PhoneNumber = "5316678637", Username = "kelesfurkan", Password = "616161", HospitalId = 4 }
+            );
+            builder.Entity<Doctor>().HasData(
+                new Doctor { Id = 21, Name = "Mete Oguz", Surname = "Ekinci", BranchName = "Cardiology", PhoneNumber = "138274659", Username = "meteoguz", Password = "271361", HospitalId = 5 }
+            );
+            builder.Entity<Doctor>().HasData(
+                new Doctor { Id = 22, Name = "Ekrem", Surname = "Aytac", BranchName = "Dermatology", PhoneNumber = "513898927469", Username = "ekerrmm", Password = "26117", HospitalId = 5 }
+            );
+            builder.Entity<Doctor>().HasData(
+                new Doctor { Id = 23, Name = "Ozer", Surname = "Celik", BranchName = "Urology", PhoneNumber = "51386527469", Username = "ozercelik", Password = "456875", HospitalId = 5 }
+            );
+            builder.Entity<Doctor>().HasData(
+                new Doctor { Id = 24, Name = "Bahri", Surname = "Muftuoglu", BranchName = "Oncology", PhoneNumber = "51382437469", Username = "bahri", Password = "26178317", HospitalId = 5 }
+            );
+            builder.Entity<Doctor>().HasData(
+                new Doctor { Id = 25, Name = "Mehmet", Surname = "Beyli", BranchName = "NeUrology", PhoneNumber = "51382712469", Username = "memetbeyli", Password = "26212341317", HospitalId = 5 }
+            );
 
-			builder.Entity<Patient>().HasData(
+
+            builder.Entity<Patient>().HasData(
 				new Patient { Id = 1, Name = "Jane", Surname = "Smith", Mail = "jane.smith1@example.com", TcNumber = "12345678901", Adress = "Main Street 2", PhoneNumber = "987654321", Username = "janesmith1", Password = "password1" }
 			);
 			builder.Entity<Patient>().HasData(
