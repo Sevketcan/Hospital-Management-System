@@ -120,6 +120,12 @@
             <div class="col-md-6 form-container">
                 <form asp-action="Create" method="post">
                     <div class="form-group">
+                        <p>Hospital ID</p>
+                        <label asp-for="HospitalId" class="control-label"></label>
+                        <input asp-for="HospitalId" class="form-control" />
+                        <span asp-validation-for="HospitalId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
                         <p>DateTime</p>
                         <label asp-for="DateTime" class="control-label"></label>
                         <input asp-for="DateTime" class="form-control" />

@@ -223,11 +223,17 @@
                                 <td>
                                     <a class="nav-link bg-primary rounded" asp-action="Edit" asp-controller="Appointment" asp-route-id="@appointment.Id">Edit</a>
                                     <a class="nav-link bg-primary rounded" asp-action="Delete" asp-controller="Appointment" asp-route-id="@appointment.Id">Delete</a>
+                                    
+                                    
                                 </td>
+                                
                             </tr>
+                            
                         }
+                        
                     </tbody>
                 </table>
+                <a asp-action="Create" asp-controller="Appointment">New Appointment</a>
             </div>
         </div>
 
@@ -284,17 +290,21 @@
                                 </td>
                                 <td>
                                     <a class="nav-link bg-primary rounded" asp-action="Edit" asp-controller="Prescription" asp-route-id="@prescription.Id">Edit</a>
+                                   <a class="nav-link bg-primary rounded" asp-action="Delete" asp-controller="Prescription" asp-route-id="@prescription.Id">Delete</a>
                                 </td>
                             </tr>
                         }
                     </tbody>
                 </table>
+                <a asp-action="Create" asp-controller="Prescription">New Prescription</a>
             </div>
         </div>
 
         <div class="text-center">
             <a asp-action="Edit" asp-route-id="@Model.Doctors.Id" class="btn btn-primary">Edit</a> |
+
             <a asp-action="Index" class="btn btn-primary">Back to List</a>
+            
         </div>
     </div>
 
