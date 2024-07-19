@@ -107,20 +107,21 @@
             border-radius: 5px;
             margin: 0 auto;
             font-size: 1.25rem;
-            text-align: right;
+            text-align: left;
         }
     </style>
 </head>
-<br />
-<br />
-<br />
-<br />
-<br />
-<h3>Hospital</h3>
-<br />
-
 <body>
-<table class="table">
+<div class="container">
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <h4 class="title">Hospital</h4>
+    <br />
+
+<table class="table table-hover">
 	<thead>
 		<tr>
 			<th>
@@ -170,7 +171,7 @@
 				<td>
 					<a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Details" asp-route-id="@item.Id">Details</a> |
 					<a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-					<a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Silmek İstiyor musunuz?')">Delete</a>
+                            <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Do You Want to Delete?')">Delete</a>
 				</td>
 			</tr>
 		}
@@ -179,5 +180,11 @@
 		</p>
 	</tbody>
 </table>
+</div>
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
 </body>
 </html>

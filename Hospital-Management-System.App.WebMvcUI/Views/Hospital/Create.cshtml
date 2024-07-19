@@ -75,7 +75,7 @@
             vertical-align: middle;
             user-select: none;
             background-color: #4575bd;
-            border: 1px solid #4575bd;
+            border: 1px solid #007bff;
             padding: 0.375rem 0.75rem;
             font-size: 1rem;
             line-height: 1.5;
@@ -85,8 +85,8 @@
 
         .btn-primary:hover {
             color: #fff;
-            background-color: #4575bd;
-            border-color: #4575bd;
+            background-color: #0056b3;
+            border-color: #004085;
         }
 
         .text-danger {
@@ -97,12 +97,12 @@
         .back-link {
             display: inline-block;
             margin-top: 10px;
-            color: #4575bd;
+            color: #007bff;
             text-decoration: none;
         }
 
             .back-link:hover {
-                color: #4575bd;
+                color: #0056b3;
                 text-decoration: underline;
             }
     </style>
@@ -123,19 +123,16 @@
                 <form asp-action="Create" method="post">
                     <div class="form-group">
                         <p>Name</p>
-                        <label asp-for="Name" class="control-label"></label>
                         <input asp-for="Name" class="form-control" />
                         <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <p>Adress</p>
-                        <label asp-for="Adress" class="control-label"></label>
                         <input asp-for="Adress" class="form-control" />
                         <span asp-validation-for="Adress" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <p>PhoneNumber</p>
-                        <label asp-for="PhoneNumber" class="control-label"></label>
                         <input asp-for="PhoneNumber" class="form-control" />
                         <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                     </div>
@@ -151,7 +148,6 @@
                     </div>
                     <div class="form-group" style="display:none;">
                         <p>AdminId</p>
-                        <label asp-for="AdminId" class="control-label"></label>
                         <input asp-for="AdminId" class="form-control" value="1" />
                         <span asp-validation-for="AdminId" class="text-danger"></span>
                     </div>
@@ -163,7 +159,7 @@
         </div>
 
         <div>
-            <a asp-action="Index" class="back-link">Return To List</a>
+            <a asp-action="Index" class="back-link">Back To Lis</a>
         </div>
     </div>
 

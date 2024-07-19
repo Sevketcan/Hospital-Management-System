@@ -111,22 +111,21 @@
     </style>
 </head>
 <body>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
     <div class="container">
-        <div class="header">
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <h3>Hospital Details</h3>
-            <hr />
-        </div>
-        <div class="details-section">
+        <div class="card">
+            <div class="card-header">
             <h4>Hospital Details</h4>
-            <hr />
-            <dl class="row">
-                <dt class="col-sm-2">
+        </div>
+
+            <div class="card-body">
+                <dl class="dl-horizontal">
+                    <dt class="col-sm-2">
                     @Html.DisplayNameFor(model => model.Hospital.Id)
                 </dt>
                 <dd class="col-sm-10">
@@ -164,11 +163,13 @@
                 </dd>
             </dl>
         </div>
-        <div class="doctors-list-section">
-            <h4>Doctors List</h4>
-            <hr />
-            <table class="table">
-                <thead>
+            <div class="card">
+                <div class="card-header">
+                <h4>Doctors List</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
                     <tr>
                         <th>
                             @Html.DisplayNameFor(model => model.Doctors.First().Name)
@@ -226,13 +227,21 @@
                     }
                 </tbody>
             </table>
+
+            </div>
         </div>
-        <div class="edit-link">
+            <div class="text-center">
+                <a asp-action="Edit" asp-route-id="@Model?.Hospital.Id">Edit</a>
+
+                <a asp-action="Index">Back to List</a>
+
+            </div>
+        @* <div class="edit-link">
             <a asp-action="Edit" asp-route-id="@Model?.Hospital.Id">Edit</a>
         </div>
         <div class="back-link">
             <a asp-action="Index">Back to List</a>
-        </div>
+        </div> *@
     </div>
 
     @section Scripts {
