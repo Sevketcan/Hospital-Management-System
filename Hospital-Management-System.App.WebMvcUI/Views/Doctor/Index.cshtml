@@ -6,7 +6,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
 <html>
 <head>
     <meta charset="UTF-8">
@@ -17,6 +16,11 @@
         body {
             background: #e9ecef;
             font-family: 'Arial', sans-serif;
+            transition: opacity 0.5s ease;
+        }
+
+        .fade-out {
+            opacity: 0;
         }
 
         .container {
@@ -42,7 +46,6 @@
                 border-bottom: 2px solid #dee2e6;
                 background-color: #4575bd;
                 color: white;
-                
             }
 
             .table tbody tr:nth-of-type(even) {
@@ -64,8 +67,8 @@
 
             .nav-link:hover {
                 text-decoration: none;
-                background-color: #fff; /* Hover durumunda arka plan rengini beyaz yapar */
-                color: #000; /* Hover durumunda yazı rengini siyah yapar */
+                background-color: #fff;
+                color: #000;
                 margin-top: 3px;
             }
 
@@ -75,8 +78,8 @@
         }
 
             .bg-primary:hover {
-                background-color: #fff !important; /* Hover durumunda arka plan rengini beyaz yapar */
-                color: #000 !important; /* Hover durumunda yazı rengini siyah yapar */
+                background-color: #fff !important;
+                color: #000 !important;
                 margin-top: 3px;
             }
 
@@ -105,15 +108,14 @@
             margin-bottom: 20px;
             text-align: center;
             background-color: #4575bd;
-            padding: 0.25rem 0.5rem;
+            padding: 0.5rem;
             border-radius: 5px;
+            width: fit-content;
             margin: 0 auto;
             font-size: 1.25rem;
-            text-align: right;
+            text-align: center;
         }
     </style>
-
-
 </head>
 <body>
     <div class="container">
@@ -127,30 +129,14 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Id)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Surname)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.BranchName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PhoneNumber)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Username)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Password)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.HospitalId)
-                    </th>
+                    <th>@Html.DisplayNameFor(model => model.Id)</th>
+                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.Surname)</th>
+                    <th>@Html.DisplayNameFor(model => model.BranchName)</th>
+                    <th>@Html.DisplayNameFor(model => model.PhoneNumber)</th>
+                    <th>@Html.DisplayNameFor(model => model.Username)</th>
+                    <th>@Html.DisplayNameFor(model => model.Password)</th>
+                    <th>@Html.DisplayNameFor(model => model.HospitalId)</th>
                     <th></th>
                 </tr>
             </thead>
@@ -158,30 +144,14 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Id)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Surname)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.BranchName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PhoneNumber)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Username)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Password)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.HospitalId)
-                        </td>
+                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Surname)</td>
+                        <td>@Html.DisplayFor(modelItem => item.BranchName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Username)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Password)</td>
+                        <td>@Html.DisplayFor(modelItem => item.HospitalId)</td>
                         <td>
                             <a class="nav-link bg-primary rounded" asp-action="Details" asp-route-id="@item.Id">Details</a>
                             <a class="nav-link bg-primary rounded" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
@@ -194,8 +164,6 @@
                 <a class="nav-link bg-primary rounded" asp-action="Create">New Doctor</a>
             </div>
         </table>
-
-        
     </div>
 
     @section Scripts {
@@ -203,5 +171,30 @@
             await Html.RenderPartialAsync("_ValidationScriptsPartial");
         }
     }
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const links = document.querySelectorAll("a.nav-link");
+
+            links.forEach(link => {
+                link.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const href = this.getAttribute("href");
+
+                    document.body.classList.add("fade-out");
+
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 500);
+                });
+            });
+
+            window.addEventListener("pageshow", function (event) {
+                if (event.persisted) {
+                    document.body.classList.remove("fade-out");
+                }
+            });
+        });
+    </script>
 </body>
 </html>
