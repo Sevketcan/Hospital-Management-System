@@ -18,13 +18,17 @@
         }
 
         h4 {
-            color: white; /* Yazı rengi beyaz */
+            color: white;
             font-family: 'Arial', sans-serif;
             margin-bottom: 20px;
-            text-align: center; /* Sağ tarafa hizalama */
-            background-color: #4575bd; /* Arka plan rengi */
-            padding: 0.25rem 0.5rem; /* Padding azaltıldı */
-            border-radius: 5px; /* Köşe yumuşatıldı */
+            text-align: center;
+            background-color: #4575bd;
+            padding: 0.5rem;
+            border-radius: 5px;
+            width: fit-content;
+            margin: 0 auto;
+            font-size: 1.25rem;
+            text-align: center;
         }
 
         .form-container {
@@ -122,49 +126,41 @@
         <form asp-action="Create" method="post">
             <div class="form-group">
                 <p>Name</p>
-                <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <p>Surname</p>
-                <label asp-for="Surname" class="control-label"></label>
                 <input asp-for="Surname" class="form-control" />
                 <span asp-validation-for="Surname" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <p>Mail</p>
-                <label asp-for="Mail" class="control-label"></label>
                 <input asp-for="Mail" class="form-control" />
                 <span asp-validation-for="Mail" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <p>TcNumber</p>
-                <label asp-for="TcNumber" class="control-label"></label>
                 <input asp-for="TcNumber" class="form-control" />
                 <span asp-validation-for="TcNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <p>Adress</p>
-                <label asp-for="Adress" class="control-label"></label>
                 <input asp-for="Adress" class="form-control" />
                 <span asp-validation-for="Adress" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <p>PhoneNumber</p>
-                <label asp-for="PhoneNumber" class="control-label"></label>
                 <input asp-for="PhoneNumber" class="form-control" />
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
             <div class="form-group" style="display:none;">
                 <p>Username</p>
-                <label asp-for="Username" class="control-label"></label>
                 <input asp-for="Username" class="form-control" value="1" />
                 <span asp-validation-for="Username" class="text-danger"></span>
             </div>
             <div class="form-group" style="display:none;">
                 <p>Password</p>
-                <label asp-for="Password" class="control-label"></label>
                 <input asp-for="Password" class="form-control" value="1" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
@@ -175,7 +171,7 @@
     </div>
 </div>
 
-<div>
+    <div style="text-align:center">
     <a asp-action="Index" class="back-link">Back To List</a>
 </div>
 
