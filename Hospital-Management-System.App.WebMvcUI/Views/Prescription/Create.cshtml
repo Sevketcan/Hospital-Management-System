@@ -67,6 +67,7 @@
             }
 
         .btn {
+            float:right;
             display: inline-block;
             font-weight: 400;
             color: #fff;
@@ -147,7 +148,7 @@
         <br />
         <h4 class="text-center mb-4">Add Prescription</h4>
         <hr />
-        <div class="row justify-content-center">
+        <div class="row justify-content-center " style="flex-direction:column">
             <div class="col-md-6 form-container">
                 <form asp-action="Create" method="post" class="needs-validation" novalidate>
                     <div class="form-group">
@@ -181,11 +182,12 @@
                     </div>
                 </form>
             </div>
+            <div class="text-center">
+                <a asp-action="Index" class="back-link">Back To List</a>
+            </div>
         </div>
 
-        <div class="text-center mt-4">
-            <a asp-action="Index" class="btn btn-secondary">Back To List</a>
-        </div>
+        
 
         @section Scripts {
             @{

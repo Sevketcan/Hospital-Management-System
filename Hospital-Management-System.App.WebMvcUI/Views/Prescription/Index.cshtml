@@ -106,7 +106,6 @@
             border-radius: 5px;
             margin: 0 auto;
             font-size: 1.25rem;
-            text-align: right;
         }
     </style>
 </head>
@@ -191,7 +190,7 @@
                 </td>
                 <td>
                     @* <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Details" asp-route-id="@item.Id">Details</a>  *@
-                    <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
                     <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Silmek İstiyor musunuz?')">Delete</a>
                 </td>
             </tr>
