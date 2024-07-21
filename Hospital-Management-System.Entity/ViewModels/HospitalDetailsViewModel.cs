@@ -12,5 +12,6 @@ namespace Hospital_Management_System.Entity.ViewModels
     {
         public Hospital Hospital { get; set; }
         public List<Doctor> Doctors { get; set; }
+        public List<Appointment> Appointments { get; set; }
     }
 }

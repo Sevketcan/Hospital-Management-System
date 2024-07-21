@@ -11,8 +11,16 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
     [Authorize(Roles = "hospital,admin")]
     public class HospitalController : Controller
     {
-        HospitalRepository _hospitalRepo = new HospitalRepository();
-        DoctorRepository _doctorRepo = new DoctorRepository();
+        private readonly HospitalRepository _hospitalRepo;
+        private readonly DoctorRepository _doctorRepo;
+        private readonly AppointmentRepository _appointmentRepo;
+
+        public HospitalController(HospitalRepository hospitalRepo, DoctorRepository doctorRepo, AppointmentRepository appointmentRepo)
+        {
+            _hospitalRepo = hospitalRepo;
+            _doctorRepo = doctorRepo;
+            _appointmentRepo = appointmentRepo;
+        }
 
         public IActionResult List(string? search)
         {
@@ -23,8 +31,9 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
             }
             return View(hospitals);
         }
+
         [Authorize(Roles = "admin")]
-        public IActionResult Index(int? id)     //id -> categoryId
+        public IActionResult Index(int? id)
         {
             var hospitals = _hospitalRepo.GetAll();
             return View(hospitals);
@@ -39,11 +48,13 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
             }
 
             var doctors = _doctorRepo.GetAll().Where(d => d.HospitalId == id).ToList();
+            var appointments = _appointmentRepo.GetByHospitalId(id).ToList();
 
             var viewModel = new HospitalDetailsViewModel
             {
                 Hospital = hospital,
-                Doctors = doctors
+                Doctors = doctors,
+                Appointments = appointments
             };
 
             return View(viewModel);

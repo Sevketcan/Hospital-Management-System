@@ -29,6 +29,14 @@ namespace Hospital_Management_System.DataAccess.Repositories
                 .Include(a => a.Patient)
                 .ToList();
         }
+        public IEnumerable<Appointment> GetByHospitalId(int hospitalId)
+        {
+            return _context.Appointments
+                           .Include(a => a.Doctor)
+                           .Include(a => a.Patient)
+                           .Where(a => a.HospitalId == hospitalId)
+                           .ToList();
+        }
         public void Add(Appointment appointment)
         {
             _context.Appointments.Add(appointment);  //Ara katmana ekler.

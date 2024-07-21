@@ -240,8 +240,47 @@
                 </table>
             </div>
         </div>
+
+        <!-- Randevu Listesi -->
+        <div class="card">
+            <div class="card-header">
+                <h4>Appointment List</h4>
+            </div>
+            <div class="card-body">
+                <p>
+                    <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-controller="Appointment" asp-action="Create">Add New Appointment</a>
+                </p>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Appointments.First().DateTime)</th>
+                            <th>@Html.DisplayNameFor(model => model.Appointments.First().Doctor.Name)</th>
+                            <th>@Html.DisplayNameFor(model => model.Appointments.First().Patient.Name)</th>
+                            <th>@Html.DisplayNameFor(model => model.Appointments.First().Patient.Surname)</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var appointment in Model.Appointments)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => appointment.DateTime)</td>
+                                <td>@Html.DisplayFor(modelItem => appointment.Doctor.Name)</td>
+                                <td>@Html.DisplayFor(modelItem => appointment.Patient.Name)</td>
+                                <td>@Html.DisplayFor(modelItem => appointment.Patient.Surname)</td>
+                                <td>
+                                    <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Edit" asp-controller="Appointment" asp-route-id="@appointment.Id" class="nav-link">Edit</a>
+                                    <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Delete" asp-controller="Appointment" asp-route-id="@appointment.Id" onclick="return confirm('Do You Want to Delete?')">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
         <div class="text-center">
-            <a asp-action="Edit" asp-route-id="@Model?.Hospital.Id"  class="btn btn-primary" >Edit</a>
+            <a asp-action="Edit" asp-route-id="@Model?.Hospital.Id" class="btn btn-primary">Edit</a>
             <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Back to Home</a>
         </div>
     </div>
