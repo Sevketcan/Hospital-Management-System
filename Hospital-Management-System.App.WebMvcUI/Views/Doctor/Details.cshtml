@@ -91,7 +91,7 @@
             }
 
         .bg-primary {
-            width:75px;
+            width: 75px;
             margin: 3px;
             background-color: #4575bd !important;
         }
@@ -117,6 +117,23 @@
         .dl-horizontal dd {
             margin-left: 140px;
         }
+
+        .btn-large {
+            font-size: 1.25rem;
+            padding: 0.5rem 1rem;
+            width: 30%;
+            text-align: center;
+            display: inline-block;
+            margin-top: 10px;
+            background-color: #4575bd !important;
+            color: #fff !important;
+            border: none;
+            border-radius: 5px;
+        }
+
+            .btn-large:hover {
+                background-color: #3563a0 !important;
+            }
     </style>
 </head>
 <body>
@@ -191,7 +208,7 @@
             </div>
             <div class="card-body">
                 <p>
-                    <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-controller="Prescription" asp-action="Create">Add New Prescription</a>
+                    <a class="btn-large" asp-controller="Prescription" asp-action="Create">Add New Prescription</a>
                 </p>
                 <table class="table table-hover">
                     <thead>
