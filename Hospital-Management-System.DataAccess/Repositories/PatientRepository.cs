@@ -38,9 +38,9 @@ namespace Hospital_Management_System.DataAccess.Repositories
 
         public List<Prescription> GetPrescriptionsByPatientId(int patientId)
         {
-            return _context.Prescriptions
-                .Where(p => p.PatientId == patientId)
-                .ToList();
+            return _context.Prescriptions.Where(p => p.PatientId == patientId)
+                                         .Include(p => p.Doctor)
+                                         .ToList();
         }
 
         public void Add(Patient patient)
