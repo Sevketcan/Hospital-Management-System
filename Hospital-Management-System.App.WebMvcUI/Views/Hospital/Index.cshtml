@@ -63,6 +63,7 @@
             padding: 0.25rem 0.75rem;
             border-radius: 5px;
             margin-right: 5px;
+            margin-left: 3px;
         }
 
             .nav-link:hover {
@@ -115,6 +116,15 @@
             font-size: 1.25rem;
             text-align: center;
         }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+            .button-group a {
+                display: inline-block;       
+            }
     </style>
 </head>
 <body>
@@ -174,9 +184,9 @@
                     @Html.DisplayFor(modelItem => item.Password)
                 </td>
 
-				<td>
-					<a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Details" asp-route-id="@item.Id">Details</a> |
-					<a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <td class="button-group">
+					<a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Details" asp-route-id="@item.Id">Details</a> 
+					<a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
                             <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Do You Want to Delete?')">Delete</a>
 				</td>
 			</tr>
