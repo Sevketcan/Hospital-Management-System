@@ -159,6 +159,10 @@
                 <form asp-action="Edit">
                     <input type="hidden" asp-for="Id" />
                     <div class="form-group">
+                        <input asp-for="HospitalId" class="form-control" style="visibility:hidden" />
+                        <span asp-validation-for="HospitalId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
                         <label asp-for="DateTime" class="control-label"></label>
                         <input asp-for="DateTime" class="form-control" />
                     </div>
