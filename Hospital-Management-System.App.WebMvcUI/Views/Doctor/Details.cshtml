@@ -35,7 +35,7 @@
         .btn-primary {
             color: #fff;
             background-color: #4575bd;
-            border-color: #007bff;
+            border-color: #4575bd;
         }
 
         .card-header {
@@ -107,7 +107,7 @@
         }
 
         .dl-horizontal dt {
-            float: left; /* karşı karşya */
+            float: left;
             width: 120px;
             font-weight: bold;
         }
@@ -115,7 +115,6 @@
         .dl-horizontal dd {
             margin-left: 140px;
         }
-
     </style>
 </head>
 <body>
@@ -132,57 +131,20 @@
             <div class="card-header">
                 <h4>Doctor Details</h4>
             </div>
-
             <div class="card-body">
                 <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Doctors.Id)
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.Doctors.Id)
-                    </dd>
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Doctors.Name)
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.Doctors.Name)
-                    </dd>
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Doctors.Surname)
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.Doctors.Surname)
-                    </dd>
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Doctors.BranchName)
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.Doctors.BranchName)
-                    </dd>
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Doctors.PhoneNumber)
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.Doctors.PhoneNumber)
-                    </dd>
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Doctors.Username)
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.Doctors.Username)
-                    </dd>
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Doctors.Password)
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.Doctors.Password)
-                    </dd>
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Doctors.HospitalId)
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.Doctors.HospitalId)
-                    </dd>
+                    <dt>@Html.DisplayNameFor(model => model.Doctors.Id)</dt>
+                    <dd>@Html.DisplayFor(model => model.Doctors.Id)</dd>
+                    <dt>@Html.DisplayNameFor(model => model.Doctors.Name)</dt>
+                    <dd>@Html.DisplayFor(model => model.Doctors.Name)</dd>
+                    <dt>@Html.DisplayNameFor(model => model.Doctors.Surname)</dt>
+                    <dd>@Html.DisplayFor(model => model.Doctors.Surname)</dd>
+                    <dt>@Html.DisplayNameFor(model => model.Doctors.BranchName)</dt>
+                    <dd>@Html.DisplayFor(model => model.Doctors.BranchName)</dd>
+                    <dt>@Html.DisplayNameFor(model => model.Doctors.PhoneNumber)</dt>
+                    <dd>@Html.DisplayFor(model => model.Doctors.PhoneNumber)</dd>
+                    <dt>@Html.DisplayNameFor(model => model.Doctors.Username)</dt>
+                    <dd>@Html.DisplayFor(model => model.Doctors.Username)</dd>
                 </dl>
             </div>
         </div>
@@ -195,21 +157,10 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Appointments.First().Id)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Appointments.First().DateTime)
-                            </th>
-                            <th>
-                               Doctor @Html.DisplayNameFor(model => model.Doctors.Name)
-                            </th>
-                            <th>
-                                Doctor @Html.DisplayNameFor(model => model.Doctors.Surname)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Appointments.First().Patient.Name)
-                            </th>
+                            <th>@Html.DisplayNameFor(model => model.Appointments.First().Id)</th>
+                            <th>@Html.DisplayNameFor(model => model.Appointments.First().DateTime)</th>
+                            <th>Patient @Html.DisplayNameFor(model => model.Appointments.First().Patient.Name)</th>
+                            <th>Patient @Html.DisplayNameFor(model => model.Appointments.First().Patient.Surname)</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -217,21 +168,10 @@
                         @foreach (var appointment in Model.Appointments)
                         {
                             <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => appointment.Id)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => appointment.DateTime)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(model => model.Doctors.Name)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(model => model.Doctors.Surname)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => appointment.Patient.Name)
-                                </td>
+                                <td>@Html.DisplayFor(modelItem => appointment.Id)</td>
+                                <td>@Html.DisplayFor(modelItem => appointment.DateTime)</td>
+                                <td>@Html.DisplayFor(modelItem => appointment.Patient.Name)</td>
+                                <td>@Html.DisplayFor(modelItem => appointment.Patient.Surname)</td>
                                 <td>
                                     <a class="nav-link bg-primary rounded" asp-action="Edit" asp-controller="Appointment" asp-route-id="@appointment.Id">Edit</a>
                                     <a class="nav-link bg-primary rounded" asp-action="Delete" asp-controller="Appointment" asp-route-id="@appointment.Id">Delete</a>
@@ -240,7 +180,6 @@
                         }
                     </tbody>
                 </table>
-                <a asp-action="Create" asp-controller="Appointment">New Appointment</a>
             </div>
         </div>
 
@@ -252,27 +191,13 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Prescriptions.First().Id)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Prescriptions.First().MedicationName)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Prescriptions.First().PrescriptionDate)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Prescriptions.First().Usage)
-                            </th>
-                            <th>
-                                Doctor @Html.DisplayNameFor(model => model.Doctors.Name)
-                            </th>                           
-                            <th>
-                                Doctor @Html.DisplayNameFor(model => model.Doctors.Surname)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Prescriptions.First().PatientId)
-                            </th>
+                            <th>@Html.DisplayNameFor(model => model.Prescriptions.First().Id)</th>
+                            <th>@Html.DisplayNameFor(model => model.Prescriptions.First().MedicationName)</th>
+                            <th>@Html.DisplayNameFor(model => model.Prescriptions.First().PrescriptionDate)</th>
+                            <th>@Html.DisplayNameFor(model => model.Prescriptions.First().Usage)</th>
+                            <th>Patient @Html.DisplayNameFor(model => model.Prescriptions.First().Patient.Name)</th>
+                            <th>Patient @Html.DisplayNameFor(model => model.Prescriptions.First().Patient.Surname)</th>
+                            <th>@Html.DisplayNameFor(model => model.Prescriptions.First().DoctorId)</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -280,48 +205,31 @@
                         @foreach (var prescription in Model.Prescriptions)
                         {
                             <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => prescription.Id)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => prescription.MedicationName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => prescription.PrescriptionDate)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => prescription.Usage)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(model => model.Doctors.Name)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(model => model.Doctors.Name)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => prescription.PatientId)
-                                </td>
+                                <td>@Html.DisplayFor(modelItem => prescription.Id)</td>
+                                <td>@Html.DisplayFor(modelItem => prescription.MedicationName)</td>
+                                <td>@Html.DisplayFor(modelItem => prescription.PrescriptionDate)</td>
+                                <td>@Html.DisplayFor(modelItem => prescription.Usage)</td>
+                                <td>@Html.DisplayFor(modelItem => prescription.Patient.Name)</td>
+                                <td>@Html.DisplayFor(modelItem => prescription.Patient.Surname)</td>
+                                <td>@Html.DisplayFor(modelItem => prescription.DoctorId)</td>
                                 <td>
                                     <a class="nav-link bg-primary rounded" asp-action="Edit" asp-controller="Prescription" asp-route-id="@prescription.Id">Edit</a>
-                                    <a class="nav-link bg-primary rounded" asp-action="Delete" asp-controller="Prescription" asp-route-id="@prescription.Id">Delete</a>
                                 </td>
                             </tr>
                         }
                     </tbody>
                 </table>
-                <a asp-action="Create" asp-controller="Prescription">New Prescription</a>
             </div>
         </div>
 
         <div class="text-center">
-            <a asp-action="Edit" asp-route-id="@Model.Doctors.Id" class="btn btn-primary">Edit</a> |
+            <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Back to Home</a> |
             <a asp-action="Index" class="btn btn-primary">Back to List</a>
         </div>
     </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
-            const links = document.querySelectorAll('a.nav-link, .btn-primary');
+            const links = document.querySelectorAll('a.back-link, .btn.btn-primary');
             links.forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -333,11 +241,32 @@
             });
         });
     </script>
-
     @section Scripts {
         @{
             await Html.RenderPartialAsync("_ValidationScriptsPartial");
         }
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.btn-delete').click(function () {
+                    var appointmentId = $(this).data('id');
+                    if (confirm("Silmek istediğinize emin misiniz?")) {
+                        $.ajax({
+                            url: '@Url.Action("DeleteAppointment", "Appointment")',
+                            type: 'POST',
+                            data: { id: appointmentId },
+                            success: function () {
+                                location.reload();
+                            },
+                            error: function (xhr, status, error) {
+                                alert("Bir hata oluştu: " + error);
+                            }
+                        });
+                    }
+                });
+            });
+        </script>
     }
 </body>
 </html>

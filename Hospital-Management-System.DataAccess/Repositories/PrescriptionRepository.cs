@@ -1,5 +1,6 @@
 ﻿using Hospital_Management_System.DataAccess.Contexts;
 using Hospital_Management_System.Entity.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +16,18 @@ namespace Hospital_Management_System.DataAccess.Repositories
 
         public List<Prescription> GetAll()
         {
-            return _context.Prescriptions.ToList();
+            return _context.Prescriptions.Include(p => p.Patient).ToList();
         }
         public Prescription GetById(int id)
         {
             return _context.Prescriptions.Find(id);
+        }
+        public List<Prescription> GetByDoctorId(int doctorId)
+        {
+            return _context.Prescriptions
+                .Where(p => p.DoctorId == doctorId)
+                .Include(p => p.Patient)
+                .ToList();
         }
         public void Add(Prescription prescription)
         {
