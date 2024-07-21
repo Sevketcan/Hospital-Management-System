@@ -91,7 +91,7 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
         public IActionResult Edit(Appointment model)
         {
 			_appointmentRepo.Update(model);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
@@ -99,7 +99,7 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
         {
             var appointment = _appointmentRepo.GetById(id);
 			_appointmentRepo.Delete(appointment);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

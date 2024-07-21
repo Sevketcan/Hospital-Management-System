@@ -70,7 +70,7 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
         public IActionResult Create(Doctor model)
         {
             _doctorRepo.Add(model);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
@@ -85,7 +85,7 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
         public IActionResult Edit(Doctor model)
         {
             _doctorRepo.Update(model);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
@@ -93,7 +93,7 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
         {
             var doctor = _doctorRepo.GetById(id);
             _doctorRepo.Delete(doctor);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

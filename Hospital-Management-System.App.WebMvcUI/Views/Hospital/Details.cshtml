@@ -172,7 +172,11 @@
             <div class="card-header">
                 <h4>Doctors List</h4>
             </div>
+
             <div class="card-body">
+                <p>
+                    <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-controller="Doctor" asp-action="Create">Add New Doctor</a>
+                </p>
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -226,8 +230,9 @@
                                     @Html.DisplayFor(modelItem => doctor.Id)
                                 </td>
                                 <td>
-                                    <a asp-action="Details" asp-controller="Doctor" asp-route-id="@doctor.Id" class="nav-link">Details</a>
-                                    <a asp-action="Edit" asp-controller="Doctor" asp-route-id="@doctor.Id" class="nav-link">Edit</a>
+                                    <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Details" asp-controller="Doctor" asp-route-id="@doctor.Id" class="nav-link">Details</a>
+                                    <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Edit" asp-controller="Doctor" asp-route-id="@doctor.Id" class="nav-link">Edit</a>
+                                    <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Delete" asp-route-id="@doctor.Id" onclick="return confirm('Do You Want to Delete?')">Delete</a>
                                 </td>
                             </tr>
                         }

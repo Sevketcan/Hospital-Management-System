@@ -74,7 +74,7 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
         public IActionResult Create(Prescription model)
         {
 			_prescriptionRepo.Add(model);  // Formdan gelen Hospital modelini veritabanına ekler.
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
@@ -89,7 +89,7 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
         public IActionResult Edit(Prescription model)
         {
 			_prescriptionRepo.Update(model);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
@@ -97,7 +97,7 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
         {
             var prescription = _prescriptionRepo.GetById(id);
 			_prescriptionRepo.Delete(prescription);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
