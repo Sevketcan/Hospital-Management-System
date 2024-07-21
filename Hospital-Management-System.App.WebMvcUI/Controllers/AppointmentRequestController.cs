@@ -63,7 +63,12 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
         [Authorize]
         public JsonResult GetDoctorsByHospital(int hospitalId)
         {
-            var doctors = _doctorRepository.GetByHospitalId(hospitalId);
+            var doctors = _doctorRepository.GetDoctorsByHospitalId(hospitalId)
+                .Select(d => new
+                {
+                    d.Id,
+                    FullName = $"{d.Name} {d.Surname} ({d.BranchName})"
+                }).ToList();
             return Json(doctors);
         }
 

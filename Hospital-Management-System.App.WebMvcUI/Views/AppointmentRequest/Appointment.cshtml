@@ -104,7 +104,7 @@
                                         <option value="">Select a doctor</option>
                                         @foreach (var doctor in Model.Doctors)
                                         {
-                                            <option value="@doctor.Id">@doctor.Name</option>
+                                            <option value="@doctor.Id">@doctor.Name @doctor.Surname (@doctor.BranchName)</option>
                                         }
                                     </select>
                                     <span asp-validation-for="DoctorId" class="text-danger"></span>
@@ -130,7 +130,7 @@
                                                         doctorSelect.empty();
                                                         doctorSelect.append('<option value="">Select a doctor</option>');
                                                         $.each(data, function (index, doctor) {
-                                                            doctorSelect.append('<option value="' + doctor.id + '">' + doctor.name + '</option>');
+                                                            doctorSelect.append('<option value="' + doctor.id + '">' + doctor.fullName + '</option>');
                                                         });
                                                     }
                                                 });

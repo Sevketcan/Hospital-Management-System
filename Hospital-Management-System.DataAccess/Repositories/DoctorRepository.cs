@@ -40,5 +40,11 @@ namespace Hospital_Management_System.DataAccess.Repositories
         {
             return _context.Doctors.Where(d => d.HospitalId == hospitalId).ToList();
         }
+        public List<Doctor> GetDoctorsByHospitalId(int hospitalId)
+        {
+            return _context.Doctors
+                .Where(d => d.HospitalId == hospitalId)
+                .ToList();
+        }
     }
 }
