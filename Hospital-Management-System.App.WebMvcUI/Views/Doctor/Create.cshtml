@@ -177,20 +177,6 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const links = document.querySelectorAll('a.back-link, .btn.btn-primary');
-            links.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    document.body.classList.add('fade-out');
-                    setTimeout(() => {
-                        window.location.href = link.href;
-                    }, 500);
-                });
-            });
-        });
-    </script>
 
     @section Scripts {
         @{

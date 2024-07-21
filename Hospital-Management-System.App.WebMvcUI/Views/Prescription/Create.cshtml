@@ -201,27 +201,6 @@
                 await Html.RenderPartialAsync("_ValidationScriptsPartial");
             }
         }
-        <script>
-            document.addEventListener('DOMContentLoaded', (event) => {
-                const links = document.querySelectorAll('a');
-
-                links.forEach(link => {
-                    link.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        document.body.classList.add('fade-out');
-                        setTimeout(() => {
-                            window.location.href = link.href;
-                        }, 500);
-                    });
-                });
-
-                window.addEventListener('pageshow', (event) => {
-                    if (event.persisted) {
-                        document.body.classList.remove('fade-out');
-                    }
-                });
-            });
-        </script>
     </div>
 </body>
 </html>
