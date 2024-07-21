@@ -2,65 +2,93 @@
     ViewData["Title"] = "Admin Panel";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<style>
-    .admin-panel-container {
-        margin: 50px auto; /* Sayfayı ortalamak için margin: 50px auto; kullanılır */
-        width: 300px; /* İsteğe bağlı, container genişliği */
-        text-align: center; /* Butonları merkezde hizalamak için */
-    }
-
-        .admin-panel-container h2 {
-            margin-bottom: 30px;
-
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e9ecef;
+            color: #333;
+            transition: opacity 0.5s ease;
         }
 
-        .admin-panel-container .btn {
-            display: block; /* Her bir butonun alt alta gelmesi için display: block; kullanılır */
-            width: 100%; /* Butonların container genişliğinde olması için */
-            margin-bottom: 10px; /* Butonlar arasında boşluk bırakmak için */
-            border-radius: 10px;
-            transition: background-color 0.3s, color 0.3s;
+        .fade-out {
+            opacity: 0;
         }
 
-        .admin-panel-container .btn-primary:hover {
-            background-color: #0056b3;
-            color: white;
+        .admin-panel-container {
+            margin: 50px auto;
+            width: 300px;
+            text-align: center;
         }
 
-        .admin-panel-container .btn-success:hover {
-            background-color: #218838;
-            color: white;
-        }
+            .admin-panel-container h2 {
+                margin-bottom: 30px;
+            }
 
-        .admin-panel-container .btn-info:hover {
-            background-color: #138496;
-            color: white;
-        }
+            .admin-panel-container .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 10px;
+                border-radius: 10px;
+                transition: background-color 0.3s, color 0.3s;
+            }
 
-        .admin-panel-container .btn-secondary:hover {
-            background-color: #5a6268;
-            color: white;
-        }
+            .admin-panel-container .btn-primary:hover {
+                background-color: #0056b3;
+                color: white;
+            }
 
-        .admin-panel-container .btn-dark:hover {
-            background-color: #1d2124;
-            color: white;
-        }
-</style>
+            .admin-panel-container .btn-success:hover {
+                background-color: #218838;
+                color: white;
+            }
 
-<div class="admin-panel-container">
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <h2>Admin Panel</h2>
+            .admin-panel-container .btn-info:hover {
+                background-color: #138496;
+                color: white;
+            }
 
-    <a asp-controller="Hospital" asp-action="Index" class="btn btn-primary">Hospital Index</a>
-    <a asp-controller="Doctor" asp-action="Index" class="btn btn-success">Doctor Index</a>
-    <a asp-controller="Patient" asp-action="Index" class="btn btn-info">Patient Index</a>
-    <a asp-controller="Prescription" asp-action="Index" class="btn btn-secondary">Prescription Index</a>
-    <a asp-controller="Appointment" asp-action="Index" class="btn btn-dark">Appointment Index</a>
-</div>
+            .admin-panel-container .btn-secondary:hover {
+                background-color: #5a6268;
+                color: white;
+            }
+
+            .admin-panel-container .btn-dark:hover {
+                background-color: #1d2124;
+                color: white;
+            }
+    </style>
+</head>
+<body>
+    <div class="admin-panel-container">
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <h2>Admin Panel</h2>
+
+        <a asp-controller="Hospital" asp-action="Index" class="btn btn-primary">Hospital Index</a>
+        <a asp-controller="Doctor" asp-action="Index" class="btn btn-success">Doctor Index</a>
+        <a asp-controller="Patient" asp-action="Index" class="btn btn-info">Patient Index</a>
+        <a asp-controller="Prescription" asp-action="Index" class="btn btn-secondary">Prescription Index</a>
+        <a asp-controller="Appointment" asp-action="Index" class="btn btn-dark">Appointment Index</a>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const links = document.querySelectorAll('a.btn');
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.body.classList.add('fade-out');
+                    setTimeout(() => {
+                        window.location.href = link.href;
+                    }, 500);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

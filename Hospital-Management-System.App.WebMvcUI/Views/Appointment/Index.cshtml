@@ -16,6 +16,11 @@
         body {
             background: #e9ecef;
             font-family: 'Arial', sans-serif;
+            transition: opacity 0.5s ease;
+        }
+
+        .fade-out {
+            opacity: 0;
         }
 
         .container {
@@ -196,10 +201,10 @@
                 </td>
             </tr>
         }
-        <p>
+        <div>
                     <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Create">New Appointment</a>
                     
-        </p>
+        </div>
     </tbody>
 </table>
 </div>
@@ -208,5 +213,30 @@
             await Html.RenderPartialAsync("_ValidationScriptsPartial");
         }
     }
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const links = document.querySelectorAll("a.nav-link");
+
+            links.forEach(link => {
+                link.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const href = this.getAttribute("href");
+
+                    document.body.classList.add("fade-out");
+
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 500);
+                });
+            });
+
+            window.addEventListener("pageshow", function (event) {
+                if (event.persisted) {
+                    document.body.classList.remove("fade-out");
+                }
+            });
+        });
+    </script>
 </body>
 </html>

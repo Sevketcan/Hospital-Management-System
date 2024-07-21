@@ -17,6 +17,11 @@
             font-family: Arial, sans-serif;
             background-color: #e9ecef;
             color: #333;
+            transition: opacity 0.5s ease;
+        }
+
+        .fade-out {
+            opacity: 0;
         }
 
         h4 {
@@ -162,11 +167,34 @@
             </div>
         </div>
 
-        <div style="text-align:center"> @*  style="text-align: center;" *@
-            <a asp-action="Index" class="back-link">Back To Lis</a>
+        <div style="text-align:center">
+            <a asp-action="Index" class="back-link">Back To List</a>
         </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const links = document.querySelectorAll("a");
 
+            links.forEach(link => {
+                link.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const href = this.getAttribute("href");
+
+                    document.body.classList.add("fade-out");
+
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 500);
+                });
+            });
+
+            window.addEventListener("pageshow", function (event) {
+                if (event.persisted) {
+                    document.body.classList.remove("fade-out");
+                }
+            });
+        });
+    </script>
     @section Scripts {
         @{
             await Html.RenderPartialAsync("_ValidationScriptsPartial");
