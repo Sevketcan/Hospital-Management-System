@@ -156,8 +156,8 @@
                         <td>@Html.DisplayFor(modelItem => item.Doctor.Name)</td>
                         <td>@Html.DisplayFor(modelItem => item.Doctor.Surname)</td>
                         <td>
-                            <a class="nav-link bg-primary text-white d-inline-block rounded" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                            <a class="nav-link bg-primary text-white d-inline-block rounded" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Silmek İstiyor musunuz?')">Delete</a>
+                            <a class="nav-link bg-primary text-white d-inline-block rounded" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            <a class="nav-link bg-primary text-white d-inline-block rounded" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Do You Want To Delete?')">Delete</a>
                         </td>
                     </tr>
                 }
