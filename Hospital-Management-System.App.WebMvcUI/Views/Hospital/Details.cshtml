@@ -59,7 +59,7 @@
 
             .table th, .table td {
                 padding: 0.75rem;
-                vertical-align: top;
+                vertical-align: middle;
                 border-top: 1px solid #dee2e6;
             }
 
@@ -83,6 +83,8 @@
             text-decoration: none;
             padding: 0.25rem 0.75rem;
             border-radius: 5px;
+            margin-top: 3px;
+                text-align: center;
         }
 
             .nav-link:hover {
@@ -230,9 +232,9 @@
                                     @Html.DisplayFor(modelItem => doctor.Id)
                                 </td>
                                 <td>
-                                    <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Details" asp-controller="Doctor" asp-route-id="@doctor.Id" class="nav-link">Details</a>
-                                    <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Edit" asp-controller="Doctor" asp-route-id="@doctor.Id" class="nav-link">Edit</a>
-                                    <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Delete" asp-route-id="@doctor.Id" onclick="return confirm('Do You Want to Delete?')">Delete</a>
+                                    <a class="nav-link bg-primary bg-primary-50 text-white  rounded" asp-action="Details" asp-controller="Doctor" asp-route-id="@doctor.Id" class="nav-link">Details</a>
+                                    <a class="nav-link bg-primary bg-primary-50 text-white  rounded" asp-action="Edit" asp-controller="Doctor" asp-route-id="@doctor.Id" class="nav-link">Edit</a>
+                                    <a class="nav-link bg-primary bg-primary-50 text-white  rounded" asp-action="Delete" asp-route-id="@doctor.Id" onclick="return confirm('Do You Want to Delete?')">Delete</a>
                                 </td>
                             </tr>
                         }
