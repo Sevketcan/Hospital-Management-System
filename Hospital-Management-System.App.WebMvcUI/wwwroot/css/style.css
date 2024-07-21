@@ -188,10 +188,11 @@ div#home {
 
 .navbar-light .navbar-nav .nav-link {
     padding: 0;
-    color: #fff;
+    color: rgba(0, 0, 0, .5);
     background: transparent;
     font-size: 16px;
     letter-spacing: 1px;
+    font-weight: bold;
 }
 
 .navbar-expand-lg .navbar-nav .dropdown-menu {
@@ -900,10 +901,11 @@ p.copy-right-grids {
     font-size: 14px;
     color: #fff;
     letter-spacing: 2px;
+    font-weight: bold;
 }
 
 p.copy-right-grids a {
-    color: #f44336;
+    color: #000;
 }
 
 p.copy-right-grids a:hover {
