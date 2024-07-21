@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Hospital_Management_System.Entity.ViewModels.AccessDeniedViewModel
+
+@{
     ViewData["Title"] = "Access Denied";
 }
 
@@ -38,7 +40,7 @@
                 <h4>@ViewData["Title"]</h4>
             </div>
             <div class="card-body">
-                <p>You do not have permission to access this resource.</p>
+                <p>@Model.Message</p>
                 <a href="@Url.Action("Index", "Home")" class="btn btn-primary">Back to Home</a>
             </div>
         </div>

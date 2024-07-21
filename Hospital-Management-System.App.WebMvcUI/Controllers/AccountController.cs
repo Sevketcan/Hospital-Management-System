@@ -110,7 +110,11 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
         [HttpGet]
         public IActionResult AccessDenied()
         {
-            return View("AccessDenied");
+            var model = new AccessDeniedViewModel
+            {
+                Message = "You do not have permission to access this resource."
+            };
+            return View(model);
         }
     }
 }
