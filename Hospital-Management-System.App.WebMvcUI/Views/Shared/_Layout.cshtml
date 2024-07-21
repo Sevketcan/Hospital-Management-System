@@ -127,9 +127,7 @@
                             <li class="nav-item mx-lg-4 my-lg-0 my-3">
                                 <a class="nav-link" href="~/AppointmentRequest/Appointment">Appointment</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="~/Home/Contact">Contact Us</a>
-                            </li>
+                          
                         </ul>
                         <ul class="navbar-nav">
                             @if (User.Identity.IsAuthenticated)
@@ -195,11 +193,11 @@
     <div>
         @RenderBody()
     </div>
-    <footer class="border-top footer text-muted">
+   @*  <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2024 - Hospital_Management_System.App.WebMvcUI - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
+    </footer> *@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/themes/js/site.js" asp-append-version="true"></script>
