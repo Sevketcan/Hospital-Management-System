@@ -19,6 +19,7 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
         {
             _context = context;
         }
+        [Authorize(Roles = "admin")]
         public IActionResult Index()
         {
             // Database'den ilişkili entity'leri içeren randevuları getirin

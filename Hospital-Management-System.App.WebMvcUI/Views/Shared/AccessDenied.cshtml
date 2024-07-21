@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Access Denied";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .card {
+            border-color: #f5c6cb;
+            background-color: #f8d7da;
+        }
+
+        .card-header {
+            background-color: #f5c6cb;
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h4>@ViewData["Title"]</h4>
+            </div>
+            <div class="card-body">
+                <p>You do not have permission to access this resource.</p>
+                <a href="@Url.Action("Index", "Home")" class="btn btn-primary">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

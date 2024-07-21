@@ -31,7 +31,7 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
             }
             return View(doctors);
         }
-
+        [Authorize(Roles = "admin")]
         public IActionResult Index(int? id)
         {
             var doctors = _doctorRepo.GetAll();
