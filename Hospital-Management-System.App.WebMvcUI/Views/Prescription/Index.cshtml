@@ -5,6 +5,7 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -15,6 +16,11 @@
         body {
             background: #e9ecef;
             font-family: 'Arial', sans-serif;
+            transition: opacity 0.5s ease;
+        }
+
+        .fade-out {
+            opacity: 0;
         }
 
         .container {
@@ -61,8 +67,8 @@
 
             .nav-link:hover {
                 text-decoration: none;
-                background-color: #fff; /* Hover durumunda arka plan rengini beyaz yapar */
-                color: #000; /* Hover durumunda yazı rengini siyah yapar */
+                background-color: #fff;
+                color: #000;
                 margin-top: 3px;
             }
 
@@ -72,8 +78,8 @@
         }
 
             .bg-primary:hover {
-                background-color: #fff !important; /* Hover durumunda arka plan rengini beyaz yapar */
-                color: #000 !important; /* Hover durumunda yazı rengini siyah yapar */
+                background-color: #fff !important;
+                color: #000 !important;
                 margin-top: 3px;
             }
 
@@ -107,12 +113,11 @@
             width: fit-content;
             margin: 0 auto;
             font-size: 1.25rem;
-            text-align: center;
         }
     </style>
 </head>
 <body>
-<div class="container">
+    <div class="container">
         <br />
         <br />
         <br />
@@ -120,92 +125,67 @@
         <br />
         <h4 class="title">Prescriptions</h4>
         <br />
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MedicationName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PrescriptionDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Usage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PatientId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Patient.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Patient.Surname)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DoctorId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Doctor.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Doctor.Surname)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MedicationName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PrescriptionDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Usage)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PatientId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Patient.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Patient.Surname)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DoctorId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Doctor.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Doctor.Surname)
-                </td>
-                <td>
-                    @* <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Details" asp-route-id="@item.Id">Details</a>  *@
-                    <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Silmek İstiyor musunuz?')">Delete</a>
-                </td>
-            </tr>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.First().Id)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().MedicationName)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().PrescriptionDate)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().Usage)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().PatientId)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().Patient.Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().Patient.Surname)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().DoctorId)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().Doctor.Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().Doctor.Surname)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.MedicationName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.PrescriptionDate)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Usage)</td>
+                        <td>@Html.DisplayFor(modelItem => item.PatientId)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Patient.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Patient.Surname)</td>
+                        <td>@Html.DisplayFor(modelItem => item.DoctorId)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Doctor.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Doctor.Surname)</td>
+                        <td>
+                            <a class="nav-link bg-primary text-white d-inline-block rounded" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a class="nav-link bg-primary text-white d-inline-block rounded" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Silmek İstiyor musunuz?')">Delete</a>
+                        </td>
+                    </tr>
+                }
+                <p colspan="11" class="new-prescription-button">
+                    @* <td colspan="11" class="new-prescription-button"> *@
+                        <a class="nav-link bg-primary text-white d-inline-block rounded" asp-action="Create">New Prescription</a>
+                    @* </td> *@
+                </p>
+            </tbody>
+        </table>
+        @section Scripts {
+            @{
+                await Html.RenderPartialAsync("_ValidationScriptsPartial");
+            }
         }
-        <p>
-            <a class="nav-link bg-primary bg-primary-50 text-white d-inline-block rounded" asp-action="Create">New Prescription</a>
-        </p>
-    </tbody>
-</table>
-      @section Scripts {
-        @{
-            await Html.RenderPartialAsync("_ValidationScriptsPartial");
-        }
-    }
+        <script>
+            document.addEventListener('DOMContentLoaded', (event) => {
+                const links = document.querySelectorAll('a.nav-link');
+                links.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        document.body.classList.add('fade-out');
+                        setTimeout(() => {
+                            window.location.href = link.href;
+                        }, 500);
+                    });
+                });
+            });
+        </script>
 </body>
 </html>

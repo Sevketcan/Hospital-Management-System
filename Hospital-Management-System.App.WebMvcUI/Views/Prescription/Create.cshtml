@@ -16,6 +16,11 @@
             font-family: Arial, sans-serif;
             background-color: #e9ecef;
             color: #333;
+            transition: opacity 0.5s ease;
+        }
+
+        .fade-out {
+            opacity: 0;
         }
 
         h4 {
@@ -171,12 +176,12 @@
                         <span asp-validation-for="Usage" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="PatientId" class="control-label">Hasta ID</label>
+                        <label asp-for="PatientId" class="control-label">Patient ID</label>
                         <input asp-for="PatientId" class="form-control" />
                         <span asp-validation-for="PatientId" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="DoctorId" class="control-label">Doktor ID</label>
+                        <label asp-for="DoctorId" class="control-label">Doctor ID</label>
                         <input asp-for="DoctorId" class="form-control" />
                         <span asp-validation-for="DoctorId" class="text-danger"></span>
                     </div>
@@ -196,6 +201,27 @@
                 await Html.RenderPartialAsync("_ValidationScriptsPartial");
             }
         }
+        <script>
+            document.addEventListener('DOMContentLoaded', (event) => {
+                const links = document.querySelectorAll('a');
+
+                links.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        document.body.classList.add('fade-out');
+                        setTimeout(() => {
+                            window.location.href = link.href;
+                        }, 500);
+                    });
+                });
+
+                window.addEventListener('pageshow', (event) => {
+                    if (event.persisted) {
+                        document.body.classList.remove('fade-out');
+                    }
+                });
+            });
+        </script>
     </div>
 </body>
 </html>

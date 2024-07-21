@@ -15,6 +15,11 @@
         body {
             background-color: #e9ecef;
             font-family: 'Arial', sans-serif;
+            transition: opacity 0.5s ease;
+        }
+
+        .fade-out {
+            opacity: 0;
         }
 
         .container {
@@ -78,7 +83,6 @@
             text-decoration: none;
             padding: 0.25rem 0.75rem;
             border-radius: 5px;
-           /*  background-color: #28a745 !important; */
         }
 
             .nav-link:hover {
@@ -86,7 +90,7 @@
             }
 
         .bg-primary {
-            margin:3px;
+            margin: 3px;
             background-color: #4575bd !important;
         }
 
@@ -126,7 +130,6 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                
                 <h4>Doctor Details</h4>
             </div>
 
@@ -226,14 +229,9 @@
                                 <td>
                                     <a class="nav-link bg-primary rounded" asp-action="Edit" asp-controller="Appointment" asp-route-id="@appointment.Id">Edit</a>
                                     <a class="nav-link bg-primary rounded" asp-action="Delete" asp-controller="Appointment" asp-route-id="@appointment.Id">Delete</a>
-                                    
-                                    
                                 </td>
-                                
                             </tr>
-                            
                         }
-                        
                     </tbody>
                 </table>
                 <a asp-action="Create" asp-controller="Appointment">New Appointment</a>
@@ -293,7 +291,7 @@
                                 </td>
                                 <td>
                                     <a class="nav-link bg-primary rounded" asp-action="Edit" asp-controller="Prescription" asp-route-id="@prescription.Id">Edit</a>
-                                   <a class="nav-link bg-primary rounded" asp-action="Delete" asp-controller="Prescription" asp-route-id="@prescription.Id">Delete</a>
+                                    <a class="nav-link bg-primary rounded" asp-action="Delete" asp-controller="Prescription" asp-route-id="@prescription.Id">Delete</a>
                                 </td>
                             </tr>
                         }
@@ -305,11 +303,24 @@
 
         <div class="text-center">
             <a asp-action="Edit" asp-route-id="@Model.Doctors.Id" class="btn btn-primary">Edit</a> |
-
             <a asp-action="Index" class="btn btn-primary">Back to List</a>
-            
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const links = document.querySelectorAll('a.nav-link, .btn-primary');
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.body.classList.add('fade-out');
+                    setTimeout(() => {
+                        window.location.href = link.href;
+                    }, 500);
+                });
+            });
+        });
+    </script>
 
     @section Scripts {
         @{

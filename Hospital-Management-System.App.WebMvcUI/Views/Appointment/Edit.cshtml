@@ -14,6 +14,11 @@
         body {
             background-color: #e9ecef;
             font-family: 'Arial', sans-serif;
+            transition: opacity 0.5s ease;
+        }
+
+        .fade-out {
+            opacity: 0;
         }
 
         h4 {
@@ -174,7 +179,6 @@
 
         <div class="text-center my-4">
             <a asp-action="Index" class="back-to-list">Back to List</a>
-
         </div>
     </div>
 
@@ -183,5 +187,24 @@
             await Html.RenderPartialAsync("_ValidationScriptsPartial");
         }
     }
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const links = document.querySelectorAll("a.nav-link, a.back-to-list");
+
+            links.forEach(link => {
+                link.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const href = this.getAttribute("href");
+
+                    document.body.classList.add("fade-out");
+
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 500);
+                });
+            });
+        });
+    </script>
 </body>
 </html>

@@ -15,6 +15,11 @@
         body {
             background-color: #e9ecef;
             font-family: 'Arial', sans-serif;
+            transition: opacity 0.5s ease;
+        }
+
+        .fade-out {
+            opacity: 0;
         }
 
         h4 {
@@ -185,5 +190,23 @@
             await Html.RenderPartialAsync("_ValidationScriptsPartial");
         }
     }
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const links = document.querySelectorAll("a");
+
+            links.forEach(link => {
+                link.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const href = this.getAttribute("href");
+
+                    document.body.classList.add("fade-out");
+
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 500);
+                });
+            });
+        });
+    </script>
 </body>
 </html>

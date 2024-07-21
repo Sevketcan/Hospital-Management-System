@@ -14,6 +14,11 @@
         body {
             background-color: #e9ecef;
             font-family: 'Arial', sans-serif;
+            transition: opacity 0.5s ease;
+        }
+
+        .fade-out {
+            opacity: 0;
         }
 
         h4 {
@@ -27,7 +32,6 @@
             width: fit-content;
             margin: 0 auto;
             font-size: 1.25rem;
-            text-align: center;
         }
 
         .row {
@@ -154,23 +158,23 @@
                 <form asp-action="Edit">
                     <input type="hidden" asp-for="Id" />
                     <div class="form-group">
-                        <label asp-for="MedicationName" class="control-label"></label>
+                        <label asp-for="MedicationName" class="control-label">Medication Name</label>
                         <input asp-for="MedicationName" class="form-control" />
                     </div>
                     <div class="form-group">
-                        <label asp-for="PrescriptionDate" class="control-label"></label>
+                        <label asp-for="PrescriptionDate" class="control-label">Prescription Date</label>
                         <input asp-for="PrescriptionDate" class="form-control" />
                     </div>
                     <div class="form-group">
-                        <label asp-for="Usage" class="control-label"></label>
+                        <label asp-for="Usage" class="control-label">Usage</label>
                         <input asp-for="Usage" class="form-control" />
                     </div>
                     <div class="form-group">
-                        <label asp-for="PatientId" class="control-label"></label>
+                        <label asp-for="PatientId" class="control-label">Patient ID</label>
                         <input asp-for="PatientId" class="form-control" />
                     </div>
                     <div class="form-group">
-                        <label asp-for="DoctorId" class="control-label"></label>
+                        <label asp-for="DoctorId" class="control-label">Doctor ID</label>
                         <input asp-for="DoctorId" class="form-control" />
                     </div>
                     <div class="form-group">
@@ -190,5 +194,19 @@
             await Html.RenderPartialAsync("_ValidationScriptsPartial");
         }
     }
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const links = document.querySelectorAll('a.back-to-list, .btn.btn-primary');
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.body.classList.add('fade-out');
+                    setTimeout(() => {
+                        window.location.href = link.href;
+                    }, 500);
+                });
+            });
+        });
+    </script>
 </body>
 </html>

@@ -4,20 +4,25 @@
     ViewData["Title"] = "Edit";
 }
 
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<style>
-    body {
+    <style>
+        body {
             background-color: #e9ecef;
-        font-family: 'Arial', sans-serif;
-    }
+            font-family: 'Arial', sans-serif;
+            transition: opacity 0.5s ease;
+        }
 
-    h4 {
+        .fade-out {
+            opacity: 0;
+        }
+
+        h4 {
             color: white;
             font-family: 'Arial', sans-serif;
             margin-bottom: 20px;
@@ -29,111 +34,111 @@
             margin: 0 auto;
             font-size: 1.25rem;
             text-align: center;
-    }
-
-    .row {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-    }
-
-    .col-md-4 {
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        padding: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-    }
-
-    .form-group {
-        margin-bottom: 15px;
-    }
-
-    .form-control {
-        width: 100%;
-        padding: 10px;
-        font-size: 16px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        transition: border-color 0.3s;
-    }
-
-        .form-control:focus {
-                border-color: #4575bd;
         }
 
-    .control-label {
-        font-weight: bold;
-        margin-bottom: 5px;
-        display: block;
-        font-size: 15px;
-        letter-spacing: 1px;
-        color: #000;
-        text-align: center;
-    }
+        .row {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
 
-    .btn-primary {
+        .col-md-4 {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+
+            .form-control:focus {
+                border-color: #4575bd;
+            }
+
+        .control-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            font-size: 15px;
+            letter-spacing: 1px;
+            color: #000;
+            text-align: center;
+        }
+
+        .btn-primary {
             background-color: #4575bd;
             border-color: #4575bd;
-        padding: 10px 20px;
-        font-size: 16px;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s, border-color 0.3s;
-    }
-
-        .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #04851be0;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
         }
 
-        .btn-primary:focus {
-            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            .btn-primary:hover {
+                background-color: #0056b3;
+                border-color: #04851be0;
+            }
+
+            .btn-primary:focus {
+                box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            }
+
+        .my-2 {
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
 
-    .my-2 {
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
 
-    a {
-        display: inline-block;
-        margin-top: 20px;
-        color: #007bff;
-        text-decoration: none;
-        font-size: 16px;
-        transition: color 0.3s;
-    }
-
-        a:hover {
+            a:hover {
                 color: #4575bd;
-        }
+            }
 
-    .back-to-list {
-        display: inline-block;
-        background-color: #4575bd;
-        color: white;
-        padding: 10px 20px;
-        border-radius: 4px;
-        text-decoration: none;
-        font-size: 16px;
-        transition: background-color 0.3s, color 0.3s;
-    }
-
-        .back-to-list:hover {
+        .back-to-list {
+            display: inline-block;
             background-color: #4575bd;
             color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s, color 0.3s;
         }
 
-    .form-group label {
-        font-size: 15px;
-        letter-spacing: 1px;
-        color: #000;
-        margin-bottom: 8px;
-        text-align: left;
-        display: block;
-    }
-</style>
+            .back-to-list:hover {
+                background-color: #4575bd;
+                color: white;
+            }
+
+        .form-group label {
+            font-size: 15px;
+            letter-spacing: 1px;
+            color: #000;
+            margin-bottom: 8px;
+            text-align: left;
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -193,5 +198,24 @@
             await Html.RenderPartialAsync("_ValidationScriptsPartial");
         }
     }
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const links = document.querySelectorAll("a");
+
+            links.forEach(link => {
+                link.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const href = this.getAttribute("href");
+
+                    document.body.classList.add("fade-out");
+
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 500);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
