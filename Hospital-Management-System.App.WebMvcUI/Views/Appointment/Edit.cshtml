@@ -156,12 +156,12 @@
                         <input asp-for="DateTime" class="form-control" />
                     </div>
                     <div class="form-group">
-                        <label asp-for="DoctorId" class="control-label"></label>
-                        <input asp-for="DoctorId" class="form-control" />
+                        <label asp-for="DoctorId" class="control-label" style="visibility:hidden"></label>
+                        <input asp-for="DoctorId" class="form-control" style="visibility:hidden" />
                     </div>
                     <div class="form-group">
-                        <label asp-for="PatientId" class="control-label"></label>
-                        <input asp-for="PatientId" class="form-control" />
+                        <label asp-for="PatientId" class="control-label" style="visibility:hidden"></label>
+                        <input asp-for="PatientId" class="form-control" style="visibility:hidden" />
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Save" class="btn btn-primary my-2" />
@@ -172,7 +172,6 @@
 
         <div class="text-center my-4">
             <a asp-action="Index" class="back-to-list">Back to List</a>
-
         </div>
     </div>
 
