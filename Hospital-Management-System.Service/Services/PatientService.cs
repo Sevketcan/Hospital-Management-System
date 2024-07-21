@@ -16,7 +16,10 @@ namespace Hospital_Management_System.Entity.Services
 
         public async Task<Patient> GetPatientByIdAsync(int patientId)
         {
-            return await _context.Patients.FirstOrDefaultAsync(p => p.Id == patientId);
+            return await _context.Patients
+                .Include(p => p.Appointments)
+                    .ThenInclude(a => a.Doctor)
+                .FirstOrDefaultAsync(p => p.Id == patientId);
         }
     }
 }

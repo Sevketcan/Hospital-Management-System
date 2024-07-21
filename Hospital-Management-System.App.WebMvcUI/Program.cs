@@ -15,9 +15,11 @@ builder.Services.AddDbContext<HospitalDbContext>(options =>
 );
 
 // Add repositories
+builder.Services.AddScoped<PatientRepository>();
 builder.Services.AddScoped<AppointmentRepository>();
 builder.Services.AddScoped<HospitalRepository>();
 builder.Services.AddScoped<DoctorRepository>();
+builder.Services.AddScoped<PrescriptionRepository>();
 
 // Add custom services
 builder.Services.AddScoped<IAccountService, AccountService>();
