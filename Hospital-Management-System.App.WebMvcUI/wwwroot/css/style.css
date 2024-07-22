@@ -324,9 +324,9 @@ p.account-w3ls a {
 .form-group label {
     font-size: 15px;
     letter-spacing: 1px;
-    color: #fff;
+    color: black;
     margin-bottom: 8px;
-    text-align: right;
+    text-align: left;
     display: block;
 }
 
