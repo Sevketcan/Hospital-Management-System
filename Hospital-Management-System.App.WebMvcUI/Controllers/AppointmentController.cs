@@ -77,7 +77,7 @@ namespace Hospital_Management_System.App.WebMvcUI.Controllers
         public IActionResult Create(Appointment model)
         {
 			_appointmentRepo.Add(model);  // Formdan gelen Hospital modelini veritabanına ekler.
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
